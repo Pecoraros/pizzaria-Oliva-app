@@ -68,7 +68,7 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
 .ci{display:flex;align-items:flex-start;gap:9px;padding:9px 11px;background:var(--bg3);border-radius:var(--r2);border:1px solid var(--bdr);cursor:pointer;margin-bottom:5px}
 .ci.done{opacity:.4}
 .ci.done .ct{text-decoration:line-through;color:var(--tx3)}
-.cbox{width:19px;height:19px;border-radius:5px;border:2px solid var(--bdr);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.cbox{width:19px;height:19px;border-radius:5px;border:2px solid var(--bdr);flex-shrink:0;display:flex;align-items:center;justify-content:center}
 .ci.done .cbox{background:var(--ol);border-color:var(--ol)}
 .ck{opacity:0}.ci.done .ck{opacity:1}
 .cl{font-size:9px;color:var(--te);font-weight:700;margin-bottom:1px;font-family:'Oswald',sans-serif;letter-spacing:.5px}
@@ -93,19 +93,19 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
 .forn-hdr.op .fa{transform:rotate(180deg)}
 .forn-body{display:none;background:var(--bg3)}
 .forn-body.op{display:block}
-.forn-cols{display:grid;grid-template-columns:1fr 56px 56px 56px 56px;gap:3px;padding:6px 13px;border-bottom:1px solid var(--bdr)}
+.forn-cols{display:grid;grid-template-columns:1fr 56px 56px 60px 56px;gap:3px;padding:6px 13px;border-bottom:1px solid var(--bdr)}
 .fc{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--tx3);text-align:center}
 .fc:first-child{text-align:left}
-.ord-row{display:grid;grid-template-columns:1fr 56px 56px 56px 56px;gap:3px;padding:8px 13px;border-bottom:1px solid var(--bdr);align-items:center}
+.ord-row{display:grid;grid-template-columns:1fr 56px 56px 60px 56px;gap:3px;padding:8px 13px;border-bottom:1px solid var(--bdr);align-items:center}
 .ord-row:last-child{border-bottom:none}
 .ord-row.urg{background:rgba(212,80,80,.04)}
 .oname{font-size:12px;color:var(--tx);line-height:1.3}
 .ounit{font-size:9px;color:var(--tx3)}
 .onum{font-size:12px;font-weight:700;text-align:center}
-.ostk{background:var(--bg2);border:1px solid var(--bdr);border-radius:5px;padding:4px 3px;color:var(--te);font-size:12px;font-weight:700;text-align:center;width:100%;font-family:'DM Sans',sans-serif;-moz-appearance:textfield}
+.ostk{background:var(--bg2);border:1px solid var(--bdr);border-radius:4px;padding:4px 3px;color:var(--te);font-size:12px;font-weight:700;text-align:center;width:100%;font-family:'DM Sans',sans-serif;-moz-appearance:textfield}
 .ostk::-webkit-inner-spin-button,.ostk::-webkit-outer-spin-button{-webkit-appearance:none}
 .ostk:focus{outline:none;border-color:var(--te)}
-.opedir{font-size:12px;font-weight:700;text-align:center}
+.opedir{font-size:12px;font-weight:700;text-align:center;color:var(--ol)}
 .opedir.urg{color:var(--te)}.opedir.ok{color:var(--ol)}.opedir.z{color:var(--tx3)}
 /* PRODUCTION */
 .prod-in{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px}
@@ -122,9 +122,9 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
 .st-body.op{display:block}
 .ing-row{display:grid;grid-template-columns:1fr 54px 54px 60px 54px;gap:3px;padding:6px 10px;border-bottom:1px solid var(--bdr);align-items:center}
 .ing-row:last-child{border-bottom:none}
-.ing-n{font-size:11px;color:var(--tx);line-height:1.3}
 .ing-row.warn .ing-n::after{content:' ⚠';color:var(--rd);font-size:9px}
 .ing-row.falta .ing-n{color:var(--cr);font-weight:700}
+.ing-n{font-size:11px;color:var(--tx);line-height:1.3}
 .qin{background:var(--bg2);border:1px solid var(--bdr);border-radius:4px;padding:4px 2px;font-size:11px;font-weight:700;text-align:center;width:100%;color:var(--gd);font-family:'DM Sans',sans-serif;-moz-appearance:textfield}
 .qin::-webkit-inner-spin-button,.qin::-webkit-outer-spin-button{-webkit-appearance:none}
 .qin:focus{outline:none;border-color:var(--gd)}
@@ -199,7 +199,6 @@ select.fi{appearance:none;-webkit-appearance:none}
   <input type="date" id="dateInp" style="display:none" oninput="setDate(this.value)">
 </div>
 <div class="toast" id="toast"></div>
-
 <!-- MODAL MENU -->
 <div class="modal-ov" id="menuModal" onclick="if(event.target===this)closeMM()">
   <div class="modal-box">
@@ -214,7 +213,6 @@ select.fi{appearance:none;-webkit-appearance:none}
     <button class="btn btn-s" onclick="closeMM()" style="margin-top:6px">Fechar</button>
   </div>
 </div>
-
 <!-- MODAL ADD STAFF -->
 <div class="modal-ov" id="staffModal" onclick="if(event.target===this)closeStaffModal()">
   <div class="modal-box">
@@ -237,7 +235,6 @@ select.fi{appearance:none;-webkit-appearance:none}
     <button class="btn btn-s" onclick="closeStaffModal()" style="margin-top:6px">Cancelar</button>
   </div>
 </div>
-
 <!-- PAGE: TURNO -->
 <div class="pg on" id="pg-turno">
   <div class="stats" id="statsEl"></div>
@@ -261,7 +258,6 @@ select.fi{appearance:none;-webkit-appearance:none}
     <button class="lnk" onclick="rstCheck()" style="display:block;margin-top:8px;width:100%;text-align:center">↺ Reiniciar para amanhã</button>
   </div>
 </div>
-
 <!-- PAGE: TAREFAS -->
 <div class="pg" id="pg-tarefas">
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
@@ -275,12 +271,10 @@ select.fi{appearance:none;-webkit-appearance:none}
   <div class="sec" style="margin-top:4px">Tarefas de Hoje — por Colaborador</div>
   <div id="taskList"></div>
 </div>
-
-<!-- PAGE: PRODUCAO -->
+<!-- PAGE: PRODUÇÃO -->
 <div class="pg" id="pg-prod">
-  <!-- Volume planejado -->
   <div class="card">
-    <div style="font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:1.5px;color:var(--tx3);text-transform:uppercase;margin-bottom:10px">Volume Planejado</div>
+    <div style="font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:1.5px;color:var(--tx3);text-transform:uppercase;margin-bottom:10px">Volume Planejado</div>
     <div class="prod-in">
       <div class="pi"><label>Pizzas G</label><input type="number" id="pG" value="84" min="0" oninput="calcProd()"><span>grande</span></div>
       <div class="pi"><label>Pizzas M</label><input type="number" id="pM" value="36" min="0" oninput="calcProd()"><span>média</span></div>
@@ -296,11 +290,7 @@ select.fi{appearance:none;-webkit-appearance:none}
       </div>
     </div>
   </div>
-
-  <!-- Resumo stock -->
   <div id="prodSummary" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px"></div>
-
-  <!-- Legenda colunas -->
   <div style="display:grid;grid-template-columns:1fr 54px 54px 60px 54px;gap:3px;padding:5px 10px;margin-bottom:4px">
     <div style="font-size:9px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.5px">Ingrediente</div>
     <div style="font-size:9px;font-weight:700;color:var(--gd);text-align:center;text-transform:uppercase;letter-spacing:.4px">G/pz.G</div>
@@ -309,7 +299,6 @@ select.fi{appearance:none;-webkit-appearance:none}
     <div style="font-size:9px;font-weight:700;color:var(--te);text-align:center;text-transform:uppercase;letter-spacing:.4px">Estoque</div>
   </div>
   <div id="stationsEl"></div>
-
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
     <button class="btn btn-wa" onclick="waProdOrder()" style="font-size:13px;padding:11px">
       <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -318,7 +307,6 @@ select.fi{appearance:none;-webkit-appearance:none}
     <button class="btn btn-s" onclick="rstProdStock()" style="font-size:12px;padding:11px">↺ Resetar Estoque</button>
   </div>
 </div>
-
 <!-- PAGE: PEDIDO -->
 <div class="pg" id="pg-pedido">
   <div class="card" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px">
@@ -348,7 +336,6 @@ select.fi{appearance:none;-webkit-appearance:none}
   </button>
   <button class="btn btn-s" onclick="rstStock()" style="margin-top:6px;font-size:12px;padding:9px">↺ Resetar estoques</button>
 </div>
-
 <!-- PAGE: ESCALA -->
 <div class="pg" id="pg-escala">
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
@@ -374,7 +361,6 @@ select.fi{appearance:none;-webkit-appearance:none}
     <div class="hr" style="color:#90b8ff;border-color:rgba(91,141,232,.1)"><b style="color:var(--bl)">STATUS</b>Aguardando candidatos</div>
   </div>
 </div>
-
 <!-- PAGE: MENU -->
 <div class="pg" id="pg-menu">
   <div class="sec">Cardápio — Padrão Visual</div>
@@ -390,8 +376,6 @@ select.fi{appearance:none;-webkit-appearance:none}
     <button class="btn btn-p" onclick="addMenuItem()">Adicionar ao Cardápio</button>
   </div>
 </div>
-
-<!-- NAV -->
 <nav class="bnav">
   <button class="nb on" onclick="nav('turno',this)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Turno
@@ -412,908 +396,374 @@ select.fi{appearance:none;-webkit-appearance:none}
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 6v6l4 2"/></svg>Menu
   </button>
 </nav>
-
 <script>
-// ═══════════════════════════════════════════════════
-// BASE STAFF — each has a taskType:
-//   'pizza' = pizzaiolo (forno/massas/banco)
-//   'aux'   = auxiliar rotativo (todos os pools)
-//   'manual'= tarefas manuais/operacionais (sem leitura necessária)
-// ═══════════════════════════════════════════════════
-const BASE_STAFF = [
-  {id:'stefano',   n:'Stefano Pecoraro',         r:'Pizzaiolo Especialista',  c:'#7aab8a',i:'SP',pizza:true, taskType:'pizza',  defaultAb:true,  sched:'6x2',off:0},
-  {id:'wanderson', n:'Wanderson Alves Cardoso',   r:'Pizzaiolo',               c:'#7aab8a',i:'WA',pizza:true, taskType:'pizza',  defaultAb:false, sched:'6x2',off:3},
-  {id:'gilberto',  n:'Gilberto de Jesus Moreira', r:'1º Auxiliar — Banco',     c:'#d4724a',i:'GM',pizza:false,taskType:'aux',    defaultAb:false, sched:'6x2',off:1},
-  {id:'raimundojr',n:'Raimundo Jr Sampaio',       r:'Auxiliar de Cozinha',     c:'#d45050',i:'RJ',pizza:false,taskType:'manual', defaultAb:false, sched:'5x1',off:0},
-  {id:'stephany',  n:'Stephany',                  r:'Auxiliar — Doces/Etiq.',  c:'#9472c8',i:'ST',pizza:false,taskType:'aux',    defaultAb:false, sched:'5x1',off:2},
-  {id:'joaov',     n:'João Victor',               r:'Auxiliar — Zona Fria',    c:'#5b8de8',i:'JV',pizza:false,taskType:'aux',    defaultAb:false, sched:'5x1',off:4},
-  {id:'raimundo',  n:'Raimundo Lima Filho',        r:'Pizzaiolo (AF)',           c:'#5a5248',i:'RL',pizza:true, taskType:'pizza',  defaultAb:false, sched:'af', off:0},
+// ═══════════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════════
+const STAFF = [
+  {id:'stefano',   name:'Stefano Pecoraro',               role:'Pizzaiolo Especialista', color:'#81b29a', initial:'SP', isPizza:true,  defaultAb:true},
+  {id:'wanderson', name:'Wanderson Alves Cardoso',         role:'Pizzaiolo',              color:'#81b29a', initial:'WA', isPizza:true,  defaultAb:false},
+  {id:'gilberto',  name:'Gilberto de Jesus Moreira',       role:'1º Auxiliar — Banco',    color:'#e07a5f', initial:'GM', isPizza:false, defaultAb:false},
+  {id:'raimundojr',name:'Raimundo Jr Sampaio',             role:'Auxiliar — Zona Quente', color:'#e05555', initial:'RJ', isPizza:false, defaultAb:false},
+  {id:'stephany',  name:'Stephany',                        role:'Auxiliar — Doces/Etiq.', color:'#9b72cf', initial:'ST', isPizza:false, defaultAb:false},
+  {id:'joaov',     name:'João Victor',                     role:'Auxiliar — Zona Fria',   color:'#5b8def', initial:'JV', isPizza:false, defaultAb:false},
+  {id:'raimundo',  name:'Raimundo Lima Filho',             role:'Pizzaiolo (AF)',          color:'#706860', initial:'RL', isPizza:true,  defaultAb:false},
 ];
 
-// ═══════════════════════════════════════════════════
-// TASK CATALOGUE
-// Each task has: label, time, phase(P=prep/S=servico),
-//   desc, eligibleTypes (taskTypes that can do it),
-//   isFixed (always goes to same type), icon, isManual (physical only)
-// ═══════════════════════════════════════════════════
-const TASKS = [
-  // FIXED — pizzaiolo
-  {id:'forno',    label:'Forno — Enfornar Pizzas',     icon:'🔥', time:'15:30–15:45', phase:'P', fixed:['pizza'],
-   prep:'Ligar forno (meta 380–420°C); calibrar temperatura; passar 86-list para toda a equipe',
-   serv:'19:00–22:00: enfornar pizzas na sequência correta; supervisionar qualidade de CADA pizza; passagem de serviço ao segundo pizzaiolo às 22:00 — SAÍDA.'},
-  {id:'massas',   label:'Massas — Panetti e Fermentação',icon:'🫓',time:'16:15–16:45',phase:'P',fixed:['pizza','aux'],
-   prep:'Pesar panetti M 280g / G 380g; organizar na câmara de fermentação em ordem cronológica com etiqueta',
-   serv:''},
-  {id:'molho',    label:'Molho de Tomate (lote)',       icon:'🍅', time:'16:45–17:15', phase:'P', fixed:['pizza','aux'],
-   prep:'Produzir lote completo (~15L). CRÍTICO — sem molho não se abre. Taste test obrigatório.',
-   serv:''},
-  {id:'banco',    label:'Banco Pizza — Montagem',       icon:'🏪', time:'15:45–16:15', phase:'P', fixed:['pizza','aux'],
-   prep:'Montar banco: GN 1.1 muçarela · GN 2.1 molho · GN 3.1 calabresa · GN 3.2 bacon · GN 3.3 parmesão · GNs 6.x frios completos',
-   serv:'18:30–23:00: posição banco — abrir massa, montar conforme comanda; fechar GNs ao final'},
-  // ROTÁVEIS — aux
-  {id:'vegetais', label:'Corte de Vegetais',            icon:'🥬', time:'15:40–16:10', phase:'P', eligible:['aux','manual'],
-   prep:'Tomate cereja ao meio · julienne cebola roxa · fatiar cebola branca · lavar e centrifugar rúcula e manjericão',
-   serv:''},
-  {id:'frios',    label:'Porcionamento Frios e Queijos', icon:'🥩', time:'16:10–16:50', phase:'P', eligible:['aux','manual'],
-   prep:'Calabresa 3mm · pepperoni · presunto de parma · presunto cotto · palmito 50g · milho · azeitonas · brie 40g · gorgonzola 50g · atum 70g · peito de peru 60g · alho-poró',
-   serv:''},
-  {id:'proteinas',label:'Proteínas — Cozinha Principal', icon:'🔥', time:'15:45–16:20', phase:'P', eligible:['aux','manual'],
-   prep:'Cozinhar e desfiar frango; fritar e escorrer bacon; dessalgar e desfiar carne seca; verificar pontos de cocção',
-   serv:''},
-  {id:'haccp',    label:'HACCP — Gamberão + Filé Mignon',icon:'⚠️',time:'16:20–17:20', phase:'P', eligible:['aux','manual'],
-   prep:'⚠ GAMBERÃO (busta 2,5kg): cozinhar a 70°C → contenitor fechado → REFRIGERAR ≤5°C → etiquetar com hora. FILÉ: cozinhar a 70°C → contenitor → REFRIGERAR → etiquetar. A cada 30min: verificar temperatura.',
-   serv:'⚠ Cada 30 min verificar temperatura no frigo. Mais de 2h30 fora: DESCARTAR imediatamente e avisar Stefano.'},
-  {id:'etiqueta', label:'Etiquetagem + HACCP Frigoríficos',icon:'🏷️',time:'15:30–15:50',phase:'P',eligible:['aux'],
-   prep:'Verificar TODOS os produtos nos 3 frigoríficos; remover vencidos ou sem etiqueta; registrar temp. no caderno HACCP; etiquetar toda preparação aberta',
-   serv:'18:30–23:00: etiqueta nova em cada produto aberto; monitorar etiquetas do gamberão e filé'},
-  {id:'doces',    label:'Estação Doces e Confeitaria',   icon:'🍰', time:'15:50–16:55', phase:'P', eligible:['aux'],
-   prep:'Bisnagas (Nutella, pistache, doce de leite, leite condensado); porcionar granulado, pistache 20g, paçoca; churros; brownie fatiado; chocolate em banho-maria; sorvete −18°C',
-   serv:'18:30–23:00: churros ao pedido (3 unid fritar); brownie + sorvete + paçoca; pizzas doces'},
-  {id:'lavagem',  label:'Lavagem e Limpeza Geral',       icon:'🧹', time:'16:55–17:15', phase:'P', eligible:['aux','manual'],
-   prep:'Lavar TODOS os utensílios da prep; organizar estação de lavagem; verificar detergente e enxaguante',
-   serv:'23:00–23:30: limpeza profunda zona atribuída + piso'},
-  {id:'restock',  label:'Restock GNs — Serviço',         icon:'♻️', time:'18:30–23:00', phase:'S', eligible:['aux','manual'],
-   prep:'',
-   serv:'Verificar GNs a cada 20 min; repor quando em 1/3; banana e pêra somente na hora do pedido'},
-  {id:'entradas', label:'Estação Entradas',              icon:'🥗', time:'18:30–23:00', phase:'S', eligible:['aux','manual'],
-   prep:'17:20–17:30: mise en place entradas — burrata em água fria; baguetes; mostarda e mel; pesto',
-   serv:'Montar bruschette; Salada da Casa; Burrata ao Pesto; servir gamberão e filé do frigo'},
-];
-
-// ═══════════════════════════════════════════════════
-// PRODUCTION DATA (per pizza, with real gram values)
-// [gPerG, gPerM, pctPizzasUsingThis, gPerEntrada, pctEntradas]
-// ═══════════════════════════════════════════════════
-const PROD = [
-  // BANCO
-  {n:'Muçarela ralada',           g:[280,200],pp:0.95,ge:0,  pe:0,   u:'kg', st:'banco',  s:'Laticínios'},
-  {n:'Molho de tomate (produção)',g:[120,85], pp:0.85,ge:60, pe:1.0, u:'L',  st:'banco',  s:'Dist.'},
-  {n:'Tomate pelado (base molho)',g:[0,0],    pp:0,   ge:0,  pe:0,   u:'kg', st:'base',   s:'Dist.',  fixq:8.0},
-  {n:'Calabresa (3mm)',           g:[85,60],  pp:0.22,ge:0,  pe:0,   u:'kg', st:'banco',  s:'Frigorífico'},
-  {n:'Bacon crocante',            g:[72,52],  pp:0.16,ge:0,  pe:0,   u:'kg', st:'banco',  s:'Frigorífico'},
-  {n:'Parmesão ralado',           g:[48,36],  pp:0.38,ge:40, pe:1.0, u:'kg', st:'banco',  s:'Laticínios'},
-  {n:'Catupiry (sac-à-poche)',    g:[68,52],  pp:0.30,ge:0,  pe:0,   u:'kg', st:'banco',  s:'Laticínios'},
-  {n:'Frango desfiado',           g:[105,75], pp:0.22,ge:0,  pe:0,   u:'kg', st:'quente', s:'Frigorífico'},
-  {n:'Carne seca desfiada',       g:[95,72],  pp:0.08,ge:0,  pe:0,   u:'kg', st:'quente', s:'Frigorífico'},
-  {n:'Calabresa (peça p/ fatiar)',g:[0,0],    pp:0,   ge:0,  pe:0,   u:'kg', st:'quente', s:'Frigorífico',fixq:2.0},
-  {n:'Bacon (peça)',              g:[0,0],    pp:0,   ge:0,  pe:0,   u:'kg', st:'quente', s:'Frigorífico',fixq:1.5},
-  {n:'Pepperoni fatiado',         g:[68,52],  pp:0.10,ge:0,  pe:0,   u:'kg', st:'banco',  s:'Frigorífico'},
-  {n:'Presunto de Parma',         g:[42,32],  pp:0.10,ge:28, pe:0.4, u:'kg', st:'frios',  s:'Premium'},
-  {n:'Presunto cotto',            g:[52,40],  pp:0.10,ge:0,  pe:0,   u:'kg', st:'frios',  s:'Premium'},
-  {n:'Peito de peru defumado',    g:[68,52],  pp:0.05,ge:0,  pe:0,   u:'kg', st:'frios',  s:'Premium'},
-  {n:'Atum escorrido',            g:[78,58],  pp:0.05,ge:0,  pe:0,   u:'kg', st:'frios',  s:'Dist.'},
-  {n:'Filé mignon (peça)',        g:[115,88], pp:0.05,ge:0,  pe:0,   u:'kg', st:'quente', s:'Frigorífico',warn:true},
-  {n:'Camarão limpo (busta 2,5kg)',g:[135,105],pp:0.09,ge:0, pe:0,  u:'kg', st:'quente', s:'Peixaria',   warn:true,minQ:2.5},
-  {n:'Creme de pistache',         g:[0,0],    pp:0,   ge:0,  pe:0,   u:'kg', st:'banco',  s:'Premium',    fixq:0.8},
-  {n:'Cream cheese',              g:[68,52],  pp:0.08,ge:0,  pe:0,   u:'kg', st:'frios',  s:'Laticínios'},
-  {n:'Gorgonzola',                g:[58,42],  pp:0.08,ge:0,  pe:0,   u:'kg', st:'frios',  s:'Laticínios'},
-  {n:'Brie fatiado',              g:[48,36],  pp:0.05,ge:0,  pe:0,   u:'kg', st:'frios',  s:'Laticínios'},
-  {n:'Burrata de búfala',         g:[88,72],  pp:0.10,ge:80, pe:0.3, u:'kg', st:'frios',  s:'Laticínios', warn:true},
-  {n:'Cheddar (borda recheada)',  g:[0,0],    pp:0,   ge:0,  pe:0,   u:'kg', st:'frios',  s:'Laticínios', fixq:0.8},
-  // VEGETAIS
-  {n:'Tomate cereja (ao meio)',   g:[88,68],  pp:0.22,ge:80, pe:1.0, u:'kg', st:'vegetais',s:'Hortifruti'},
-  {n:'Cebola branca (fatias)',    g:[48,36],  pp:0.15,ge:0,  pe:0,   u:'kg', st:'vegetais',s:'Hortifruti'},
-  {n:'Cebola roxa (julienne)',    g:[36,26],  pp:0.15,ge:0,  pe:0,   u:'kg', st:'vegetais',s:'Hortifruti'},
-  {n:'Pimentão',                  g:[46,36],  pp:0.12,ge:0,  pe:0,   u:'kg', st:'vegetais',s:'Hortifruti'},
-  {n:'Milho verde (conserva)',    g:[52,42],  pp:0.26,ge:0,  pe:0,   u:'kg', st:'vegetais',s:'Dist.'},
-  {n:'Palmito (50g/porção)',      g:[58,48],  pp:0.20,ge:0,  pe:0,   u:'kg', st:'vegetais',s:'Dist.'},
-  {n:'Azeitona preta',            g:[36,26],  pp:0.12,ge:0,  pe:0,   u:'kg', st:'vegetais',s:'Dist.'},
-  {n:'Berinjela (conserva)',      g:[42,32],  pp:0.08,ge:0,  pe:0,   u:'kg', st:'vegetais',s:'Dist.'},
-  {n:'Tomate seco (conserva)',    g:[36,28],  pp:0.08,ge:0,  pe:0,   u:'kg', st:'vegetais',s:'Dist.'},
-  {n:'Alcachofra (conserva)',     g:[38,30],  pp:0.06,ge:0,  pe:0,   u:'kg', st:'vegetais',s:'Dist.'},
-  {n:'Alho-poró (rodelas)',       g:[32,24],  pp:0.08,ge:0,  pe:0,   u:'kg', st:'vegetais',s:'Hortifruti'},
-  {n:'Shiitake fresco',           g:[44,34],  pp:0.10,ge:0,  pe:0,   u:'kg', st:'vegetais',s:'Hortifruti',warn:true},
-  {n:'Shimeji fresco',            g:[38,30],  pp:0.08,ge:0,  pe:0,   u:'kg', st:'vegetais',s:'Hortifruti',warn:true},
-  {n:'Pêra (fatiar na hora)',     g:[48,38],  pp:0.05,ge:0,  pe:0,   u:'kg', st:'vegetais',s:'Hortifruti'},
-  {n:'Banana (fatiar na hora)',   g:[90,70],  pp:0.08,ge:0,  pe:0,   u:'kg', st:'vegetais',s:'Hortifruti'},
-  {n:'Abobrinha',                 g:[44,34],  pp:0.06,ge:0,  pe:0,   u:'kg', st:'vegetais',s:'Hortifruti'},
-  {n:'Rúcula (maço)',             g:[0,0],    pp:0,   ge:20, pe:1.0, u:'maço',st:'vegetais',s:'Hortifruti',fixq:3},
-  {n:'Manjericão fresco (maço)',  g:[0,0],    pp:0,   ge:0,  pe:0,   u:'maço',st:'vegetais',s:'Hortifruti',fixq:2},
-  {n:'Ovos cozidos',              g:[1,1],    pp:0.09,ge:0,  pe:0,   u:'unid',st:'vegetais',s:'Dist.',isUnid:true},
-  // DOCES
-  {n:'Nutella (bisnaga)',         g:[80,60],  pp:0.10,ge:0,  pe:0,   u:'kg', st:'doces',  s:'Dist.'},
-  {n:'Doce de leite',             g:[70,55],  pp:0.08,ge:0,  pe:0,   u:'kg', st:'doces',  s:'Laticínios'},
-  {n:'Leite condensado',          g:[0,0],    pp:0,   ge:0,  pe:0,   u:'kg', st:'doces',  s:'Dist.',fixq:1.0},
-  {n:'Creme de pistache (doces)', g:[0,0],    pp:0,   ge:0,  pe:0,   u:'kg', st:'doces',  s:'Premium',fixq:0.4},
-  {n:'Sorvete de baunilha',       g:[0,0],    pp:0,   ge:0,  pe:0,   u:'litros',st:'doces',s:'Dist.',fixq:2.0},
-  {n:'Chocolate (cobertura)',     g:[0,0],    pp:0,   ge:0,  pe:0,   u:'kg', st:'doces',  s:'Dist.',fixq:0.8},
-  {n:'Granulado de chocolate',    g:[0,0],    pp:0,   ge:0,  pe:0,   u:'kg', st:'doces',  s:'Dist.',fixq:0.4},
-  {n:'Paçoca (triturar)',         g:[0,0],    pp:0,   ge:0,  pe:0,   u:'kg', st:'doces',  s:'Dist.',fixq:0.4},
-  {n:'Sonho de Valsa',            g:[0,0],    pp:0,   ge:0,  pe:0,   u:'kg', st:'doces',  s:'Dist.',fixq:0.4},
-  {n:'Canela em pó',              g:[0,0],    pp:0,   ge:0,  pe:0,   u:'g',  st:'doces',  s:'Dist.',fixq:80},
-  {n:'Manteiga',                  g:[0,0],    pp:0,   ge:0,  pe:0,   u:'kg', st:'doces',  s:'Laticínios',fixq:0.5},
-  // BASE
-  {n:'Farinha de trigo (00)',     g:[260,200],pp:1.0, ge:0,  pe:0,   u:'kg', st:'base',   s:'Moinho'},
-  {n:'Semolina (abrir massa)',    g:[0,0],    pp:0,   ge:0,  pe:0,   u:'kg', st:'base',   s:'Moinho',fixq:1.5},
-  {n:'Fermento biológico',       g:[5,4],    pp:1.0, ge:0,  pe:0,   u:'g',  st:'base',   s:'Dist.'},
-  {n:'Sal refinado',             g:[6,5],    pp:1.0, ge:0,  pe:0,   u:'g',  st:'base',   s:'Dist.'},
-  {n:'Açúcar refinado',          g:[0,0],    pp:0,   ge:0,  pe:0,   u:'kg', st:'base',   s:'Dist.',fixq:0.5},
-  {n:'Azeite extra virgem',      g:[18,14],  pp:1.0, ge:5,  pe:1.0, u:'ml', st:'base',   s:'Importadora'},
-  {n:'Óleo de girassol',         g:[0,0],    pp:0,   ge:0,  pe:0,   u:'litros',st:'base',s:'Dist.',fixq:1.0},
-  {n:'Orégano seco',             g:[0,0],    pp:0,   ge:0,  pe:0,   u:'kg', st:'base',   s:'Dist.',fixq:0.3},
-  {n:'Pimenta-do-reino',         g:[0,0],    pp:0,   ge:0,  pe:0,   u:'kg', st:'base',   s:'Dist.',fixq:0.1},
-  // MOLHOS / ESPECIAIS
-  {n:'Mostarda',                 g:[0,0],    pp:0,   ge:0,  pe:0,   u:'kg', st:'molhos', s:'Dist.',fixq:0.3},
-  {n:'Mel',                      g:[0,0],    pp:0,   ge:0,  pe:0,   u:'kg', st:'molhos', s:'Dist.',fixq:0.3},
-  {n:'Vinho branco seco',        g:[0,0],    pp:0,   ge:0,  pe:0,   u:'litros',st:'molhos',s:'Dist.',fixq:0.5},
-  {n:'Geleia de damasco',        g:[0,0],    pp:0,   ge:0,  pe:0,   u:'kg', st:'molhos', s:'Dist.',fixq:0.4},
-  {n:'Azeite de pequi artesanal',g:[0,0],    pp:0,   ge:0,  pe:0,   u:'litros',st:'molhos',s:'Premium',fixq:0.3},
-  {n:'Nozes (pesto)',            g:[0,0],    pp:0,   ge:0,  pe:0,   u:'kg', st:'molhos', s:'Dist.',fixq:0.3},
-  {n:'Alho',                     g:[0,0],    pp:0,   ge:0,  pe:0,   u:'kg', st:'molhos', s:'Hortifruti',fixq:0.4},
-  {n:'Rapadura ralada',          g:[0,0],    pp:0,   ge:0,  pe:0,   u:'kg', st:'molhos', s:'Dist.',fixq:0.3},
-  {n:'Pistache in natura',       g:[0,0],    pp:0,   ge:0,  pe:0,   u:'kg', st:'molhos', s:'Premium',fixq:0.3},
-  // LIMPEZA
-  {n:'Detergente neutro',        g:[0,0],pp:0,ge:0,pe:0,u:'litros',st:'limpeza',s:'Limpeza',fixq:2},
-  {n:'Desengordurante',          g:[0,0],pp:0,ge:0,pe:0,u:'litros',st:'limpeza',s:'Limpeza',fixq:1},
-  {n:'Álcool 70%',               g:[0,0],pp:0,ge:0,pe:0,u:'litros',st:'limpeza',s:'Limpeza',fixq:2},
-  {n:'Sabonete líquido',         g:[0,0],pp:0,ge:0,pe:0,u:'litros',st:'limpeza',s:'Limpeza',fixq:1},
-  {n:'Esponja / bucha',          g:[0,0],pp:0,ge:0,pe:0,u:'unid', st:'limpeza',s:'Limpeza',fixq:6},
-  {n:'Saco de lixo (fardo)',     g:[0,0],pp:0,ge:0,pe:0,u:'fardo',st:'limpeza',s:'Limpeza',fixq:1},
-  // EMBALAGEM
-  {n:'Filme PVC (rolo)',         g:[0,0],pp:0,ge:0,pe:0,u:'rolo', st:'embal',  s:'Embalagem',fixq:2},
-  {n:'Luvas descartáveis (caixa)',g:[0,0],pp:0,ge:0,pe:0,u:'caixa',st:'embal', s:'Embalagem',fixq:3},
-  {n:'Papel toalha (fardo)',     g:[0,0],pp:0,ge:0,pe:0,u:'fardo',st:'embal',  s:'Embalagem',fixq:1},
-  {n:'Etiquetas para alimentos', g:[0,0],pp:0,ge:0,pe:0,u:'rolo', st:'embal',  s:'Embalagem',fixq:1},
-  {n:'Caixas pizza G',           g:[0,0],pp:0,ge:0,pe:0,u:'unid', st:'embal',  s:'Embalagem',fixq:90},
-  {n:'Caixas pizza M',           g:[0,0],pp:0,ge:0,pe:0,u:'unid', st:'embal',  s:'Embalagem',fixq:40},
-  {n:'Sacolas',                  g:[0,0],pp:0,ge:0,pe:0,u:'unid', st:'embal',  s:'Embalagem',fixq:50},
-];
-
-const SUPPLIERS = {
-  'Laticínios':  {emoji:'🧀',color:'#e8b86d'},
-  'Frigorífico': {emoji:'🥩',color:'#d45050'},
-  'Hortifruti':  {emoji:'🥬',color:'#7aab8a'},
-  'Dist.':       {emoji:'📦',color:'#5b8de8'},
-  'Premium':     {emoji:'⭐',color:'#9472c8'},
-  'Peixaria':    {emoji:'🦐',color:'#4fa8b8'},
-  'Moinho':      {emoji:'🌾',color:'#d4a84a'},
-  'Importadora': {emoji:'🫒',color:'#d4724a'},
-  'Limpeza':     {emoji:'🧹',color:'#9a9280'},
-  'Embalagem':   {emoji:'📦',color:'#d4724a'},
+const TASKS = {
+  stefano: {
+    color:'#81b29a',
+    prep:[
+      {t:'15:30–15:45', d:'Ligar forno (meta 380–420°C); verificar temperatura dos frigoríficos; comunicar 86-list para toda a equipe'},
+      {t:'15:45–16:15', d:'COM GILBERTO: montar banco pizza — todos os GNs nas posições fixas (GN 1.1 → GN 6.12)'},
+      {t:'16:15–16:45', d:'MASSAS: pesar panetti M (280g) e G (380g); organizar na câmara de fermentação em ordem cronológica'},
+      {t:'16:45–17:15', d:'MOLHO DE TOMATE: produzir lote completo (~15L). CRÍTICO — sem molho não se abre'},
+      {t:'17:15–17:30', d:'Verificação final do banco; bordas recheadas prontas; briefing antes do intervalo'},
+    ],
+    servico:[
+      {t:'18:30–19:00', d:'Briefing pré-serviço — posições, 86-list, ritmo esperado'},
+      {t:'19:00–22:00', d:'FORNEIRO: enfornar pizzas na sequência; supervisionar qualidade de CADA pizza'},
+      {t:'22:00',       d:'🚪 Passagem de serviço ao segundo pizzaiolo. SAÍDA.'},
+    ]
+  },
+  gilberto: {
+    color:'#e07a5f',
+    prep:[
+      {t:'15:30–15:45', d:'Verificar estoque de todos os ingredientes do banco; anotar faltas; avisar Stefano'},
+      {t:'15:45–16:15', d:'COM STEFANO: montar banco — GN 1.1 muçarela · GN 2.1 molho · GN 3.1 calabresa · GN 3.2 bacon · GN 3.3 parmesão · GNs 6.1–6.12'},
+      {t:'16:15–16:45', d:'Apoiar pesagem dos panetti; organizar bandejas de fermentação com etiqueta de data/hora'},
+      {t:'16:45–17:15', d:'Catupiry em sac-à-poche (6 bisnagas); preparar bordas recheadas; confirmar muçarela suficiente'},
+      {t:'17:15–17:30', d:'Verificação final: cada GN no lugar, coberto, etiquetado. Nenhum GN abaixo da metade. INTERVALO.'},
+    ],
+    servico:[
+      {t:'18:30–23:00', d:'POSIÇÃO FIXA NO BANCO: abrir massa, montar pizza conforme comanda, passar ao forneiro; avisar João Victor quando GN em 1/3'},
+      {t:'23:00–23:30', d:'Fechar banco: cobrir e etiquetar TODOS os GNs; limpar bancada, pedra, pás e utensílios'},
+    ]
+  },
+  raimundojr: {
+    color:'#e05555',
+    prep:[
+      {t:'15:30–15:45', d:'Ligar fogões e chapas; verificar estoque de frango, gamberão (2,5kg), filé mignon, carne seca'},
+      {t:'15:45–16:20', d:'Cozinhar e desfiar frango; fritar e escorrer bacon; dessalgar e desfiar carne seca'},
+      {t:'16:20–16:55', d:'⚠ GAMBERÃO (2,5kg completa): temperar → cozinhar → contenitores tampados → refrigerar ≤5°C. ETIQUETAR COM HORA.'},
+      {t:'16:55–17:20', d:'⚠ FILÉ MIGNON (toda a peça): fatiar → temperar → cozinhar → contenitores tampados → refrigerar ≤5°C. ETIQUETAR COM HORA. Depois: saltear cogumelos → resfriar no frigo'},
+      {t:'17:20–17:30', d:'Mise en place entradas: burrata em água fria; baguetes fatiadas; mostarda e mel; pesto. INTERVALO.'},
+    ],
+    servico:[
+      {t:'18:30–23:00', d:'ESTAÇÃO ENTRADAS: bruschette, Salada da Casa, Burrata; servir gamberão e filé do frigo'},
+      {t:'A cada 30min', d:'⚠ Verificar temperatura no frigo. Abaixo 5°C mantido. Mais de 2h30 fora → DESCARTAR e avisar Stefano'},
+      {t:'23:00–23:30', d:'Sanificar zona quente; DESCARTAR gamberão e filé restantes; lavar panelas e utensílios'},
+    ]
+  },
+  stephany: {
+    color:'#9b72cf',
+    prep:[
+      {t:'15:30–15:50', d:'Verificar TODOS os produtos nos frigoríficos; remover vencidos ou sem etiqueta; registrar temp no caderno HACCP'},
+      {t:'15:50–16:25', d:'DOCES: abastecer bisnagas (Nutella, pistache, doce de leite, leite condensado); organizar contenitores de granulado, pistache, paçoca; verificar sorvete (−18°C)'},
+      {t:'16:25–16:55', d:'Fatiar brownies; preparar massa de churros; chocolate em banho-maria; triturar Sonho de Valsa e castanha'},
+      {t:'16:55–17:15', d:'Lavar TODOS os utensílios da prep; verificar detergente e enxaguante'},
+      {t:'17:15–17:30', d:'Etiquetar tudo com data e hora. INTERVALO.'},
+    ],
+    servico:[
+      {t:'18:30–23:00', d:'DOCES: fritar churros ao pedido (3 unid); brownie com sorvete e paçoca; pizzas doces; LAVAGEM CONTÍNUA'},
+      {t:'18:30–23:00', d:'ETIQUETAGEM: toda preparação aberta recebe etiqueta nova; monitorar etiquetas de gamberão e filé com Raimundo Jr'},
+      {t:'23:00–23:30', d:'Fechar doces; limpeza profunda da lavagem; registro final no caderno HACCP'},
+    ]
+  },
+  joaov: {
+    color:'#5b8def',
+    prep:[
+      {t:'15:30–15:40', d:'Retirar ingredientes do frigo respeitando FIFO; verificar datas de validade'},
+      {t:'15:40–16:10', d:'VEGETAIS: tomate cereja ao meio (GN 6.11); julienne cebola roxa (GN 6.12); fatiar cebola branca (GN 6.7); lavar e centrifugar rúcula + manjericão'},
+      {t:'16:10–16:35', d:'FRIOS: calabresa 3mm (GN 3.1); pepperoni; presunto de parma; organizar contenitores de palmito, milho, azeitonas, berinjela, tomate seco'},
+      {t:'16:35–17:00', d:'QUEIJOS: organizar contenitores de brie, gorgonzola, atum escorrido, peito de peru, alho-poró em rodelas'},
+      {t:'17:00–17:30', d:'Abastecer TODOS os GNs frios; cobrir e etiquetar reservas no frigo. INTERVALO.'},
+    ],
+    servico:[
+      {t:'18:30–23:00', d:'RESTOCK a cada 20 minutos: repor quando GN chegar a 1/3; banana e pêra somente na hora do pedido'},
+      {t:'23:00–23:30', d:'Limpar área fria; etiquetar e guardar sobras; varrer e lavar piso'},
+    ]
+  },
+  wanderson: {
+    color:'#81b29a',
+    prep:[
+      {t:'15:30–15:45', d:'Receber briefing de Stefano; verificar temperaturas e equipamentos da cozinha'},
+      {t:'15:45–17:30', d:'Apoiar na preparação conforme escala do dia — banco pizza, massas ou zona fria conforme necessidade'},
+    ],
+    servico:[
+      {t:'18:30–23:00', d:'Posição no forno conforme escala — enfornar pizzas, supervisionar saídas; coordenar com banco'},
+      {t:'22:00 ou 23:30', d:'Saída conforme horário definido. Passagem de serviço completa se último pizzaiolo.'},
+    ]
+  },
+  raimundo: {
+    color:'#706860',
+    prep: [{t:'—', d:'Raimundo Lima Filho in FÉRIAS (AF). Sem tarefas este mês.'}],
+    servico: []
+  }
 };
 
-const CHECKLIST = [
-  {id:'forno',  lbl:'Pizzaiolo AB', txt:'Ligar e calibrar forno (380–420°C)'},
-  {id:'frigo',  lbl:'Responsável',  txt:'Verificar temperatura dos 3 frigoríficos — registrar no caderno HACCP'},
-  {id:'banco',  lbl:'1º Auxiliar',  txt:'Montar banco pizza — todos os GNs na posição certa'},
-  {id:'massas', lbl:'Pizzaiolo',    txt:'Pesar e organizar panetti M 280g / G 380g na fermentação'},
-  {id:'molho',  lbl:'Pizzaiolo',    txt:'Produzir lote de molho de tomate (~15L) — taste test'},
-  {id:'prot',   lbl:'Rotação',      txt:'Frango desfiado + bacon frito + carne seca dessalgada'},
-  {id:'haccp',  lbl:'Rotação ⚠',   txt:'⚠ Gamberão (2,5kg) + filé mignon: cozinhar 70°C → frigo ≤5°C → etiquetar hora'},
-  {id:'etiq',   lbl:'Rotação',      txt:'Etiquetagem: verificar validades e etiquetar toda preparação'},
-  {id:'doces',  lbl:'Rotação',      txt:'Abastecer bisnagas e preparar estação de doces'},
-  {id:'vegs',   lbl:'Rotação',      txt:'Cortar e porcionar vegetais; abastecer todos os GNs'},
-  {id:'brief',  lbl:'Pizzaiolo AB', txt:'Briefing pré-serviço às 18:30 — posições, 86-list, ritmo'},
-  {id:'close',  lbl:'Todos',        txt:'Limpeza geral + etiquetagem + caderno HACCP + fechar GNs'},
+const ORDER_CATS = [
+  {
+    id:'base', emoji:'🌾', name:'Ingredientes Base — Massas e Molhos', color:'#81b29a',
+    items:[
+      {n:'Farinha de trigo (tipo 00)',       u:'kg',     q:18,   f:'Moinho'},
+      {n:'Sal refinado',                     u:'kg',     q:0.8,  f:'Distribuidor'},
+      {n:'Fermento biológico seco',          u:'g',      q:180,  f:'Distribuidor'},
+      {n:'Fermento biológico fresco',        u:'g',      q:300,  f:'Distribuidor'},
+      {n:'Açúcar refinado',                  u:'kg',     q:0.5,  f:'Distribuidor'},
+      {n:'Azeite de oliva extra virgem',     u:'litros', q:1.8,  f:'Importadora'},
+      {n:'Óleo de girassol / vegetal',       u:'litros', q:1.0,  f:'Distribuidor'},
+      {n:'Semolina (para abrir massa)',       u:'kg',     q:1.5,  f:'Moinho'},
+    ]
+  },
+  {
+    id:'queijos', emoji:'🧀', name:'Queijos', color:'#f2cc8f',
+    items:[
+      {n:'Muçarela ralada / fatiada',        u:'kg',     q:18,   f:'Laticínios'},
+      {n:'Parmesão (bloco)',                 u:'kg',     q:2.8,  f:'Laticínios'},
+      {n:'Catupiry (original)',              u:'kg',     q:3.5,  f:'Laticínios'},
+      {n:'Burrata de búfala',               u:'kg',     q:1.2,  f:'Laticínios ⚠ 2×/sem'},
+      {n:'Queijo Gorgonzola',               u:'kg',     q:0.7,  f:'Laticínios'},
+      {n:'Queijo Brie',                     u:'kg',     q:0.5,  f:'Laticínios'},
+      {n:'Cream cheese',                    u:'kg',     q:0.7,  f:'Laticínios'},
+      {n:'Cheddar (borda recheada)',         u:'kg',     q:0.8,  f:'Laticínios'},
+    ]
+  },
+  {
+    id:'proteinas', emoji:'🥩', name:'Proteínas e Frios', color:'#e05555',
+    items:[
+      {n:'Frango peito (cru p/ desfiar)',    u:'kg',     q:3.5,  f:'Frigorífico'},
+      {n:'Bacon',                           u:'kg',     q:1.5,  f:'Frigorífico'},
+      {n:'Linguiça Calabresa',              u:'kg',     q:2.0,  f:'Frigorífico'},
+      {n:'Pepperoni',                       u:'kg',     q:1.2,  f:'Frigorífico'},
+      {n:'Presunto de Parma',               u:'kg',     q:0.8,  f:'Frios premium'},
+      {n:'Presunto cotto',                  u:'kg',     q:1.0,  f:'Frios premium'},
+      {n:'Carne seca (peça)',               u:'kg',     q:1.8,  f:'Frigorífico'},
+      {n:'Filé mignon (peça)',              u:'kg',     q:1.5,  f:'Frigorífico ⚠'},
+      {n:'Camarão limpo (busta 2,5kg)',     u:'kg',     q:2.5,  f:'Peixaria ⚠'},
+      {n:'Peito de peru defumado',          u:'kg',     q:0.6,  f:'Frios premium'},
+      {n:'Atum em conserva',               u:'kg',     q:0.7,  f:'Distribuidor'},
+    ]
+  },
+  {
+    id:'vegetais', emoji:'🥬', name:'Vegetais e Hortifruti', color:'#81b29a',
+    items:[
+      {n:'Tomate cereja',                   u:'kg',     q:3.0,  f:'Hortifruti ⚠ 2×/sem'},
+      {n:'Rúcula (maço)',                   u:'maço',   q:3,    f:'Hortifruti'},
+      {n:'Manjericão fresco (maço)',         u:'maço',   q:2,    f:'Hortifruti'},
+      {n:'Hortelã fresca (maço)',            u:'maço',   q:1,    f:'Hortifruti'},
+      {n:'Cebola branca',                   u:'kg',     q:1.5,  f:'Hortifruti'},
+      {n:'Cebola roxa',                     u:'kg',     q:1.0,  f:'Hortifruti'},
+      {n:'Pimentão (vermelho/verde)',        u:'kg',     q:1.0,  f:'Hortifruti'},
+      {n:'Milho verde (conserva)',           u:'kg',     q:1.5,  f:'Distribuidor'},
+      {n:'Palmito (conserva)',              u:'kg',     q:1.5,  f:'Distribuidor'},
+      {n:'Azeitona preta',                  u:'kg',     q:0.8,  f:'Distribuidor'},
+      {n:'Azeitona verde',                  u:'kg',     q:0.8,  f:'Distribuidor'},
+      {n:'Berinjela em conserva',           u:'kg',     q:0.6,  f:'Distribuidor'},
+      {n:'Tomate seco (conserva)',          u:'kg',     q:0.4,  f:'Distribuidor'},
+      {n:'Alho-poró',                       u:'kg',     q:0.5,  f:'Hortifruti'},
+      {n:'Shiitake fresco',                 u:'kg',     q:0.6,  f:'Hortifruti ⚠ 2×/sem'},
+      {n:'Shimeji fresco',                  u:'kg',     q:0.5,  f:'Hortifruti ⚠ 2×/sem'},
+      {n:'Pêra',                            u:'kg',     q:0.4,  f:'Hortifruti'},
+      {n:'Banana',                          u:'kg',     q:1.0,  f:'Hortifruti'},
+      {n:'Abobrinha',                       u:'kg',     q:0.5,  f:'Hortifruti'},
+      {n:'Ovos',                            u:'unid',   q:12,   f:'Distribuidor'},
+      {n:'Castanha-do-pará',                u:'kg',     q:0.3,  f:'Distribuidor'},
+      {n:'Nozes',                           u:'kg',     q:0.5,  f:'Distribuidor'},
+      {n:'Pistache in natura',              u:'kg',     q:0.3,  f:'Especializado'},
+      {n:'Alho',                            u:'kg',     q:0.4,  f:'Hortifruti'},
+    ]
+  },
+  {
+    id:'molhos', emoji:'🌿', name:'Molhos, Temperos e Conservas', color:'#5b8def',
+    items:[
+      {n:'Tomate pelado / passata',         u:'kg',     q:8.0,  f:'Distribuidor'},
+      {n:'Azeite de pequi artesanal',       u:'litros', q:0.3,  f:'Especializado'},
+      {n:'Geleia de damasco',              u:'kg',     q:0.4,  f:'Distribuidor'},
+      {n:'Mostarda',                        u:'kg',     q:0.3,  f:'Distribuidor'},
+      {n:'Mel',                             u:'kg',     q:0.3,  f:'Distribuidor'},
+      {n:'Vinho branco seco',               u:'litros', q:0.5,  f:'Distribuidor'},
+      {n:'Orégano seco',                    u:'kg',     q:0.3,  f:'Distribuidor'},
+      {n:'Pimenta-do-reino',               u:'kg',     q:0.1,  f:'Distribuidor'},
+      {n:'Rapadura ralada',                 u:'kg',     q:0.3,  f:'Distribuidor'},
+      {n:'Alcachofra (conserva)',           u:'kg',     q:0.4,  f:'Distribuidor'},
+    ]
+  },
+  {
+    id:'doces', emoji:'🍰', name:'Doces e Confeitaria', color:'#9b72cf',
+    items:[
+      {n:'Nutella',                         u:'kg',     q:1.5,  f:'Distribuidor'},
+      {n:'Creme de pistache',               u:'kg',     q:0.8,  f:'Especializado'},
+      {n:'Doce de leite',                   u:'kg',     q:1.2,  f:'Laticínios'},
+      {n:'Leite condensado',               u:'kg',     q:1.0,  f:'Distribuidor'},
+      {n:'Chocolate ao leite (cobertura)', u:'kg',     q:0.8,  f:'Distribuidor'},
+      {n:'Chocolate granulado',            u:'kg',     q:0.4,  f:'Distribuidor'},
+      {n:'Sorvete de baunilha',            u:'litros', q:2.0,  f:'Distribuidor'},
+      {n:'Paçoca',                         u:'kg',     q:0.4,  f:'Distribuidor'},
+      {n:'Sonho de Valsa (biscoito)',       u:'kg',     q:0.4,  f:'Distribuidor'},
+      {n:'Canela em pó',                   u:'kg',     q:0.1,  f:'Distribuidor'},
+      {n:'Manteiga',                       u:'kg',     q:0.5,  f:'Laticínios'},
+      {n:'Farinha de trigo (doces)',        u:'kg',     q:1.0,  f:'Distribuidor'},
+      {n:'Cacau em pó',                    u:'kg',     q:0.3,  f:'Distribuidor'},
+    ]
+  },
+  {
+    id:'limpeza', emoji:'🧹', name:'Limpeza e Higiene', color:'#a8a090',
+    items:[
+      {n:'Detergente neutro',              u:'litro',  q:2,    f:'Distribuidor'},
+      {n:'Desengordurante',               u:'litro',  q:1,    f:'Distribuidor'},
+      {n:'Álcool 70%',                     u:'litro',  q:2,    f:'Distribuidor'},
+      {n:'Sabonete líquido (dispenser)',   u:'litro',  q:1,    f:'Distribuidor'},
+      {n:'Esponja / bucha',               u:'unid',   q:6,    f:'Distribuidor'},
+      {n:'Pano de limpeza / pano chão',   u:'unid',   q:4,    f:'Distribuidor'},
+      {n:'Saco de lixo (fardo)',           u:'fardo',  q:1,    f:'Distribuidor'},
+    ]
+  },
+  {
+    id:'embalagem', emoji:'📦', name:'Embalagens e Descartáveis', color:'#e07a5f',
+    items:[
+      {n:'Filme PVC (rolo)',               u:'rolo',   q:2,    f:'Distribuidor'},
+      {n:'Luvas descartáveis (caixa)',     u:'caixa',  q:3,    f:'Distribuidor'},
+      {n:'Papel toalha (fardo)',           u:'fardo',  q:1,    f:'Distribuidor'},
+      {n:'Etiquetas para alimentos (rolo)',u:'rolo',   q:1,    f:'Distribuidor'},
+      {n:'Caixas pizza G',                u:'unid',   q:90,   f:'Embalagens'},
+      {n:'Caixas pizza M',                u:'unid',   q:40,   f:'Embalagens'},
+      {n:'Saquinhos / sacolas',           u:'unid',   q:50,   f:'Embalagens'},
+    ]
+  },
 ];
 
-const FEB = [...Array(28)].map((_,i)=>{const d=new Date(2026,1,i+1);return{d:i+1,w:['DOM','SEG','TER','QUA','QUI','SEX','SAB'][d.getDay()]};});
+// ─── STATE ───────────────────────────────────────
+function load(k,def){try{const v=localStorage.getItem(k);return v?JSON.parse(v):def}catch{return def}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}}
 
-const DEFAULT_MENU = [
-  {name:'Pizza Margherita',cat:'Pizza Clássica',photo:'',emoji:'🍕',desc:'Molho artesanal, muçarela, manjericão fresco',standard:'Molho 80g · Muçarela 150g · Manjericão 5 folhas · Azeite finalização\nForno 380–420°C. Servir imediatamente.'},
-  {name:'Pizza Calabresa',cat:'Pizza Clássica',photo:'',emoji:'🍕',desc:'Calabresa fatiada com cebola e orégano',standard:'Molho 80g · Muçarela 130g · Calabresa 80g (3mm) · Cebola 40g · Orégano'},
-  {name:'Burrata com Tomate',cat:'Entrada',photo:'',emoji:'🫙',desc:'Burrata de búfala com tomate cereja e pesto',standard:'Burrata 200g · Tomate cereja 80g · Pesto 20g · Azeite 10ml · Flor de sal · Rúcula\nPrato refrigerado. Servir fria.'},
-  {name:'Gamberão ao Alho',cat:'Principal',photo:'',emoji:'🦐',desc:'Camarão ao alho com manteiga de ervas',standard:'Camarão 180g (do frigo) · Alho + manteiga 15g · Limão 1/4 · Baguete\nTemp. interna mín. 70°C. Não recongelar.'},
-  {name:'Churros com Nutella',cat:'Sobremesa',photo:'',emoji:'🍩',desc:'Churros fritos frescos com Nutella quente',standard:'3 unid churros 12cm · Açúcar + canela exterior · Nutella 40g aquecida · Servir imediatamente'},
-];
+let turnoDate    = load('olivaDate', todayStr());
+let staffStatus  = load('olivaStaff', initStaff());
+let checklist    = load('olivaCheck', {});
+let orderStock   = load('olivaStock', {});
+let schedule     = load('olivaSched', DEFAULT_SCHEDULE);
+let extraItems   = load('olivaExtras', {Limpeza:[],Embalagem:[],Outros:[]});
+let diasEntrega  = load('olivaDias', 3.5);
+let selectedPerson = 'stefano';
 
-// ═══════════════════════════════════════════════════
-// STATE
-// ═══════════════════════════════════════════════════
-function ld(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch{return d}}
-function sv(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}}
-function toStr(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+function todayStr(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
 
-let staff     = ld('oStaff3',  JSON.parse(JSON.stringify(BASE_STAFF)));
-let staffSt   = ld('oSt3',     Object.fromEntries(staff.map(p=>[p.id,p.defaultAb?'AB':(p.sched==='af'?'AF':'P')])));
-let checks    = ld('oChk3',    {});
-let stock     = ld('oStock3',  {});
-let sched     = ld('oSched3',  buildDefSched());
-let extras    = ld('oExtras3', {L:[],E:[],O:[]});
-let dias      = ld('oDias3',   3.5);
-let rotDay    = ld('oRot3',    1);
-let menuItems = ld('oMenu3',   JSON.parse(JSON.stringify(DEFAULT_MENU)));
-let curDate   = ld('oDate3',   toStr());
-let ordInit   = false;
-
-function buildDefSched(){
+function initStaff(){
   const s={};
-  (staff||BASE_STAFF).forEach(p=>{
-    if(p.sched==='af') s[p.id]=Array(28).fill('AF');
-    else if(p.sched==='6x2') s[p.id]=[...Array(28)].map((_,i)=>((i+p.off)%8<6)?'P':'F');
-    else if(p.sched==='5x1') s[p.id]=[...Array(28)].map((_,i)=>((i+p.off)%6<5)?'P':'F');
-    else s[p.id]=Array(28).fill('P');
-    if(p.id==='stefano') s[p.id]=s[p.id].map(v=>v==='P'?'AB':v);
-  });
+  STAFF.forEach(p=>{s[p.id] = p.defaultAb?'AB':(p.id==='raimundo'?'F':'P')});
   return s;
 }
 
-// ═══════════════════════════════════════════════════
-// NAV
-// ═══════════════════════════════════════════════════
-function nav(id,btn){
-  document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
-  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
-  document.getElementById('pg-'+id).classList.add('on');
-  if(btn) btn.classList.add('on');
-  if(id==='tarefas') renderTasks();
-  if(id==='prod'){
-    document.getElementById('pG').value=prodVol.G||84;
-    document.getElementById('pM').value=prodVol.M||36;
-    document.getElementById('pE').value=prodVol.E||9;
-    calcProd();
-  }
-  if(id==='pedido') initOrder();
-  if(id==='escala') renderSched();
-  if(id==='menu') renderMenu();
+// ─── NAVIGATION ──────────────────────────────────
+function showPage(id, btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  if(btn) btn.classList.add('active');
+  if(id='pedido') renderOrder();
+  if(id=='escala') renderSchedule();
+  if(id=='tarefas') renderTasks();
 }
 
-// ═══════════════════════════════════════════════════
-// DATE
-// ═══════════════════════════════════════════════════
-function pickDate(){const i=document.getElementById('dateInp');i.showPicker&&i.showPicker();}
-function setDate(v){curDate=v;sv('oDate3',v);document.getElementById('dateLbl').textContent='📅 '+v.slice(8)+'/'+v.slice(5,7);}
-(()=>{document.getElementById('dateInp').value=curDate;document.getElementById('dateLbl').textContent='📅 '+curDate.slice(8)+'/'+curDate.slice(5,7);})();
+// ─── DATE ─────────────────────────────────────────
+function onDateChange(v){
+  turnoDate=v; save('olivaDate',v);
+  document.getElementById('dateBadge').textContent='📅 '+v.slice(8)+'/'+v.slice(5,7);
+}
+(function initDate(){
+  const d=document.getElementById('dateInput');
+  d.value=turnoDate;
+  document.getElementById('dateBadge').textContent='📅 '+turnoDate.slice(8)+'/'+turnoDate.slice(5,7);
+})();
 
-// ═══════════════════════════════════════════════════
-// STAFF / TURNO
-// ═══════════════════════════════════════════════════
+// ─── TURNO ────────────────────────────────────────
 function renderStaff(){
-  const el=document.getElementById('staffCard');
-  el.innerHTML=staff.map(p=>{
-    const st=staffSt[p.id]||'P';
-    const btns=['P',p.pizza?'AB':null,'F'].filter(Boolean).map(s=>
-      `<button class="sb ${s===st?s:''}" onclick="setSt('${p.id}','${s}');event.stopPropagation()">${s}</button>`
-    ).join('');
-    return `<div class="sr">
-      <div class="av" style="background:${p.c}1a;color:${p.c}">${p.i}</div>
-      <div class="si"><div class="sn" style="color:${p.c}">${p.n}</div><div class="sr2">${p.r}</div></div>
-      <div class="stog">${btns}</div>
-    </div>`;
-  }).join('');
-  updStats();
-  renderTl();
-  renderCheck();
-}
-
-function setSt(id,st){
-  if(st==='AB') staff.forEach(p=>{if(staffSt[p.id]==='AB')staffSt[p.id]='P';});
-  staffSt[id]=st; sv('oSt3',staffSt);
-  renderStaff();
-  toast(st==='AB'?'Abertura: '+staff.find(p=>p.id===id).n.split(' ')[0]+' ✓':st==='P'?'Presente ✓':'Folga registrada');
-}
-
-function updStats(){
-  const pres=staff.filter(p=>['P','AB'].includes(staffSt[p.id])).length;
-  const folg=staff.filter(p=>staffSt[p.id]==='F').length;
-  const ab=staff.find(p=>staffSt[p.id]==='AB');
-  document.getElementById('statsEl').innerHTML=`
-    <div class="stat"><div class="stat-n" style="color:var(--ol)">${pres}</div><div class="stat-l">Presentes</div></div>
-    <div class="stat"><div class="stat-n" style="color:var(--te)">${ab?ab.n.split(' ')[0]:'—'}</div><div class="stat-l">Abertura</div></div>
-    <div class="stat"><div class="stat-n" style="color:var(--tx3)">${folg}</div><div class="stat-l">Folgas</div></div>`;
-}
-
-function renderTl(){
-  document.getElementById('tlEl').innerHTML=[
-    ['🟢','15:30','Início do turno — toda a equipe presente'],
-    ['⚙️','15:30–17:30','Preparação — cada um na sua estação'],
-    ['🍽️','17:30–18:30','Intervalo — exceto pizzaiolo de abertura'],
-    ['📢','18:30–19:00','Retorno + briefing pré-serviço'],
-    ['🔓','19:00','Abertura ao público'],
-    ['🚪','22:00','Saída do pizzaiolo de abertura — passagem de serviço'],
-    ['🔒','23:00–23:30','Fechamento + limpeza + HACCP'],
-  ].map((t,i,a)=>`<div class="tli">
-    <div class="tld" style="background:${['rgba(122,171,138,.15)','rgba(212,114,74,.12)','rgba(91,141,232,.12)','rgba(122,171,138,.15)','rgba(232,184,109,.12)','rgba(212,114,74,.12)','rgba(90,82,72,.1)'][i]}">${t[0]}</div>
-    <div class="tlc"><div class="tlt">${t[1]}</div><div class="tlx">${t[2]}</div></div>
-  </div>`).join('');
-}
-
-// ═══════════════════════════════════════════════════
-// TASK ROTATION ENGINE
-// ═══════════════════════════════════════════════════
-function getPresent(){return staff.filter(p=>['P','AB'].includes(staffSt[p.id]));}
-
-function assignTasks(rotOffset){
-  const present=getPresent();
-  const result={}; // personId -> [{task, type:'M'|'A'}]
-  present.forEach(p=>{result[p.id]=[];});
-
-  // ── Fixed tasks: assign to best available person ──
-  const fixedTasks=['forno','massas','molho','banco'];
-  fixedTasks.forEach(tid=>{
-    const task=TASKS.find(t=>t.id===tid);
-    const candidates=present.filter(p=>task.fixed.includes(p.taskType));
-    if(candidates.length===0) return;
-    // Assign to AB person if forno, else first candidate
-    let assignee;
-    if(tid==='forno') assignee=candidates.find(p=>staffSt[p.id]==='AB')||candidates[0];
-    else assignee=candidates[0];
-    if(!result[assignee.id]) result[assignee.id]=[];
-    result[assignee.id].push({task,type:'M'});
-  });
-
-  // ── Rotatable tasks: assign round-robin among eligible present ──
-  const rotatables=TASKS.filter(t=>t.eligible);
-  const auxPresent=present.filter(p=>p.taskType==='aux'||p.taskType==='manual');
-
-  rotatables.forEach((task,i)=>{
-    let eligible=present.filter(p=>task.eligible.includes(p.taskType));
-    if(eligible.length===0) eligible=auxPresent;
-    if(eligible.length===0) return;
-    const idx=(rotOffset+i)%eligible.length;
-    const assignee=eligible[idx];
-    if(!result[assignee.id]) result[assignee.id]=[];
-    // avoid double-assigning same task category
-    result[assignee.id].push({task,type:'M'});
-  });
-
-  // ── Support tasks: each person who has capacity helps another ──
-  present.forEach(p=>{
-    const myLoad=result[p.id]?result[p.id].length:0;
-    if(myLoad<2){
-      // Find a rotatable task someone else is doing that this person can also do
-      rotatables.forEach(task=>{
-        if(!task.eligible.includes(p.taskType)) return;
-        const alreadyMine=result[p.id]&&result[p.id].some(x=>x.task.id===task.id);
-        if(!alreadyMine && result[p.id]&&result[p.id].filter(x=>x.type==='A').length<1){
-          result[p.id].push({task,type:'A'});
-        }
-      });
-    }
-  });
-
-  return result;
-}
-
-function renderTasks(){
-  const present=getPresent();
-  const el=document.getElementById('taskList');
-  const banner=document.getElementById('rotBanner');
-  document.getElementById('rotDayLbl').textContent=rotDay;
-
-  if(present.length===0){
-    el.innerHTML='<div class="card" style="text-align:center;color:var(--tx3);padding:24px">Marque a presença na aba Turno.</div>';
-    banner.innerHTML='';return;
-  }
-
-  const assignments=assignTasks(rotDay);
-
-  // Build rotation summary
-  const rotatables=TASKS.filter(t=>t.eligible);
-  let sumLines='<b style="font-family:\'Oswald\',sans-serif">Distribuição de hoje:</b><br>';
-  rotatables.slice(0,6).forEach(task=>{
-    const who=present.find(p=>assignments[p.id]&&assignments[p.id].some(a=>a.task.id===task.id&&a.type==='M'));
-    if(who) sumLines+=`${task.icon} <b style="color:var(--te)">${who.n.split(' ')[0]}</b> → ${task.label}<br>`;
-  });
-  banner.innerHTML=sumLines+`<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
-    <button class="sb" onclick="changeRot(-1)" style="font-size:11px">◀ Dia −</button>
-    <button class="sb" onclick="changeRot(1)" style="font-size:11px">Dia + ▶</button>
-    <span style="font-size:10px;color:var(--tx3);align-self:center">Rotação automática diária</span>
-  </div>`;
-
-  // Render per-person blocks
+  const el=document.getElementById('staffList');
   el.innerHTML='';
-  present.forEach(p=>{
-    const myTasks=assignments[p.id]||[];
-    const prep=myTasks.filter(a=>{const ph=a.task.phase;return ph==='P'&&(a.task.prep||a.task.fixed);});
-    const serv=myTasks.filter(a=>a.task.phase==='S'||(a.task.serv&&a.task.serv.length>0&&a.task.phase==='P'&&a.task.serv));
+  STAFF.forEach(p=>{
+    const st=staffStatus[p.id]||'P';
+    const div=document.createElement('div');
+    div.className='staff-row';
+    div.innerHTML=`
+      <div class="staff-avatar" style="background:${p.color}22;color:${p.color}">${p.initial}</div>
+      <div class="staff-info">
+        <div class="staff-name">${p.name}</div>
+        <div class="staff-role">${p.role}</div>
+      </div>
+      <div class="status-toggle">
+        <button class="status-btn ${st==='P'?'on':''}" onclick="setStatus('${p.id}','P')">P</button>
+        ${p.isPizza?`<button class="status-btn ${st==='AB'?'ab':''}" onclick="setStatus('${p.id}','AB')">AB</button>`:''}
+        <button class="status-btn ${st==='F'?'off':''}" onclick="setStatus('${p.id}','F')">F</button>
+      </div>`;
+    el.appendChild(div);
+  });
+  updateStats();
+}
 
-    const isAb=staffSt[p.id]==='AB';
-    const div=document.createElement('div');div.className='tb';
-    div.innerHTML=`<div class="tbh" onclick="togTb(this)">
-      <div class="av2" style="background:${p.c}1a;color:${p.c}">${p.i}</div>
-      <div style="flex:1;font-size:13px;font-weight:700;color:${p.c}">${p.n}</div>
-      <span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:8px;background:${isAb?'rgba(212,114,74,.18)':'rgba(122,171,138,.15)'};color:${isAb?'var(--te)':'var(--ol)'}">${isAb?'AB — sai 22:00':'Presente'}</span>
-      <span style="margin-left:6px;color:var(--tx3);font-size:12px">▾</span>
-    </div>
-    <div class="tbody">
-      ${prep.length>0?`<div class="tbsec">▶ Preparação 15:30–17:30</div>`:''}
-      ${prep.map(a=>{
-        const isW=a.task.id==='haccp';
-        return `<div class="tr">
-          <div class="ttime">${a.task.time}</div>
-          <div class="ttx${isW?' w':''}">
-            <span class="${a.type==='M'?'pm':'pa'}">${a.type==='M'?'PRINCIPAL':'APOIO'}</span>
-            <b>${a.task.icon} ${a.task.label}</b><br>${a.task.prep}
-          </div>
-        </div>`;
-      }).join('')}
-      ${serv.length>0||myTasks.some(a=>a.task.serv&&a.task.serv.length>0)?`<div class="tbsec" style="margin-top:8px">▶ Serviço 18:30–fim</div>`:''}
-      ${myTasks.filter(a=>a.task.serv&&a.task.serv.length>0).map(a=>`<div class="tr">
-        <div class="ttime">${a.task.phase==='S'?a.task.time:'18:30+'}</div>
-        <div class="ttx${a.task.id==='haccp'?' w':''}">
-          <span class="${a.type==='M'?'pm':'pa'}">${a.type==='M'?'PRINCIPAL':'APOIO'}</span>
-          <b>${a.task.icon} ${a.task.label}</b><br>${a.task.serv}
-        </div>
-      </div>`).join('')}
-      ${isAb?'<div style="margin-top:8px;background:rgba(212,114,74,.1);border-radius:5px;padding:7px 9px;font-size:11px;color:var(--te)">17:30–18:30 sem intervalo — manter forno e temperatura. Saída 22:00.</div>':''}
-      ${myTasks.length===0?'<div style="font-size:12px;color:var(--tx3);padding:6px 0">Verificar presença.</div>':''}
-    </div>`;
+function setStatus(id,st){
+  staffStatus[id]=st;
+  save('olivaStaff',staffStatus);
+  renderStaff();
+  showToast(st==='AB'?'Abertura definida ✓':st==='P'?'Presente ✓':'Folga definida');
+}
+
+function updateStats(){
+  const vals=Object.values(staffStatus);
+  document.getElementById('stat-presentes').textContent=vals.filter(v=>v==='P').length;
+  document.getElementById('stat-folga').textContent=vals.filter(v=>v==='F').length;
+  const ab=STAFF.find(p=>staffStatus[p.id]==='AB');
+  document.getElementById('stat-abertura').textContent=ab?ab.name.split(' ')[0]:'—';
+}
+
+function renderChecklist(){
+  const el=document.getElementById('checklistEl');
+  el.innerHTML='';
+  CHECKLIST_ITEMS.forEach(item=>{
+    const done=!!checklist[item.id];
+    const div=document.createElement('div');
+    div.className='check-item'+(done?' done':'');
+    div.onclick=()=>toggleCheck(item.id);
+    div.innerHTML=`
+      <div class="check-box">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div style="flex:1">
+        <div class="check-label">${item.label}</div>
+        <div class="check-text">${item.text}</div>
+      </div>`;
     el.appendChild(div);
   });
 }
 
-function togTb(hdr){
-  const body=hdr.nextElementSibling;
-  body.classList.toggle('open');
-  const arr=hdr.querySelector('span:last-child');
-  if(arr) arr.style.transform=body.classList.contains('open')?'rotate(180deg)':'';
+function toggleCheck(id){
+  checklist[id]=!checklist[id];
+  save('olivaCheck',checklist);
+  renderChecklist();
 }
 
-function changeRot(d){rotDay=Math.max(1,rotDay+d);sv('oRot3',rotDay);renderTasks();toast('Rotação dia #'+rotDay);}
-
-// ═══════════════════════════════════════════════════
-// CHECKLIST
-// ═══════════════════════════════════════════════════
-function renderCheck(){
-  document.getElementById('checkEl').innerHTML=CHECKLIST.map(item=>{
-    const done=!!checks[item.id];
-    return `<div class="ci${done?' done':''}" onclick="togChk('${item.id}')">
-      <div class="cbox"><svg class="ck" viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-      <div><div class="cl">${item.lbl}</div><div class="ct">${item.txt}</div></div>
-    </div>`;
-  }).join('');
-}
-function togChk(id){checks[id]=!checks[id];sv('oChk3',checks);renderCheck();}
-function rstCheck(){if(confirm('Reiniciar checklist?')){checks={};sv('oChk3',checks);renderCheck();toast('Reiniciada ✓');}}
-
-// ═══════════════════════════════════════════════════
-// PRODUCTION CALCULATOR — editable, linked to stock
-// prodQty: custom gram overrides per ingredient index
-// stock: shared with order system (key 'p_'+idx)
-// ═══════════════════════════════════════════════════
-let prodQty = ld('oProdQty', {}); // {idx: {gG, gM}} or {idx: {fixq}}
-let prodVol  = ld('oProdVol', {G:84, M:36, E:9});
-
-function setP(n){
-  const G=Math.round(n*.7);const M=n-G;
-  document.getElementById('pG').value=G;
-  document.getElementById('pM').value=M;
-  prodVol={G,M,E:prodVol.E};sv('oProdVol',prodVol);
-  calcProd();
-}
-
-function calcProd(){
-  const G=parseInt(document.getElementById('pG').value)||0;
-  const M=parseInt(document.getElementById('pM').value)||0;
-  const E=parseInt(document.getElementById('pE').value)||0;
-  prodVol={G,M,E};sv('oProdVol',prodVol);
-  document.getElementById('totPizzas').textContent=G+M;
-
-  const GROUPS={
-    banco:    {label:'🏪 Banco Pizza',            color:'#d4724a'},
-    quente:   {label:'🔥 Zona Quente ⚠ HACCP',   color:'#d45050'},
-    frios:    {label:'❄️ Frios Externos',          color:'#5b8de8'},
-    vegetais: {label:'🥬 Vegetais e Hortifruti',   color:'#7aab8a'},
-    doces:    {label:'🍰 Doces e Confeitaria',     color:'#9472c8'},
-    base:     {label:'🌾 Base — Massas e Molho',   color:'#d4a84a'},
-    molhos:   {label:'🌿 Temperos e Especiais',    color:'#4fa8b8'},
-    limpeza:  {label:'🧹 Limpeza e Higiene',       color:'#9a9280'},
-    embal:    {label:'📦 Embalagens',              color:'#d4724a'},
-  };
-
-  let totalItems=0, totalFalta=0, totalOk=0;
-  const groupData={};
-  Object.keys(GROUPS).forEach(k=>groupData[k]=[]);
-
-  PROD.forEach((ing,idx)=>{
-    // Get editable values (custom or default)
-    const cust=prodQty[idx]||{};
-    let gG = cust.gG!=null ? cust.gG : ing.g[0];
-    let gM = cust.gM!=null ? cust.gM : ing.g[1];
-    let fq  = cust.fixq!=null ? cust.fixq : ing.fixq;
-
-    // Calculate needed quantity
-    let needed;
-    if(fq!=null){ needed=fq; }
-    else if(ing.isUnid){ needed=Math.ceil((G+M)*ing.pp + E*ing.ge*ing.pe); }
-    else if(ing.u==='g'||ing.u==='ml'){
-      needed=Math.round(G*gG*ing.pp + M*gM*ing.pp + E*ing.ge*ing.pe);
-    } else {
-      needed=Math.round((G*gG*ing.pp + M*gM*ing.pp + E*ing.ge*ing.pe)/1000*100)/100;
-    }
-    if(ing.minQ) needed=Math.max(needed,ing.minQ);
-    if(needed<=0) return;
-
-    const stk=parseFloat(stock['p_'+idx])||0;
-    const falta=Math.max(0,Math.round((needed-stk)*100)/100);
-    totalItems++;
-    if(falta>0) totalFalta++; else if(stk>0) totalOk++;
-
-    const grpArr=groupData[ing.st]||groupData.base;
-    grpArr.push({idx,ing,gG,gM,fq,needed,stk,falta});
-  });
-
-  // Summary stats
-  document.getElementById('prodSummary').innerHTML=`
-    <div class="stat"><div class="stat-n" style="color:var(--ol)">${totalOk}</div><div class="stat-l">Com estoque</div></div>
-    <div class="stat"><div class="stat-n" style="color:var(--rd)">${totalFalta}</div><div class="stat-l">Faltando</div></div>
-    <div class="stat"><div class="stat-n" style="color:var(--tx3)">${totalItems-totalOk-totalFalta}</div><div class="stat-l">Sem stock info</div></div>`;
-
-  // Render stations
-  const el=document.getElementById('stationsEl');
-  el.innerHTML='';
-  Object.entries(GROUPS).forEach(([gk,grp])=>{
-    const items=groupData[gk];
-    if(!items||items.length===0) return;
-    const urgCnt=items.filter(i=>i.falta>0).length;
-    const wrapper=document.createElement('div');
-    wrapper.style.cssText='border-radius:var(--r);margin-bottom:8px;border:1px solid var(--bdr);overflow:hidden';
-    const hdr=document.createElement('div');
-    hdr.className='st-hdr';hdr.style.background=grp.color+'1a';hdr.style.color=grp.color;
-    hdr.innerHTML=`${grp.label} ${urgCnt>0?`<span style="font-size:9px;font-weight:700;padding:2px 6px;border-radius:6px;background:rgba(212,80,80,.18);color:var(--rd);margin-left:4px">${urgCnt} faltando</span>`:''}<span class="fa">▾</span>`;
-    const body=document.createElement('div');
-    body.className='st-body';
-    // Open falta stations by default
-    if(urgCnt>0){hdr.classList.add('op');body.classList.add('op');}
-    hdr.onclick=()=>{hdr.classList.toggle('op');body.classList.toggle('op');};
-
-    items.forEach(({idx,ing,gG,gM,fq,needed,stk,falta})=>{
-      const row=document.createElement('div');
-      const hasFalta=falta>0;
-      row.className='ing-row'+(ing.warn?' warn':'')+(hasFalta?' falta':'');
-
-      const isFixed=fq!=null;
-      const necTxt=`${needed} ${ing.u}`;
-      const fltTxt=hasFalta?`−${falta}`:stk>0?'✓':'—';
-      const fltCls=hasFalta?'need':stk>0?'ok':'empty';
-
-      if(isFixed){
-        // Fixed quantity: show one editable field + stock
-        row.innerHTML=`
-          <div class="ing-n">${ing.n}<br><span style="font-size:9px;color:var(--tx3)">${ing.u} fixo/turno</span></div>
-          <input class="qin" type="number" step="0.1" value="${gG||fq}" title="Qtd/turno"
-            oninput="updProdQty(${idx},'fixq',this.value)"
-            style="grid-column:span 2">
-          <div class="nec" style="color:var(--ol)">${needed} ${ing.u}</div>
-          <input class="stin" type="number" step="0.1" value="${stk||''}" placeholder="0" title="Estoque"
-            oninput="updProdStock(${idx},this.value,this)">`;
-      } else {
-        row.innerHTML=`
-          <div class="ing-n">${ing.n}<br><span style="font-size:9px;color:var(--tx3)">${ing.u}/turno</span></div>
-          <input class="qin" type="number" step="1" value="${gG}" title="g ou ml por pizza G"
-            oninput="updProdQty(${idx},'gG',this.value)">
-          <input class="qin ym" type="number" step="1" value="${gM}" title="g ou ml por pizza M"
-            oninput="updProdQty(${idx},'gM',this.value)">
-          <div class="nec" id="nec_${idx}">${necTxt}</div>
-          <input class="stin" type="number" step="0.1" value="${stk||''}" placeholder="0" title="Estoque atual"
-            oninput="updProdStock(${idx},this.value,this)">`;
-      }
-      body.appendChild(row);
-    });
-    wrapper.appendChild(hdr);wrapper.appendChild(body);el.appendChild(wrapper);
-  });
-}
-
-function updProdQty(idx,field,val){
-  if(!prodQty[idx]) prodQty[idx]={};
-  prodQty[idx][field]=parseFloat(val)||0;
-  sv('oProdQty',prodQty);
-  calcProd(); // recalculate all
-}
-
-function updProdStock(idx,val,input){
-  stock['p_'+idx]=parseFloat(val)||0;
-  sv('oStock3',stock);
-  // Live update the needed/falta cells without full recalc for speed
-  const G=parseInt(document.getElementById('pG').value)||0;
-  const M=parseInt(document.getElementById('pM').value)||0;
-  const E=parseInt(document.getElementById('pE').value)||0;
-  const ing=PROD[idx];
-  const cust=prodQty[idx]||{};
-  let gG=cust.gG!=null?cust.gG:ing.g[0];
-  let gM=cust.gM!=null?cust.gM:ing.g[1];
-  let fq=cust.fixq!=null?cust.fixq:ing.fixq;
-  let needed;
-  if(fq!=null) needed=fq;
-  else if(ing.isUnid) needed=Math.ceil((G+M)*ing.pp+E*ing.ge*ing.pe);
-  else if(ing.u==='g'||ing.u==='ml') needed=Math.round(G*gG*ing.pp+M*gM*ing.pp+E*ing.ge*ing.pe);
-  else needed=Math.round((G*gG*ing.pp+M*gM*ing.pp+E*ing.ge*ing.pe)/1000*100)/100;
-  if(ing.minQ) needed=Math.max(needed,ing.minQ);
-  const stk=parseFloat(val)||0;
-  const falta=Math.max(0,Math.round((needed-stk)*100)/100);
-  const row=input.closest('.ing-row');
-  if(row){
-    row.classList.toggle('falta',falta>0);
-    // update summary
-    calcProd();
+function resetChecklist(){
+  if(confirm('Reiniciar todas as tarefas?')){
+    checklist={};
+    save('olivaCheck',checklist);
+    renderChecklist();
+    showToast('Checklist reiniciada ✓');
   }
 }
 
-function rstProdStock(){
-  if(!confirm('Resetar todo o estoque?')) return;
-  PROD.forEach((_,idx)=>{ delete stock['p_'+idx]; });
-  sv('oStock3',stock);
-  calcProd();
-  toast('Estoque resetado ✓');
+// ─── TOAST ────────────────────────────────────────
+let toastTimer;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),1800);
 }
 
-function waProdOrder(){
-  const G=parseInt(document.getElementById('pG').value)||0;
-  const M=parseInt(document.getElementById('pM').value)||0;
-  const E=parseInt(document.getElementById('pE').value)||0;
-  const dt=new Date().toLocaleDateString('pt-BR');
-  let msg=`🍕 *PEDIDO PIZZARIA OLIVA*\n📅 ${dt} | Produção: ${G+M} pizzas\n\n`;
-  const bySup={};
-  PROD.forEach((ing,idx)=>{
-    const cust=prodQty[idx]||{};
-    let gG=cust.gG!=null?cust.gG:ing.g[0];
-    let gM=cust.gM!=null?cust.gM:ing.g[1];
-    let fq=cust.fixq!=null?cust.fixq:ing.fixq;
-    let needed;
-    if(fq!=null) needed=fq;
-    else if(ing.isUnid) needed=Math.ceil((G+M)*ing.pp+E*ing.ge*ing.pe);
-    else if(ing.u==='g'||ing.u==='ml') needed=Math.round(G*gG*ing.pp+M*gM*ing.pp+E*ing.ge*ing.pe);
-    else needed=Math.round((G*gG*ing.pp+M*gM*ing.pp+E*ing.ge*ing.pe)/1000*100)/100;
-    if(ing.minQ) needed=Math.max(needed,ing.minQ);
-    if(needed<=0) return;
-    const stk=parseFloat(stock['p_'+idx])||0;
-    const falta=Math.max(0,Math.round((needed-stk)*100)/100);
-    if(falta>0){
-      const s=ing.s||'Dist.';
-      if(!bySup[s])bySup[s]=[];
-      bySup[s].push(`• ${ing.n}: *${falta} ${ing.u}*`);
-    }
-  });
-  if(Object.keys(bySup).length===0){msg+='✅ Estoque suficiente para a produção planejada!\n';}
-  else{Object.entries(bySup).forEach(([s,lines])=>{const sup=SUPPLIERS[s]||{emoji:'📦'};msg+=`${sup.emoji} *${s}*\n${lines.join('\n')}\n\n`;});}
-  msg+=`_${G+M} pizzas · Sistema Oliva 🍕_`;
-  window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`,'_blank');
-}
-
-// ═══════════════════════════════════════════════════
-// ORDER SYSTEM — by supplier
-// ═══════════════════════════════════════════════════
-function ru(v,d){const f=Math.pow(10,d);return Math.ceil(v*f)/f;}
-
-function initOrder(){
-  if(ordInit) return; ordInit=true;
-  document.getElementById('diasIn').value=dias;
-  renderFornBlocks();
-  renderExtras();
-}
-
-function renderFornBlocks(){
-  const d=parseFloat(document.getElementById('diasIn').value)||3.5;
-  const groups={};
-
-  PROD.forEach((ing,idx)=>{
-    const s=ing.s||'Dist.';
-    if(!groups[s]) groups[s]={items:[]};
-    let dailyQ;
-    if(ing.fixq!=null){ dailyQ=ing.fixq; }
-    else if(ing.isUnid){ dailyQ=120*ing.pp; }
-    else if(ing.u==='g'||ing.u==='ml'){
-      dailyQ=Math.round((120*0.7*ing.g[0]+120*0.3*ing.g[1])*ing.pp/1000*100)/100;
-    } else {
-      dailyQ=Math.ceil(((120*0.7*ing.g[0]+120*0.3*ing.g[1])*ing.pp/1000)*100)/100;
-    }
-    if(ing.minQ) dailyQ=Math.max(dailyQ,ing.minQ);
-    if(dailyQ<=0) return;
-    const k='p_'+idx;
-    const st=parseFloat(stock[k])||0;
-    const period=ru(dailyQ*d,2);
-    const pedir=Math.max(0,ru(period-st,2));
-    groups[s].items.push({k,n:ing.n,u:ing.u,dailyQ:ru(dailyQ,2),period,st,pedir,warn:ing.warn});
-  });
-
-  const el=document.getElementById('fornBlocks');
-  el.innerHTML='';
-  Object.entries(groups).forEach(([sName,grp])=>{
-    if(grp.items.length===0) return;
-    const sup=SUPPLIERS[sName]||{emoji:'📦',color:'#9a9280'};
-    const urgCnt=grp.items.filter(i=>i.pedir>0).length;
-    const fb=document.createElement('div');fb.className='forn-block';
-    const fh=document.createElement('div');fh.className='forn-hdr';
-    fh.style.background=sup.color+'1a';fh.style.color=sup.color;
-    fh.innerHTML=`${sup.emoji} ${sName} ${urgCnt>0?`<span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:8px;background:rgba(212,80,80,.15);color:var(--rd)">${urgCnt} pedir</span>`:`<span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:8px;background:rgba(122,171,138,.15);color:var(--ol)">✓ OK</span>`}<span class="fa">▾</span>`;
-    const fb_body=document.createElement('div');fb_body.className='forn-body';
-    const hrow=document.createElement('div');hrow.className='forn-cols';
-    hrow.innerHTML='<div class="fc">Ingrediente</div><div class="fc">Qtd/dia</div><div class="fc">Período</div><div class="fc">Estoque</div><div class="fc">Pedir</div>';
-    fb_body.appendChild(hrow);
-    grp.items.forEach(item=>{
-      const row=document.createElement('div');row.className='ord-row'+(item.pedir>0?' urg':'');
-      row.innerHTML=`
-        <div><div class="oname">${item.n}${item.warn?'<span style="color:var(--rd);font-size:10px"> ⚠</span>':''}</div><div class="ounit">${item.u}</div></div>
-        <div class="onum" style="color:var(--gd)">${item.dailyQ}</div>
-        <div class="onum" style="color:var(--bl)">${item.period}</div>
-        <div><input class="ostk" type="number" step="0.1" value="${item.st||''}" placeholder="0" oninput="upStk('${item.k}',this.value)"></div>
-        <div class="opedir ${item.pedir>0?'urg':item.st>0?'ok':'z'}" id="r_${item.k}">${item.pedir>0?item.pedir:item.st>0?'✓':'—'}</div>`;
-      fb_body.appendChild(row);
-    });
-    fh.onclick=()=>{fh.classList.toggle('op');fb_body.classList.toggle('op');};
-    fb.appendChild(fh);fb.appendChild(fb_body);el.appendChild(fb);
-  });
-}
-
-function upStk(k,val){
-  stock[k]=parseFloat(val)||0;sv('oStock3',stock);
-  const d=parseFloat(document.getElementById('diasIn').value)||3.5;
-  const idx=parseInt(k.slice(2));
-  const ing=PROD[idx];
-  let dailyQ;
-  if(ing.fixq!=null) dailyQ=ing.fixq;
-  else if(ing.isUnid) dailyQ=120*ing.pp;
-  else if(ing.u==='g'||ing.u==='ml') dailyQ=Math.round(((120*.7*ing.g[0]+120*.3*ing.g[1])*ing.pp/1000)*100)/100;
-  else dailyQ=Math.ceil(((120*.7*ing.g[0]+120*.3*ing.g[1])*ing.pp/1000)*100)/100;
-  if(ing.minQ) dailyQ=Math.max(dailyQ,ing.minQ);
-  const st=parseFloat(val)||0;
-  const pedir=Math.max(0,ru(ru(dailyQ*d,2)-st,2));
-  const el=document.getElementById('r_'+k);
-  if(el){el.textContent=pedir>0?String(pedir):st>0?'✓':'—';el.className='opedir '+(pedir>0?'urg':st>0?'ok':'z');}
-}
-
-function rcOrd(){dias=parseFloat(document.getElementById('diasIn').value)||3.5;sv('oDias3',dias);ordInit=false;document.getElementById('fornBlocks').innerHTML='';renderFornBlocks();}
-function rstStock(){if(confirm('Resetar estoques?')){stock={};sv('oStock3',stock);ordInit=false;document.getElementById('fornBlocks').innerHTML='';renderFornBlocks();toast('Estoques resetados ✓');}}
-
-// ── EXTRAS ──
-function renderExtras(){
-  [['L','exL'],['E','exE'],['O','exO']].forEach(([k,elId])=>{
-    const el=document.getElementById(elId);el.innerHTML='';
-    (extras[k]||[]).forEach((item,i)=>exRow(k,item,i));
-  });
-}
-function addEx(k){if(!extras[k])extras[k]=[];extras[k].push({n:'',q:''});sv('oExtras3',extras);const ids={L:'exL',E:'exE',O:'exO'};exRow(k,{n:'',q:''},extras[k].length-1);}
-function exRow(k,item,idx){
-  const ids={L:'exL',E:'exE',O:'exO'};
-  const el=document.getElementById(ids[k]);
-  const d=document.createElement('div');d.className='ex-row';
-  d.innerHTML=`<input class="ei" placeholder="Nome..." value="${item.n||''}" oninput="upEx('${k}',${idx},'n',this.value)">
-    <input type="number" class="eq" placeholder="Qtd" value="${item.q||''}" oninput="upEx('${k}',${idx},'q',this.value)">
-    <div class="ex-rm" onclick="rmEx('${k}',${idx})">×</div>`;
-  el.appendChild(d);
-}
-function upEx(k,idx,f,v){if(!extras[k][idx])extras[k][idx]={};extras[k][idx][f]=v;sv('oExtras3',extras);}
-function rmEx(k,idx){extras[k].splice(idx,1);sv('oExtras3',extras);const ids={L:'exL',E:'exE',O:'exO'};const el=document.getElementById(ids[k]);el.innerHTML='';(extras[k]||[]).forEach((i,j)=>exRow(k,i,j));}
-
-// ── WHATSAPP ──
-function waOrder(){
-  const d=parseFloat(document.getElementById('diasIn').value)||3.5;
-  const dt=new Date().toLocaleDateString('pt-BR');
-  let msg=`🍕 *PEDIDO PIZZARIA OLIVA*\n📅 ${dt}  |  Entrega em ${d} dias\n\n`;
-  const bySup={};
-  PROD.forEach((ing,idx)=>{
-    const k='p_'+idx;const st=parseFloat(stock[k])||0;
-    let dq;
-    if(ing.fixq!=null) dq=ing.fixq;
-    else if(ing.isUnid) dq=120*ing.pp;
-    else if(ing.u==='g'||ing.u==='ml') dq=Math.round(((120*.7*ing.g[0]+120*.3*ing.g[1])*ing.pp/1000)*100)/100;
-    else dq=Math.ceil(((120*.7*ing.g[0]+120*.3*ing.g[1])*ing.pp/1000)*100)/100;
-    if(ing.minQ) dq=Math.max(dq,ing.minQ);
-    if(dq<=0) return;
-    const pedir=Math.max(0,ru(ru(dq*d,2)-st,2));
-    if(pedir>0){const s=ing.s||'Dist.';if(!bySup[s])bySup[s]=[];bySup[s].push(`• ${ing.n}: *${pedir} ${ing.u}*`);}
-  });
-  Object.entries(bySup).forEach(([s,lines])=>{const sup=SUPPLIERS[s]||{emoji:'📦'};msg+=`${sup.emoji} *${s}*\n${lines.join('\n')}\n\n`;});
-  [['L','Limpeza'],['E','Embalagem'],['O','Outros']].forEach(([k,lb])=>{
-    const items=(extras[k]||[]).filter(i=>i.n);
-    if(items.length){msg+=`📋 *${lb}*\n`;items.forEach(i=>{msg+=`• ${i.n}${i.q?' — '+i.q:''}\n`;});msg+='\n';}
-  });
-  if(Object.keys(bySup).length===0) msg+='✅ Nenhum item urgente no momento.\n';
-  msg+='_Sistema Pizzaria Oliva 🍕_';
-  window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`,'_blank');
-}
-
-// ═══════════════════════════════════════════════════
-// SCHEDULE
-// ═══════════════════════════════════════════════════
-function renderSched(){
-  const g=document.getElementById('schGrid');
-  g.style.cssText=`display:grid;grid-template-columns:58px repeat(28,1fr);gap:2px;font-size:9px`;
-  g.innerHTML='';
-  const bl=document.createElement('div');bl.className='sch-hdr';g.appendChild(bl);
-  FEB.forEach(d=>{
-    const h=document.createElement('div');h.className='sch-hdr';
-    h.innerHTML=`<div style="font-size:7px;color:var(--tx3)">${d.w[0]}</div><div>${d.d}</div>`;
-    if(d.w==='SAB'||d.w==='DOM') h.style.opacity='.7';
-    g.appendChild(h);
-  });
-  staff.forEach(p=>{
-    const nm=document.createElement('div');nm.className='sch-nm';nm.style.color=p.c;nm.textContent=p.n.split(' ')[0];g.appendChild(nm);
-    (sched[p.id]||Array(28).fill('P')).forEach((val,i)=>{
-      const c=document.createElement('div');c.className='sc '+val;c.textContent=val;
-      c.onclick=()=>{
-        const cyc=p.pizza?['P','F','AB','AF']:['P','F'];
-        const next=cyc[(cyc.indexOf(val)+1)%cyc.length];
-        sched[p.id][i]=next;sv('oSched3',sched);c.className='sc '+next;c.textContent=next;
-      };
-      g.appendChild(c);
-    });
-  });
-}
-
-function genSched(){
-  if(!confirm('Gerar escala automática?')) return;
-  sched=buildDefSched();sv('oSched3',sched);
-  document.getElementById('schGrid').innerHTML='';renderSched();toast('Escala gerada ✓');
-}
-
-// ─── ADD STAFF ───
-function openStaffModal(){document.getElementById('staffModal').classList.add('op');}
-function closeStaffModal(){document.getElementById('staffModal').classList.remove('op');}
-function saveNewStaff(){
-  const name=document.getElementById('sf-name').value.trim();
-  if(!name){toast('Digite o nome');return;}
-  const role=document.getElementById('sf-role').value.trim()||'Auxiliar';
-  const mat =document.getElementById('sf-mat').value.trim();
-  const sc  =document.getElementById('sf-sched').value;
-  const type=document.getElementById('sf-type').value;
-  const id  ='staff_'+Date.now();
-  const initials=name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
-  const colors=['#d4724a','#5b8de8','#9472c8','#4fa8b8','#d4a84a','#7aab8a'];
-  const color=colors[staff.length%colors.length];
-  const off=staff.length%8;
-  const newP={id,n:name,r:role+(mat?' ('+mat+')':''),c:color,i:initials,pizza:type==='pizza',taskType:type,defaultAb:false,sched:sc==='livre'?'manual':sc,off};
-  staff.push(newP);sv('oStaff3',staff);
-  staffSt[id]='P';sv('oSt3',staffSt);
-  if(!sched[id]) sched[id]=sc==='6x2'?[...Array(28)].map((_,i)=>((i+off)%8<6)?'P':'F'):sc==='5x1'?[...Array(28)].map((_,i)=>((i+off)%6<5)?'P':'F'):Array(28).fill('P');
-  sv('oSched3',sched);
-  closeStaffModal();
-  ['sf-name','sf-role','sf-mat'].forEach(id=>document.getElementById(id).value='');
-  renderStaff();renderTasks();document.getElementById('schGrid').innerHTML='';renderSched();
-  toast(name.split(' ')[0]+' adicionado ✓');
-}
-
-// ═══════════════════════════════════════════════════
-// MENU
-// ═══════════════════════════════════════════════════
-function renderMenu(){
-  const g=document.getElementById('menuGrid');g.innerHTML='';
-  menuItems.forEach((item,idx)=>{
-    const c=document.createElement('div');c.className='mc';c.onclick=()=>openMM(idx);
-    c.innerHTML=(item.photo?`<img src="${item.photo}" style="width:100%;height:110px;object-fit:cover" onerror="this.style.display='none';this.nextSibling.style.display='flex'">`:'')
-      +`<div class="me" ${item.photo?'style="display:none"':''}>${item.emoji||'🍕'}</div>`
-      +`<div class="mi"><div class="mn">${item.name}</div><div class="mcat">${item.cat}</div></div>`;
-    g.appendChild(c);
-  });
-}
-let mmIdx=-1;
-function openMM(idx){mmIdx=idx;const item=menuItems[idx];
-  const ph=document.getElementById('mmPhoto');
-  ph.innerHTML=item.photo?`<img src="${item.photo}" style="width:100%;height:100%;object-fit:cover">`:item.emoji||'🍕';
-  document.getElementById('mmTitle').textContent=item.name;
-  document.getElementById('mmDesc').textContent=item.desc||'';
-  document.getElementById('mmStd').textContent=item.standard||'';
-  document.getElementById('mmDelBtn').onclick=()=>{if(confirm('Remover?')){menuItems.splice(idx,1);sv('oMenu3',menuItems);closeMM();renderMenu();toast('Removido ✓');}};
-  document.getElementById('menuModal').classList.add('op');
-}
-function closeMM(){document.getElementById('menuModal').classList.remove('op');}
-function addMenuItem(){
-  const name=document.getElementById('mfN').value.trim();if(!name){toast('Digite o nome');return;}
-  menuItems.push({name,desc:document.getElementById('mfD').value.trim(),cat:document.getElementById('mfC').value.trim()||'Cardápio',photo:document.getElementById('mfP').value.trim(),emoji:document.getElementById('mfE').value.trim()||'🍕',standard:document.getElementById('mfS').value.trim()});
-  sv('oMenu3',menuItems);
-  ['mfN','mfD','mfC','mfP','mfE','mfS'].forEach(id=>document.getElementById(id).value='');
-  renderMenu();toast('Adicionado ✓');
-}
-
-// ═══════════════════════════════════════════════════
-// TOAST
-// ═══════════════════════════════════════════════════
-let tT;
-function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('on');clearTimeout(tT);tT=setTimeout(()=>t.classList.remove('on'),1800);}
-
-// INIT
+// ─── INIT ─────────────────────────────────────────
 renderStaff();
+renderChecklist();
 </script>
+
 </body>
 </html>
