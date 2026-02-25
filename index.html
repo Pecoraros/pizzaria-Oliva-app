@@ -2,710 +2,564 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#161614">
-<title>🍕 Oliva</title>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#1a1a1a">
+<title>🍕 Pizzaria Oliva</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#161614;--bg2:#1e1e1b;--bg3:#272724;--card:#222220;--bdr:#333330;
-  --te:#d4724a;--te2:#b85e38;--ol:#7aab8a;--gd:#e8b86d;--cr:#f0ead8;
-  --rd:#d45050;--bl:#5b8de8;--pu:#9472c8;--cy:#4fa8b8;--ye:#d4a84a;
-  --tx:#ede8d8;--tx2:#9a9280;--tx3:#5a5248;--r:12px;--r2:8px;
-}
+:root{--bg:#1a1a1a;--bg2:#242424;--bg3:#2e2e2e;--card:#2a2a2a;--border:#3a3a3a;--terra:#e07a5f;--terra2:#c86a4f;--olive:#81b29a;--gold:#f2cc8f;--cream:#f4f1de;--red:#e05555;--blue:#5b8def;--purple:#9b72cf;--text:#f0ece0;--text2:#a8a090;--text3:#706860;--radius:14px}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-height:100vh;padding-bottom:72px;overflow-x:hidden}
-.hdr{background:var(--bg2);border-bottom:1px solid var(--bdr);padding:12px 16px 10px;position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:10px}
-.logo{font-family:'Oswald',sans-serif;font-size:19px;font-weight:700;color:var(--te);letter-spacing:2px}
-.logo em{color:var(--ol);font-style:normal}
-.hdr-sub{font-size:9px;color:var(--tx3);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-top:1px}
-.date-chip{margin-left:auto;background:var(--bg3);border:1px solid var(--bdr);border-radius:20px;padding:5px 11px;font-size:12px;font-weight:700;color:var(--tx2);cursor:pointer;flex-shrink:0}
-.bnav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px solid var(--bdr);display:flex;padding-bottom:env(safe-area-inset-bottom);z-index:100}
-.nb{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 2px;cursor:pointer;border:none;background:none;color:var(--tx3);font-family:'DM Sans',sans-serif;font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;transition:color .2s;min-width:0}
-.nb.on{color:var(--te)}
-.nb svg{width:18px;height:18px;flex-shrink:0}
-.pg{display:none;padding:14px;animation:fi .18s ease}
-.pg.on{display:block}
-@keyframes fi{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
-.sec{font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--tx3);margin:16px 0 8px}
-.sec:first-child{margin-top:2px}
-.card{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:14px;margin-bottom:10px}
-/* STATS */
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
-.stat{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:11px 6px;text-align:center}
-.stat-n{font-family:'Oswald',sans-serif;font-size:24px;font-weight:700}
-.stat-l{font-size:9px;color:var(--tx3);font-weight:700;text-transform:uppercase;letter-spacing:.4px;margin-top:2px}
-/* STAFF */
-.sr{display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid var(--bdr)}
-.sr:last-child{border-bottom:none}
-.av{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:12px;font-weight:700;flex-shrink:0}
-.si{flex:1;min-width:0}
-.sn{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sr2{font-size:10px;color:var(--tx3);margin-top:1px}
-.stog{display:flex;gap:3px;flex-shrink:0}
-.sb{padding:4px 7px;border-radius:5px;border:1px solid var(--bdr);background:var(--bg3);color:var(--tx3);font-size:10px;font-weight:700;cursor:pointer;transition:all .15s}
-.sb.P{background:var(--ol);color:var(--bg);border-color:var(--ol)}
-.sb.AB{background:var(--te);color:#fff;border-color:var(--te)}
-.sb.F{background:var(--bg3);color:var(--tx3)}
-.sb.AF{background:rgba(232,184,109,.12);color:var(--gd);border-color:rgba(232,184,109,.3)}
-/* TASK ROTATION */
-.rot-banner{background:rgba(91,141,232,.07);border:1px solid rgba(91,141,232,.18);border-radius:var(--r2);padding:10px 12px;margin-bottom:10px;font-size:12px;color:var(--bl);line-height:1.6}
-.tb{background:var(--bg3);border-radius:var(--r);border:1px solid var(--bdr);overflow:hidden;margin-bottom:8px}
-.tbh{display:flex;align-items:center;gap:9px;padding:10px 12px;cursor:pointer;user-select:none}
-.av2{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:11px;font-weight:700;flex-shrink:0}
-.tbody{padding:0 12px 10px;display:none}
-.tbody.open{display:block}
-.tbsec{font-family:'Oswald',sans-serif;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--tx3);margin:9px 0 5px}
-.tr{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid var(--bdr)}
-.tr:last-child{border-bottom:none}
-.ttime{font-family:'Oswald',sans-serif;font-size:11px;color:var(--te);min-width:76px;flex-shrink:0;padding-top:1px;line-height:1.3}
-.ttx{font-size:12px;color:var(--tx);line-height:1.5}
-.ttx.w{color:#ff8a80}
-.pm{display:inline-flex;font-size:9px;font-weight:700;padding:1px 5px;border-radius:7px;background:rgba(122,171,138,.2);color:var(--ol);margin-right:3px;vertical-align:middle}
-.pa{display:inline-flex;font-size:9px;font-weight:700;padding:1px 5px;border-radius:7px;background:rgba(90,82,72,.35);color:var(--tx3);margin-right:3px;vertical-align:middle}
-/* CHECKLIST */
-.ci{display:flex;align-items:flex-start;gap:9px;padding:9px 11px;background:var(--bg3);border-radius:var(--r2);border:1px solid var(--bdr);cursor:pointer;margin-bottom:5px}
-.ci.done{opacity:.4}
-.ci.done .ct{text-decoration:line-through;color:var(--tx3)}
-.cbox{width:19px;height:19px;border-radius:5px;border:2px solid var(--bdr);flex-shrink:0;display:flex;align-items:center;justify-content:center}
-.ci.done .cbox{background:var(--ol);border-color:var(--ol)}
-.ck{opacity:0}.ci.done .ck{opacity:1}
-.cl{font-size:9px;color:var(--te);font-weight:700;margin-bottom:1px;font-family:'Oswald',sans-serif;letter-spacing:.5px}
-.ct{font-size:12px;color:var(--tx);line-height:1.4}
-/* HACCP */
-.hb{background:rgba(212,80,80,.07);border:1px solid rgba(212,80,80,.28);border-radius:var(--r);padding:12px;margin-bottom:10px}
-.hbt{font-family:'Oswald',sans-serif;font-size:12px;color:var(--rd);font-weight:700;letter-spacing:1px;margin-bottom:7px}
-.hr{font-size:12px;color:#ff8a80;padding:4px 0;border-bottom:1px solid rgba(212,80,80,.1);display:flex;gap:7px;align-items:flex-start;line-height:1.4}
-.hr:last-child{border-bottom:none}
-.hr b{color:var(--rd);font-family:'Oswald',sans-serif;font-size:11px;min-width:44px;flex-shrink:0}
-/* TIMELINE */
-.tli{display:flex;gap:10px;padding:8px 0;position:relative}
-.tli:not(:last-child)::after{content:'';position:absolute;left:17px;top:26px;bottom:0;width:2px;background:var(--bdr)}
-.tld{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;z-index:1}
-.tlc{flex:1;padding-top:4px}
-.tlt{font-family:'Oswald',sans-serif;font-size:12px;color:var(--te);font-weight:600;margin-bottom:1px}
-.tlx{font-size:12px;color:var(--tx2);line-height:1.4}
-/* ORDER */
-.forn-block{border-radius:var(--r);margin-bottom:8px;overflow:hidden;border:1px solid var(--bdr)}
-.forn-hdr{display:flex;align-items:center;gap:8px;padding:11px 13px;cursor:pointer;font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;letter-spacing:.5px;user-select:none}
-.forn-hdr .fa{margin-left:auto;transition:transform .22s;font-size:14px}
-.forn-hdr.op .fa{transform:rotate(180deg)}
-.forn-body{display:none;background:var(--bg3)}
-.forn-body.op{display:block}
-.forn-cols{display:grid;grid-template-columns:1fr 56px 56px 60px 56px;gap:3px;padding:6px 13px;border-bottom:1px solid var(--bdr)}
-.fc{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--tx3);text-align:center}
-.fc:first-child{text-align:left}
-.ord-row{display:grid;grid-template-columns:1fr 56px 56px 60px 56px;gap:3px;padding:8px 13px;border-bottom:1px solid var(--bdr);align-items:center}
-.ord-row:last-child{border-bottom:none}
-.ord-row.urg{background:rgba(212,80,80,.04)}
-.oname{font-size:12px;color:var(--tx);line-height:1.3}
-.ounit{font-size:9px;color:var(--tx3)}
-.onum{font-size:12px;font-weight:700;text-align:center}
-.ostk{background:var(--bg2);border:1px solid var(--bdr);border-radius:4px;padding:4px 3px;color:var(--te);font-size:12px;font-weight:700;text-align:center;width:100%;font-family:'DM Sans',sans-serif;-moz-appearance:textfield}
-.ostk::-webkit-inner-spin-button,.ostk::-webkit-outer-spin-button{-webkit-appearance:none}
-.ostk:focus{outline:none;border-color:var(--te)}
-.opedir{font-size:12px;font-weight:700;text-align:center;color:var(--ol)}
-.opedir.urg{color:var(--te)}.opedir.ok{color:var(--ol)}.opedir.z{color:var(--tx3)}
-/* PRODUCTION */
-.prod-in{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px}
-.pi{display:flex;flex-direction:column;gap:3px}
-.pi label{font-size:9px;color:var(--tx3);font-weight:700;text-transform:uppercase;letter-spacing:.5px}
-.pi input{background:var(--bg2);border:1px solid var(--bdr);border-radius:var(--r2);padding:9px 6px;color:var(--gd);font-size:17px;font-weight:700;text-align:center;width:100%;font-family:'DM Sans',sans-serif;-moz-appearance:textfield}
-.pi input::-webkit-inner-spin-button,.pi input::-webkit-outer-spin-button{-webkit-appearance:none}
-.pi input:focus{outline:none;border-color:var(--te)}
-.pi span{font-size:9px;color:var(--tx3);text-align:center}
-.st-hdr{display:flex;align-items:center;gap:7px;padding:9px 12px;cursor:pointer;font-family:'Oswald',sans-serif;font-size:12px;font-weight:600;letter-spacing:.4px;user-select:none}
-.st-hdr .fa{margin-left:auto;transition:transform .2s;font-size:13px}
-.st-hdr.op .fa{transform:rotate(180deg)}
-.st-body{display:none;background:var(--bg3)}
-.st-body.op{display:block}
-.ing-row{display:grid;grid-template-columns:1fr 54px 54px 60px 54px;gap:3px;padding:6px 10px;border-bottom:1px solid var(--bdr);align-items:center}
-.ing-row:last-child{border-bottom:none}
-.ing-row.warn .ing-n::after{content:' ⚠';color:var(--rd);font-size:9px}
-.ing-row.falta .ing-n{color:var(--cr);font-weight:700}
-.ing-n{font-size:11px;color:var(--tx);line-height:1.3}
-.qin{background:var(--bg2);border:1px solid var(--bdr);border-radius:4px;padding:4px 2px;font-size:11px;font-weight:700;text-align:center;width:100%;color:var(--gd);font-family:'DM Sans',sans-serif;-moz-appearance:textfield}
-.qin::-webkit-inner-spin-button,.qin::-webkit-outer-spin-button{-webkit-appearance:none}
-.qin:focus{outline:none;border-color:var(--gd)}
-.qin.ym{color:var(--ye)}.qin.ym:focus{border-color:var(--ye)}
-.stin{background:var(--bg2);border:1px solid rgba(212,114,74,.25);border-radius:4px;padding:4px 2px;font-size:11px;font-weight:700;text-align:center;width:100%;color:var(--te);font-family:'DM Sans',sans-serif;-moz-appearance:textfield}
-.stin::-webkit-inner-spin-button,.stin::-webkit-outer-spin-button{-webkit-appearance:none}
-.stin:focus{outline:none;border-color:var(--te)}
-.nec{font-size:11px;font-weight:700;text-align:center;color:var(--ol)}
-.flt{font-size:11px;font-weight:700;text-align:center}
-.flt.need{color:var(--rd)}.flt.ok{color:var(--ol)}.flt.empty{color:var(--tx3)}
-/* EXTRAS */
-.ex-row{display:flex;gap:6px;align-items:center;margin-bottom:6px}
-.ei{flex:1;background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--r2);padding:8px 10px;color:var(--tx);font-size:13px;font-family:'DM Sans',sans-serif}
-.ei:focus{outline:none;border-color:var(--te)}
-.eq{width:60px;background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--r2);padding:8px 6px;color:var(--gd);font-size:13px;font-weight:700;text-align:center;font-family:'DM Sans',sans-serif;-moz-appearance:textfield}
-.eq::-webkit-inner-spin-button,.eq::-webkit-outer-spin-button{-webkit-appearance:none}
-.eq:focus{outline:none;border-color:var(--te)}
-.ex-rm{width:30px;height:30px;background:rgba(212,80,80,.1);border:1px solid rgba(212,80,80,.22);border-radius:var(--r2);color:var(--rd);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;flex-shrink:0}
-.add-btn{display:flex;align-items:center;gap:7px;padding:9px 12px;border-radius:var(--r2);border:1px dashed var(--bdr);background:transparent;color:var(--tx3);font-size:12px;cursor:pointer;width:100%;font-family:'DM Sans',sans-serif}
-.add-btn:active{background:var(--bg3)}
-/* BUTTONS */
-.btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;border-radius:var(--r);border:none;font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:1px;cursor:pointer;width:100%;margin-top:8px;transition:all .2s;text-transform:uppercase}
-.btn-p{background:var(--te);color:#fff}
-.btn-p:active{background:var(--te2);transform:scale(.98)}
-.btn-s{background:var(--bg3);color:var(--tx);border:1px solid var(--bdr)}
-.btn-wa{background:#25d366;color:#fff}
-.btn-wa:active{background:#1da851}
-/* SCHEDULE */
-.sch-wrap{overflow-x:auto;padding-bottom:8px}
-.sch-grid{display:grid;gap:2px;font-size:9px}
-.sch-hdr{background:var(--bg3);border-radius:3px;padding:4px 2px;text-align:center;font-weight:700;color:var(--tx3)}
-.sch-nm{background:var(--bg3);border-radius:3px;padding:4px 5px;font-weight:700;font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.sc{border-radius:3px;padding:4px 1px;text-align:center;font-weight:700;cursor:pointer}
-.sc.P{background:rgba(122,171,138,.18);color:var(--ol)}
-.sc.F{background:rgba(90,82,72,.18);color:var(--tx3)}
-.sc.AF{background:rgba(212,168,74,.14);color:var(--ye)}
-.sc.AB{background:rgba(212,114,74,.18);color:var(--te)}
-/* MENU */
-.menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
-.mc{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);overflow:hidden;cursor:pointer}
-.me{width:100%;height:110px;display:flex;align-items:center;justify-content:center;font-size:48px;background:var(--bg3)}
-.mi{padding:9px}
-.mn{font-family:'Oswald',sans-serif;font-size:13px;color:var(--cr);font-weight:600}
-.mcat{font-size:9px;color:var(--tx3);margin-top:1px;text-transform:uppercase;letter-spacing:.5px}
-.modal-ov{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.88);z-index:200;display:none;align-items:flex-end}
-.modal-ov.op{display:flex}
-.modal-box{background:var(--bg2);border-radius:16px 16px 0 0;width:100%;max-height:88vh;overflow-y:auto;padding:18px}
-/* FORMS */
-.fi{width:100%;background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--r2);padding:9px 11px;color:var(--tx);font-size:13px;font-family:'DM Sans',sans-serif;margin-bottom:7px}
-.fi:focus{outline:none;border-color:var(--te)}
-.fta{width:100%;background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--r2);padding:9px 11px;color:var(--tx);font-size:12px;font-family:'DM Sans',sans-serif;margin-bottom:7px;min-height:70px;resize:vertical}
-.fta:focus{outline:none;border-color:var(--te)}
-/* MISC */
-.pill{display:inline-flex;align-items:center;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;letter-spacing:.2px}
-.pr{background:rgba(212,80,80,.15);color:var(--rd)}
-.pg2{background:rgba(122,171,138,.15);color:var(--ol)}
-.divider{height:1px;background:var(--bdr);margin:14px 0}
-.lnk{background:transparent;border:none;color:var(--tx3);font-size:11px;padding:5px 0;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:underline}
-.lnk:active{color:var(--rd)}
-.toast{position:fixed;top:68px;left:50%;transform:translateX(-50%) translateY(-8px);background:var(--bg3);color:var(--tx);padding:8px 16px;border-radius:18px;font-size:12px;font-weight:700;opacity:0;transition:all .25s;pointer-events:none;z-index:999;white-space:nowrap;border:1px solid var(--bdr)}
-.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
-select.fi{appearance:none;-webkit-appearance:none}
+body{background:var(--bg);color:var(--text);font-family:'Lato',sans-serif;min-height:100vh;padding-bottom:80px;overflow-x:hidden}
+.app-header{background:var(--bg2);border-bottom:1px solid var(--border);padding:16px 20px 12px;position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:12px}
+.logo{font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;color:var(--terra);letter-spacing:1px}
+.logo span{color:var(--olive)}
+.date-badge{margin-left:auto;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:5px 12px;font-size:13px;color:var(--text2);font-weight:700;cursor:pointer}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px solid var(--border);display:flex;z-index:100;padding-bottom:env(safe-area-inset-bottom)}
+.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 4px;cursor:pointer;border:none;background:none;color:var(--text3);font-family:'Lato',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;transition:color 0.2s}
+.nav-btn.active{color:var(--terra)}
+.nav-btn svg{width:22px;height:22px}
+.page{display:none;padding:16px;animation:fadeIn 0.2s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.section-title{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin:20px 0 10px;padding-left:4px}
+.section-title:first-child{margin-top:4px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:12px}
+.staff-list{display:flex;flex-direction:column;gap:8px}
+.staff-row{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg3);border-radius:10px;border:1px solid var(--border)}
+.staff-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:14px;font-weight:700;flex-shrink:0}
+.staff-info{flex:1;min-width:0}
+.staff-name{font-weight:700;font-size:14px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.staff-role{font-size:11px;color:var(--text3);margin-top:1px}
+.status-toggle{display:flex;gap:4px;flex-shrink:0}
+.status-btn{padding:5px 9px;border-radius:6px;border:1px solid var(--border);background:var(--bg2);color:var(--text3);font-size:11px;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif;transition:all 0.15s}
+.status-btn.on{background:var(--olive);color:var(--bg);border-color:var(--olive)}
+.status-btn.ab{background:var(--terra);color:white;border-color:var(--terra)}
+.status-btn.off{background:#3a3a3a;color:var(--text3);border-color:#3a3a3a}
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl-item{display:flex;gap:12px;padding:10px 0;position:relative}
+.tl-item:not(:last-child)::after{content:'';position:absolute;left:19px;top:30px;bottom:-2px;width:2px;background:var(--border)}
+.tl-dot{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;z-index:1}
+.tl-content{flex:1;padding-top:6px}
+.tl-time{font-family:'Oswald',sans-serif;font-size:13px;color:var(--terra);font-weight:600;margin-bottom:2px}
+.tl-text{font-size:13px;color:var(--text2);line-height:1.4}
+.checklist{display:flex;flex-direction:column;gap:6px}
+.check-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:var(--bg3);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all 0.15s}
+.check-item.done{opacity:0.5}
+.check-item.done .check-text{text-decoration:line-through;color:var(--text3)}
+.check-box{width:22px;height:22px;border-radius:6px;border:2px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.15s;margin-top:1px}
+.check-item.done .check-box{background:var(--olive);border-color:var(--olive)}
+.check-box svg{opacity:0;transition:opacity 0.15s;color:var(--bg)}
+.check-item.done .check-box svg{opacity:1}
+.check-label{font-size:11px;color:var(--terra);font-weight:700;margin-bottom:2px;font-family:'Oswald',sans-serif;letter-spacing:0.5px}
+.check-text{font-size:13px;color:var(--text);line-height:1.4}
+.cat-header{display:flex;align-items:center;gap:8px;padding:12px 14px;border-radius:10px;cursor:pointer;margin-bottom:4px;font-family:'Oswald',sans-serif;font-size:15px;font-weight:600;letter-spacing:0.5px;user-select:none}
+.cat-header .cat-arrow{margin-left:auto;transition:transform 0.25s;font-size:16px}
+.cat-header.open .cat-arrow{transform:rotate(180deg)}
+.cat-items{display:none;flex-direction:column;gap:6px;margin-bottom:12px;padding:0 2px}
+.cat-items.open{display:flex}
+.order-item{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px}
+.order-item-top{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.order-name{flex:1;font-size:13px;font-weight:700;color:var(--text);line-height:1.3}
+.order-unit{font-size:11px;color:var(--text3);background:var(--bg2);border-radius:4px;padding:2px 6px;flex-shrink:0}
+.order-inputs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.input-group{display:flex;flex-direction:column;gap:3px}
+.input-label{font-size:10px;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+.input-field{background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:7px 8px;color:var(--text);font-size:14px;font-weight:700;text-align:center;width:100%;font-family:'Lato',sans-serif;-moz-appearance:textfield}
+.input-field::-webkit-inner-spin-button,.input-field::-webkit-outer-spin-button{-webkit-appearance:none}
+.input-field:focus{outline:none;border-color:var(--terra);background:var(--bg3)}
+.order-result{background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:7px 8px;color:var(--olive);font-size:14px;font-weight:700;text-align:center;display:flex;align-items:center;justify-content:center}
+.order-result.urgent{color:var(--terra);border-color:var(--terra);background:rgba(224,122,95,0.1)}
+.order-result.zero{color:var(--text3)}
+.extra-list{display:flex;flex-direction:column;gap:8px}
+.extra-item{display:flex;gap:8px;align-items:center}
+.extra-input{flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--text);font-size:14px;font-family:'Lato',sans-serif}
+.extra-input:focus{outline:none;border-color:var(--terra)}
+.extra-qty{width:70px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 8px;color:var(--gold);font-size:14px;font-weight:700;text-align:center;font-family:'Lato',sans-serif;-moz-appearance:textfield}
+.extra-qty::-webkit-inner-spin-button,.extra-qty::-webkit-outer-spin-button{-webkit-appearance:none}
+.extra-remove{width:34px;height:34px;background:rgba(224,85,85,0.15);border:1px solid rgba(224,85,85,0.3);border-radius:8px;color:var(--red);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;font-size:18px;line-height:1}
+.add-extra-btn{display:flex;align-items:center;gap:8px;padding:11px 14px;border-radius:9px;border:1px dashed var(--border);background:transparent;color:var(--text3);font-size:13px;cursor:pointer;width:100%;font-family:'Lato',sans-serif}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 20px;border-radius:12px;border:none;font-family:'Oswald',sans-serif;font-size:16px;font-weight:600;letter-spacing:1px;cursor:pointer;width:100%;margin-top:8px;transition:all 0.2s;text-transform:uppercase}
+.btn-primary{background:var(--terra);color:white}
+.btn-secondary{background:var(--bg3);color:var(--text);border:1px solid var(--border)}
+.btn-whatsapp{background:#25d366;color:white}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 10px;text-align:center}
+.stat-num{font-family:'Oswald',sans-serif;font-size:28px;font-weight:700}
+.stat-label{font-size:10px;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-top:2px}
+.sch-head{background:var(--bg3);border-radius:5px;padding:6px 4px;text-align:center;font-weight:700;color:var(--text3);font-size:10px}
+.sch-name{background:var(--bg3);border-radius:5px;padding:6px 6px;font-weight:700;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:10px}
+.sch-cell{border-radius:5px;padding:6px 3px;text-align:center;font-weight:700;cursor:pointer;font-size:10px}
+.sch-p{background:rgba(129,178,154,0.2);color:var(--olive)}
+.sch-f{background:rgba(160,150,140,0.15);color:var(--text3)}
+.sch-af{background:rgba(242,204,143,0.2);color:var(--gold)}
+.sch-ab{background:rgba(224,122,95,0.2);color:var(--terra)}
+.haccp-banner{background:rgba(224,85,85,0.12);border:1px solid rgba(224,85,85,0.35);border-radius:12px;padding:14px;margin-bottom:12px}
+.haccp-title{font-family:'Oswald',sans-serif;font-size:13px;color:var(--red);font-weight:700;letter-spacing:1px;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.haccp-rule{font-size:12px;color:#ff8a80;padding:4px 0;border-bottom:1px solid rgba(224,85,85,0.15);display:flex;gap:8px;align-items:flex-start;line-height:1.4}
+.haccp-rule:last-child{border-bottom:none}
+.haccp-rule b{color:var(--red);font-family:'Oswald',sans-serif;font-size:13px;flex-shrink:0}
+.toast{position:fixed;top:80px;left:50%;transform:translateX(-50%) translateY(-10px);background:#333;color:var(--text);padding:10px 20px;border-radius:20px;font-size:13px;font-weight:700;opacity:0;transition:all 0.3s;pointer-events:none;z-index:999;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toggle-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.toggle-pill{padding:7px 14px;border-radius:20px;border:1px solid var(--border);background:var(--bg3);color:var(--text3);font-size:12px;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif}
+.toggle-pill.active{background:var(--terra);color:white;border-color:var(--terra)}
+.dias-input{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--gold);font-size:16px;font-weight:700;text-align:center;width:80px;font-family:'Lato',sans-serif;-moz-appearance:textfield;display:inline-block}
+.dias-input::-webkit-inner-spin-button,.dias-input::-webkit-outer-spin-button{-webkit-appearance:none}
+.divider{height:1px;background:var(--border);margin:16px 0}
+.reset-btn{background:transparent;border:none;color:var(--text3);font-size:12px;padding:6px 10px;cursor:pointer;font-family:'Lato',sans-serif;text-decoration:underline}
+.menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px}
+.menu-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer}
+.menu-emoji{width:100%;height:120px;display:flex;align-items:center;justify-content:center;font-size:52px;background:var(--bg3)}
+.menu-img{width:100%;height:120px;object-fit:cover}
+.menu-info{padding:10px}
+.menu-name{font-family:'Oswald',sans-serif;font-size:14px;color:var(--cream);font-weight:600}
+.menu-cat{font-size:10px;color:var(--text3);margin-top:2px;text-transform:uppercase;letter-spacing:0.5px}
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);z-index:200;display:none;align-items:flex-end;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal-box{background:var(--bg2);border-radius:20px 20px 0 0;width:100%;max-height:85vh;overflow-y:auto;padding:20px}
+.modal-photo{width:100%;height:200px;border-radius:12px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:80px;margin-bottom:16px;overflow:hidden}
+.modal-photo img{width:100%;height:100%;object-fit:cover}
+.modal-title{font-family:'Oswald',sans-serif;font-size:24px;color:var(--cream);font-weight:700;margin-bottom:4px}
+.modal-desc{font-size:14px;color:var(--text2);margin-bottom:16px;line-height:1.5}
+.modal-standard{background:var(--bg3);border-radius:10px;padding:14px;border:1px solid var(--border)}
+.modal-standard-title{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:2px;color:var(--terra);text-transform:uppercase;margin-bottom:8px}
+.modal-standard-text{font-size:13px;color:var(--text);line-height:1.7}
+.form-input{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--text);font-size:14px;font-family:'Lato',sans-serif;margin-bottom:8px}
+.form-input:focus{outline:none;border-color:var(--terra)}
+.form-textarea{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--text);font-size:13px;font-family:'Lato',sans-serif;margin-bottom:8px;min-height:80px;resize:vertical}
+.form-textarea:focus{outline:none;border-color:var(--terra)}
 </style>
 </head>
 <body>
-<div class="hdr">
+
+<div class="app-header">
   <div>
-    <div class="logo">OLIVA <em>🍕</em></div>
-    <div class="hdr-sub">Sistema de Gestão</div>
+    <div class="logo">OLIVA <span>🍕</span></div>
+    <div style="font-size:10px;color:var(--text3);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-top:1px">Sistema de Gestão</div>
   </div>
-  <div class="date-chip" id="dateLbl" onclick="pickDate()">📅 —</div>
-  <input type="date" id="dateInp" style="display:none" oninput="setDate(this.value)">
+  <div class="date-badge" id="dateBadge" onclick="document.getElementById('dateInput').showPicker&&document.getElementById('dateInput').showPicker()">📅 hoje</div>
+  <input type="date" id="dateInput" style="display:none" oninput="onDateChange(this.value)">
 </div>
+
 <div class="toast" id="toast"></div>
+
 <!-- MODAL MENU -->
-<div class="modal-ov" id="menuModal" onclick="if(event.target===this)closeMM()">
+<div class="modal-overlay" id="menuModal" onclick="if(event.target===this)closeMenuModal()">
   <div class="modal-box">
-    <div id="mmPhoto" style="width:100%;height:180px;border-radius:10px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:72px;margin-bottom:14px;overflow:hidden"></div>
-    <div id="mmTitle" style="font-family:'Oswald',sans-serif;font-size:22px;color:var(--cr);font-weight:700;margin-bottom:3px"></div>
-    <div id="mmDesc" style="font-size:13px;color:var(--tx2);margin-bottom:13px;line-height:1.5"></div>
-    <div style="background:var(--bg3);border-radius:9px;padding:13px;border:1px solid var(--bdr)">
-      <div style="font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:2px;color:var(--te);text-transform:uppercase;margin-bottom:7px">📋 Padrão de Apresentação</div>
-      <div id="mmStd" style="font-size:12px;color:var(--tx);line-height:1.7;white-space:pre-line"></div>
+    <div class="modal-photo" id="modalPhoto"></div>
+    <div class="modal-title" id="modalTitle"></div>
+    <div class="modal-desc" id="modalDesc"></div>
+    <div class="modal-standard">
+      <div class="modal-standard-title">📋 Padrão de Apresentação</div>
+      <div class="modal-standard-text" id="modalStandard"></div>
     </div>
-    <button class="btn btn-s" id="mmDelBtn" style="margin-top:10px;color:var(--rd);border-color:rgba(212,80,80,.3)">🗑 Remover item</button>
-    <button class="btn btn-s" onclick="closeMM()" style="margin-top:6px">Fechar</button>
+    <button class="btn btn-secondary" id="modalDeleteBtn" style="margin-top:12px;color:var(--red);border-color:var(--red)">🗑 Remover item</button>
+    <button class="btn btn-secondary" onclick="closeMenuModal()" style="margin-top:8px">Fechar</button>
   </div>
 </div>
-<!-- MODAL ADD STAFF -->
-<div class="modal-ov" id="staffModal" onclick="if(event.target===this)closeStaffModal()">
-  <div class="modal-box">
-    <div style="font-family:'Oswald',sans-serif;font-size:18px;color:var(--cr);font-weight:700;margin-bottom:14px">➕ Novo Colaborador</div>
-    <input class="fi" id="sf-name" placeholder="Nome completo">
-    <input class="fi" id="sf-role" placeholder="Cargo / Função (ex: Auxiliar de Cozinha)">
-    <input class="fi" id="sf-mat" placeholder="Matrícula (opcional)">
-    <select class="fi" id="sf-sched">
-      <option value="6x2">Escala 6×2 (trabalha 6, folga 2)</option>
-      <option value="5x1">Escala 5×1 (trabalha 5, folga 1)</option>
-      <option value="livre">Horário livre / definir manualmente</option>
-    </select>
-    <div style="font-size:11px;color:var(--tx3);margin-bottom:8px">Tipo de função (para distribuição de tarefas):</div>
-    <select class="fi" id="sf-type">
-      <option value="aux">Auxiliar de Cozinha (tarefas rotativas)</option>
-      <option value="pizza">Pizzaiolo (forno + massas)</option>
-      <option value="manual">Operacional / Manuseio (tarefas práticas)</option>
-    </select>
-    <button class="btn btn-p" onclick="saveNewStaff()" style="margin-top:4px">Adicionar Colaborador</button>
-    <button class="btn btn-s" onclick="closeStaffModal()" style="margin-top:6px">Cancelar</button>
+
+<!-- PAGE 1: TURNO -->
+<div class="page active" id="page-turno">
+  <div class="stats-row">
+    <div class="stat-card"><div class="stat-num" id="stat-presentes" style="color:var(--olive)">—</div><div class="stat-label">Presentes</div></div>
+    <div class="stat-card"><div class="stat-num" id="stat-abertura" style="color:var(--terra)">—</div><div class="stat-label">Abertura</div></div>
+    <div class="stat-card"><div class="stat-num" id="stat-folga" style="color:var(--text3)">—</div><div class="stat-label">Folgas</div></div>
   </div>
-</div>
-<!-- PAGE: TURNO -->
-<div class="pg on" id="pg-turno">
-  <div class="stats" id="statsEl"></div>
-  <div class="sec">Equipe do Turno</div>
-  <div class="card" id="staffCard"></div>
-  <div class="sec">Horários do Turno</div>
+  <div class="section-title">Equipe do Turno</div>
+  <div class="card"><div class="staff-list" id="staffList"></div></div>
+  <div class="section-title">Horários</div>
   <div class="card">
-    <div id="tlEl"></div>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot" style="background:rgba(129,178,154,0.2)">🟢</div><div class="tl-content"><div class="tl-time">15:30</div><div class="tl-text">Início do turno — toda a equipe presente</div></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:rgba(224,122,95,0.2)">⚙️</div><div class="tl-content"><div class="tl-time">15:30–17:30</div><div class="tl-text">Preparação — cada um na sua estação</div></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:rgba(91,141,239,0.2)">🍽️</div><div class="tl-content"><div class="tl-time">17:30–18:30</div><div class="tl-text">Intervalo — exceto pizzaiolo de abertura</div></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:rgba(129,178,154,0.2)">📢</div><div class="tl-content"><div class="tl-time">18:30–19:00</div><div class="tl-text">Retorno + briefing pré-serviço</div></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:rgba(242,204,143,0.2)">🔓</div><div class="tl-content"><div class="tl-time">19:00</div><div class="tl-text">Abertura ao público</div></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:rgba(224,122,95,0.2)">🚪</div><div class="tl-content"><div class="tl-time">22:00</div><div class="tl-text">Saída do pizzaiolo de abertura — passagem de serviço</div></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:rgba(160,150,140,0.15)">🔒</div><div class="tl-content"><div class="tl-time">23:00–23:30</div><div class="tl-text">Fechamento + limpeza + HACCP</div></div></div>
+    </div>
   </div>
-  <div class="sec">⚠ HACCP — Permanente</div>
-  <div class="hb">
-    <div class="hbt">🌡️ GAMBERÃO (2,5kg) + FILÉ MIGNON</div>
-    <div class="hr"><b>16:20</b>Cozinhar TUDO. Mín. 70°C interno. Etiquetar com hora imediatamente.</div>
-    <div class="hr"><b>FRIGO</b>Contenitores fechados → refrigerar ≤5°C. Nunca manter quente.</div>
-    <div class="hr"><b>30min</b>Checar temperatura. Máx. 2h30 fora do frigo. Após: DESCARTAR.</div>
-    <div class="hr"><b>FIM</b>Sobras do turno: DESCARTAR. Nunca recongelar.</div>
+  <div class="section-title">⚠ HACCP — Alerta do Turno</div>
+  <div class="haccp-banner">
+    <div class="haccp-title">🌡️ GAMBERÃO (2,5kg) e FILÉ MIGNON</div>
+    <div class="haccp-rule"><b>16:20</b>Cozinhar TUDO. Temp. interna mín. 70°C. Etiquetar com hora.</div>
+    <div class="haccp-rule"><b>IMEDIATO</b>Colocar em contenitores e REFRIGERAR (≤5°C). Não manter quente.</div>
+    <div class="haccp-rule"><b>A cada 30min</b>Verificar temp no frigo. Máx. 2h30 fora. Após: DESCARTAR.</div>
+    <div class="haccp-rule"><b>FIM</b>Toda sobra ao final do turno: DESCARTAR. Nunca recongelar.</div>
   </div>
-  <div class="sec">Checklist do Turno</div>
+  <div class="section-title">Checklist do Turno</div>
   <div class="card">
-    <div id="checkEl"></div>
-    <button class="lnk" onclick="rstCheck()" style="display:block;margin-top:8px;width:100%;text-align:center">↺ Reiniciar para amanhã</button>
+    <div class="checklist" id="checklistEl"></div>
+    <button class="reset-btn" onclick="resetChecklist()" style="margin-top:10px;width:100%;text-align:center">↺ Reiniciar checklist para amanhã</button>
   </div>
 </div>
-<!-- PAGE: TAREFAS -->
-<div class="pg" id="pg-tarefas">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-    <div class="sec" style="margin:0">Rotação — Dia <span id="rotDayLbl" style="color:var(--bl)">1</span></div>
-    <div style="display:flex;gap:6px">
-      <button class="sb" onclick="changeRot(-1)">◀</button>
-      <button class="sb" onclick="changeRot(1)">▶</button>
-    </div>
+
+<!-- PAGE 2: PEDIDO -->
+<div class="page" id="page-pedido">
+  <div class="card" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+    <span style="font-size:13px;color:var(--text2);font-weight:700">Dias entre entregas:</span>
+    <input type="number" class="dias-input" id="diasEntrega" value="3.5" min="1" max="14" step="0.5" oninput="recalcAll()">
+    <span style="font-size:12px;color:var(--text3)">← altere se mudar</span>
   </div>
-  <div class="rot-banner" id="rotBanner"></div>
-  <div class="sec" style="margin-top:4px">Tarefas de Hoje — por Colaborador</div>
-  <div id="taskList"></div>
-</div>
-<!-- PAGE: PRODUÇÃO -->
-<div class="pg" id="pg-prod">
-  <div class="card">
-    <div style="font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:1.5px;color:var(--tx3);text-transform:uppercase;margin-bottom:10px">Volume Planejado</div>
-    <div class="prod-in">
-      <div class="pi"><label>Pizzas G</label><input type="number" id="pG" value="84" min="0" oninput="calcProd()"><span>grande</span></div>
-      <div class="pi"><label>Pizzas M</label><input type="number" id="pM" value="36" min="0" oninput="calcProd()"><span>média</span></div>
-      <div class="pi"><label>Entradas</label><input type="number" id="pE" value="9" min="0" oninput="calcProd()"><span>porções</span></div>
-    </div>
-    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:4px">
-      <span style="font-size:13px;color:var(--tx2)">Total: <b id="totPizzas" style="color:var(--gd);font-family:'Oswald',sans-serif;font-size:20px">120</b> pizzas</span>
-      <div style="display:flex;gap:5px">
-        <button class="sb" onclick="setP(80)">80</button>
-        <button class="sb" onclick="setP(100)">100</button>
-        <button class="sb" onclick="setP(120)">120</button>
-        <button class="sb" onclick="setP(140)">140</button>
-      </div>
-    </div>
+  <div style="padding:0 4px;margin-bottom:12px;font-size:12px;color:var(--text3);line-height:1.6">
+    <b style="color:var(--gold)">Qtd/Turno</b> = base | <b style="color:var(--blue)">Período</b> = Qtd×dias | <b style="color:var(--terra)">Estoque</b> = atual | <b style="color:var(--olive)">Pedir</b> = Período−Estoque
   </div>
-  <div id="prodSummary" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px"></div>
-  <div style="display:grid;grid-template-columns:1fr 54px 54px 60px 54px;gap:3px;padding:5px 10px;margin-bottom:4px">
-    <div style="font-size:9px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.5px">Ingrediente</div>
-    <div style="font-size:9px;font-weight:700;color:var(--gd);text-align:center;text-transform:uppercase;letter-spacing:.4px">G/pz.G</div>
-    <div style="font-size:9px;font-weight:700;color:var(--ye);text-align:center;text-transform:uppercase;letter-spacing:.4px">G/pz.M</div>
-    <div style="font-size:9px;font-weight:700;color:var(--ol);text-align:center;text-transform:uppercase;letter-spacing:.4px">Necessário</div>
-    <div style="font-size:9px;font-weight:700;color:var(--te);text-align:center;text-transform:uppercase;letter-spacing:.4px">Estoque</div>
-  </div>
-  <div id="stationsEl"></div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
-    <button class="btn btn-wa" onclick="waProdOrder()" style="font-size:13px;padding:11px">
-      <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Pedir Faltantes
-    </button>
-    <button class="btn btn-s" onclick="rstProdStock()" style="font-size:12px;padding:11px">↺ Resetar Estoque</button>
-  </div>
-</div>
-<!-- PAGE: PEDIDO -->
-<div class="pg" id="pg-pedido">
-  <div class="card" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px">
-    <span style="font-size:12px;color:var(--tx2);font-weight:700">Dias entre entregas:</span>
-    <input type="number" id="diasIn" value="3.5" min="1" max="14" step="0.5"
-      style="background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--r2);padding:7px 10px;color:var(--gd);font-size:16px;font-weight:700;text-align:center;width:68px;font-family:'DM Sans';-moz-appearance:textfield"
-      oninput="rcOrd()">
-    <span style="font-size:11px;color:var(--tx3)">Pedir = (Qtd×dias) − Estoque</span>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:12px;text-align:center;font-size:10px;font-weight:700">
-    <div style="background:rgba(232,184,109,.1);border-radius:6px;padding:5px;color:var(--gd)">Qtd/dia</div>
-    <div style="background:rgba(91,141,232,.1);border-radius:6px;padding:5px;color:var(--bl)">Período</div>
-    <div style="background:rgba(212,80,80,.1);border-radius:6px;padding:5px;color:var(--te)">Estoque</div>
-    <div style="background:rgba(122,171,138,.1);border-radius:6px;padding:5px;color:var(--ol)">Pedir</div>
-  </div>
-  <div id="fornBlocks"></div>
-  <div class="sec">🧹 Limpeza — extras</div>
-  <div class="card"><div id="exL"></div><button class="add-btn" onclick="addEx('L')">＋ Produto de limpeza</button></div>
-  <div class="sec">📦 Embalagens — extras</div>
-  <div class="card"><div id="exE"></div><button class="add-btn" onclick="addEx('E')">＋ Embalagem / descartável</button></div>
-  <div class="sec">🗒️ Outros</div>
-  <div class="card"><div id="exO"></div><button class="add-btn" onclick="addEx('O')">＋ Outro item</button></div>
+  <div id="orderCats"></div>
+  <div class="section-title">🧹 Produtos de Limpeza — extras</div>
+  <div class="card"><div class="extra-list" id="extraListLimpeza"></div><button class="add-extra-btn" onclick="addExtra('Limpeza')">＋ Adicionar produto de limpeza</button></div>
+  <div class="section-title">📦 Embalagens — extras</div>
+  <div class="card"><div class="extra-list" id="extraListEmbalagem"></div><button class="add-extra-btn" onclick="addExtra('Embalagem')">＋ Adicionar embalagem</button></div>
+  <div class="section-title">🗒️ Outros pedidos</div>
+  <div class="card"><div class="extra-list" id="extraListOutros"></div><button class="add-extra-btn" onclick="addExtra('Outros')">＋ Adicionar item</button></div>
   <div class="divider"></div>
-  <button class="btn btn-wa" onclick="waOrder()">
-    <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    Enviar via WhatsApp
+  <button class="btn btn-whatsapp" onclick="exportWhatsApp()">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Enviar Pedido via WhatsApp
   </button>
-  <button class="btn btn-s" onclick="rstStock()" style="margin-top:6px;font-size:12px;padding:9px">↺ Resetar estoques</button>
+  <button class="btn btn-secondary" onclick="resetOrder()" style="margin-top:8px">↺ Resetar estoques</button>
 </div>
-<!-- PAGE: ESCALA -->
-<div class="pg" id="pg-escala">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-    <div class="sec" style="margin:0">Fevereiro 2026</div>
-    <div style="display:flex;gap:6px">
-      <button class="sb" onclick="genSched()" style="font-size:10px;padding:5px 9px">🗓 Auto</button>
-      <button class="sb" onclick="openStaffModal()" style="font-size:10px;padding:5px 9px;color:var(--ol);border-color:var(--ol)">＋ Staff</button>
-    </div>
-  </div>
-  <div style="font-size:11px;color:var(--tx3);margin-bottom:10px">Toque na célula: P → F → AB → AF</div>
-  <div class="sch-wrap"><div id="schGrid"></div></div>
-  <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
-    <div style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--tx2)"><div style="width:18px;height:12px;background:rgba(122,171,138,.18);border-radius:2px"></div>P</div>
-    <div style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--tx2)"><div style="width:18px;height:12px;background:rgba(90,82,72,.18);border-radius:2px"></div>F</div>
-    <div style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--tx2)"><div style="width:18px;height:12px;background:rgba(212,114,74,.18);border-radius:2px"></div>AB</div>
-    <div style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--tx2)"><div style="width:18px;height:12px;background:rgba(212,168,74,.14);border-radius:2px"></div>AF</div>
+
+<!-- PAGE 3: ESCALA -->
+<div class="page" id="page-escala">
+  <div class="section-title">Fevereiro 2026 — Escala da Cozinha</div>
+  <div style="font-size:11px;color:var(--text3);margin-bottom:12px;padding:0 4px">Toque nas células para alternar P / F / AF / AB</div>
+  <button class="btn btn-secondary" onclick="generateAutoSchedule()" style="margin-bottom:12px">🗓 Gerar Escala Automática</button>
+  <div style="overflow-x:auto;padding-bottom:8px"><div id="scheduleGrid" style="min-width:700px"></div></div>
+  <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2)"><div style="width:24px;height:16px;background:rgba(129,178,154,0.2);border-radius:3px"></div> P = Presente</div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2)"><div style="width:24px;height:16px;background:rgba(160,150,140,0.15);border-radius:3px"></div> F = Folga</div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2)"><div style="width:24px;height:16px;background:rgba(242,204,143,0.2);border-radius:3px"></div> AF = Férias</div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2)"><div style="width:24px;height:16px;background:rgba(224,122,95,0.2);border-radius:3px"></div> AB = Abertura</div>
   </div>
   <div class="divider"></div>
-  <div class="hb" style="border-color:rgba(91,141,232,.25);background:rgba(91,141,232,.05)">
-    <div class="hbt" style="color:var(--bl)">🔍 VAGA: STEWARD / LAVALOUÇAS</div>
-    <div class="hr" style="color:#90b8ff;border-color:rgba(91,141,232,.1)"><b style="color:var(--bl)">CARGO</b>Turno 15:30–23:45 · Escala 6×2</div>
-    <div class="hr" style="color:#90b8ff;border-color:rgba(91,141,232,.1)"><b style="color:var(--bl)">RESP.</b>Marcos Vinicius F. da Conceição</div>
-    <div class="hr" style="color:#90b8ff;border-color:rgba(91,141,232,.1)"><b style="color:var(--bl)">STATUS</b>Aguardando candidatos</div>
+  <div class="section-title">Vaga Aberta</div>
+  <div class="haccp-banner" style="border-color:rgba(91,141,239,0.3);background:rgba(91,141,239,0.08)">
+    <div class="haccp-title" style="color:var(--blue)">🔍 STEWARD / LAVALOUÇAS</div>
+    <div class="haccp-rule" style="color:#90b8ff;border-color:rgba(91,141,239,0.15)"><b style="color:var(--blue)">CARGO</b>Steward — turno 15:30–23:45, escala 6×2</div>
+    <div class="haccp-rule" style="color:#90b8ff;border-color:rgba(91,141,239,0.15)"><b style="color:var(--blue)">RESP.</b>Marcos Vinicius Ferreira da Conceição</div>
+    <div class="haccp-rule" style="color:#90b8ff;border-color:rgba(91,141,239,0.15)"><b style="color:var(--blue)">STATUS</b>Aguardando candidatos</div>
   </div>
 </div>
-<!-- PAGE: MENU -->
-<div class="pg" id="pg-menu">
-  <div class="sec">Cardápio — Padrão Visual</div>
+
+<!-- PAGE 4: TAREFAS -->
+<div class="page" id="page-tarefas">
+  <div class="section-title">Selecionar colaborador</div>
+  <div class="toggle-row" id="personToggle"></div>
+  <div id="taskCards"></div>
+</div>
+
+<!-- PAGE 5: MENU -->
+<div class="page" id="page-menu">
+  <div class="section-title">Cardápio — Padrão Visual</div>
   <div class="menu-grid" id="menuGrid"></div>
-  <div class="sec">➕ Adicionar Item</div>
+  <div class="section-title">➕ Adicionar Item ao Cardápio</div>
   <div class="card">
-    <input class="fi" id="mfN" placeholder="Nome do prato">
-    <input class="fi" id="mfD" placeholder="Descrição curta">
-    <input class="fi" id="mfC" placeholder="Categoria (ex: Pizza Clássica, Entrada, Sobremesa)">
-    <input class="fi" id="mfP" placeholder="URL da foto (opcional)">
-    <input class="fi" id="mfE" placeholder="Emoji (ex: 🍕)">
-    <textarea class="fta" id="mfS" placeholder="Padrão: gramagens, montagem, temperatura, finishing..."></textarea>
-    <button class="btn btn-p" onclick="addMenuItem()">Adicionar ao Cardápio</button>
+    <input class="form-input" id="menuFormName" placeholder="Nome do prato (ex: Pizza Margherita)">
+    <input class="form-input" id="menuFormDesc" placeholder="Descrição curta">
+    <input class="form-input" id="menuFormCat" placeholder="Categoria (ex: Pizza Clássica, Entrada, Sobremesa)">
+    <input class="form-input" id="menuFormPhoto" placeholder="URL da foto (ex: https://i.imgur.com/xxx.jpg)">
+    <input class="form-input" id="menuFormEmoji" placeholder="Emoji (se não tiver foto, ex: 🍕)">
+    <textarea class="form-textarea" id="menuFormStandard" placeholder="Padrão de apresentação: gramagens, montagem, temperatura, finishing..."></textarea>
+    <button class="btn btn-primary" onclick="addMenuItem()">Adicionar ao Cardápio</button>
   </div>
 </div>
-<nav class="bnav">
-  <button class="nb on" onclick="nav('turno',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Turno
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <button class="nav-btn active" onclick="showPage('turno',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Turno
   </button>
-  <button class="nb" onclick="nav('tarefas',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Tarefas
+  <button class="nav-btn" onclick="showPage('pedido',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+    Pedido
   </button>
-  <button class="nb" onclick="nav('prod',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Produção
+  <button class="nav-btn" onclick="showPage('escala',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    Escala
   </button>
-  <button class="nb" onclick="nav('pedido',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39A2 2 0 009.68 16h9.72a2 2 0 002-1.61L23 6H6"/></svg>Pedido
+  <button class="nav-btn" onclick="showPage('tarefas',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+    Tarefas
   </button>
-  <button class="nb" onclick="nav('escala',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Escala
-  </button>
-  <button class="nb" onclick="nav('menu',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 6v6l4 2"/></svg>Menu
+  <button class="nav-btn" onclick="showPage('menu',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 6v6l4 2"/></svg>
+    Menu
   </button>
 </nav>
+
 <script>
-// ═══════════════════════════════════════════════
-// DATA
-// ═══════════════════════════════════════════════
-const STAFF = [
-  {id:'stefano',   name:'Stefano Pecoraro',               role:'Pizzaiolo Especialista', color:'#81b29a', initial:'SP', isPizza:true,  defaultAb:true},
-  {id:'wanderson', name:'Wanderson Alves Cardoso',         role:'Pizzaiolo',              color:'#81b29a', initial:'WA', isPizza:true,  defaultAb:false},
-  {id:'gilberto',  name:'Gilberto de Jesus Moreira',       role:'1º Auxiliar — Banco',    color:'#e07a5f', initial:'GM', isPizza:false, defaultAb:false},
-  {id:'raimundojr',name:'Raimundo Jr Sampaio',             role:'Auxiliar — Zona Quente', color:'#e05555', initial:'RJ', isPizza:false, defaultAb:false},
-  {id:'stephany',  name:'Stephany',                        role:'Auxiliar — Doces/Etiq.', color:'#9b72cf', initial:'ST', isPizza:false, defaultAb:false},
-  {id:'joaov',     name:'João Victor',                     role:'Auxiliar — Zona Fria',   color:'#5b8def', initial:'JV', isPizza:false, defaultAb:false},
-  {id:'raimundo',  name:'Raimundo Lima Filho',             role:'Pizzaiolo (AF)',          color:'#706860', initial:'RL', isPizza:true,  defaultAb:false},
+const STAFF=[
+  {id:'stefano',   name:'Stefano Pecoraro',         role:'Pizzaiolo Especialista', color:'#81b29a',initial:'SP',isPizza:true, defaultAb:true, sched:'6x2',off:0},
+  {id:'wanderson', name:'Wanderson Alves Cardoso',   role:'Pizzaiolo',              color:'#81b29a',initial:'WA',isPizza:true, defaultAb:false,sched:'6x2',off:3},
+  {id:'gilberto',  name:'Gilberto de Jesus Moreira', role:'1º Auxiliar — Banco',    color:'#e07a5f',initial:'GM',isPizza:false,defaultAb:false,sched:'6x2',off:1},
+  {id:'raimundojr',name:'Raimundo Jr Sampaio',       role:'Auxiliar — Zona Quente', color:'#e05555',initial:'RJ',isPizza:false,defaultAb:false,sched:'5x1',off:0},
+  {id:'stephany',  name:'Stephany',                  role:'Auxiliar — Doces/Etiq.', color:'#9b72cf',initial:'ST',isPizza:false,defaultAb:false,sched:'5x1',off:2},
+  {id:'joaov',     name:'João Victor',               role:'Auxiliar — Zona Fria',   color:'#5b8def',initial:'JV',isPizza:false,defaultAb:false,sched:'5x1',off:4},
+  {id:'raimundo',  name:'Raimundo Lima Filho',       role:'Pizzaiolo (AF)',          color:'#706860',initial:'RL',isPizza:true, defaultAb:false,sched:'af', off:0},
 ];
 
-const TASKS = {
-  stefano: {
-    color:'#81b29a',
-    prep:[
-      {t:'15:30–15:45', d:'Ligar forno (meta 380–420°C); verificar temperatura dos frigoríficos; comunicar 86-list para toda a equipe'},
-      {t:'15:45–16:15', d:'COM GILBERTO: montar banco pizza — todos os GNs nas posições fixas (GN 1.1 → GN 6.12)'},
-      {t:'16:15–16:45', d:'MASSAS: pesar panetti M (280g) e G (380g); organizar na câmara de fermentação em ordem cronológica'},
-      {t:'16:45–17:15', d:'MOLHO DE TOMATE: produzir lote completo (~15L). CRÍTICO — sem molho não se abre'},
-      {t:'17:15–17:30', d:'Verificação final do banco; bordas recheadas prontas; briefing antes do intervalo'},
-    ],
-    servico:[
-      {t:'18:30–19:00', d:'Briefing pré-serviço — posições, 86-list, ritmo esperado'},
-      {t:'19:00–22:00', d:'FORNEIRO: enfornar pizzas na sequência; supervisionar qualidade de CADA pizza'},
-      {t:'22:00',       d:'🚪 Passagem de serviço ao segundo pizzaiolo. SAÍDA.'},
-    ]
-  },
-  gilberto: {
-    color:'#e07a5f',
-    prep:[
-      {t:'15:30–15:45', d:'Verificar estoque de todos os ingredientes do banco; anotar faltas; avisar Stefano'},
-      {t:'15:45–16:15', d:'COM STEFANO: montar banco — GN 1.1 muçarela · GN 2.1 molho · GN 3.1 calabresa · GN 3.2 bacon · GN 3.3 parmesão · GNs 6.1–6.12'},
-      {t:'16:15–16:45', d:'Apoiar pesagem dos panetti; organizar bandejas de fermentação com etiqueta de data/hora'},
-      {t:'16:45–17:15', d:'Catupiry em sac-à-poche (6 bisnagas); preparar bordas recheadas; confirmar muçarela suficiente'},
-      {t:'17:15–17:30', d:'Verificação final: cada GN no lugar, coberto, etiquetado. Nenhum GN abaixo da metade. INTERVALO.'},
-    ],
-    servico:[
-      {t:'18:30–23:00', d:'POSIÇÃO FIXA NO BANCO: abrir massa, montar pizza conforme comanda, passar ao forneiro; avisar João Victor quando GN em 1/3'},
-      {t:'23:00–23:30', d:'Fechar banco: cobrir e etiquetar TODOS os GNs; limpar bancada, pedra, pás e utensílios'},
-    ]
-  },
-  raimundojr: {
-    color:'#e05555',
-    prep:[
-      {t:'15:30–15:45', d:'Ligar fogões e chapas; verificar estoque de frango, gamberão (2,5kg), filé mignon, carne seca'},
-      {t:'15:45–16:20', d:'Cozinhar e desfiar frango; fritar e escorrer bacon; dessalgar e desfiar carne seca'},
-      {t:'16:20–16:55', d:'⚠ GAMBERÃO (2,5kg completa): temperar → cozinhar → contenitores tampados → refrigerar ≤5°C. ETIQUETAR COM HORA.'},
-      {t:'16:55–17:20', d:'⚠ FILÉ MIGNON (toda a peça): fatiar → temperar → cozinhar → contenitores tampados → refrigerar ≤5°C. ETIQUETAR COM HORA. Depois: saltear cogumelos → resfriar no frigo'},
-      {t:'17:20–17:30', d:'Mise en place entradas: burrata em água fria; baguetes fatiadas; mostarda e mel; pesto. INTERVALO.'},
-    ],
-    servico:[
-      {t:'18:30–23:00', d:'ESTAÇÃO ENTRADAS: bruschette, Salada da Casa, Burrata; servir gamberão e filé do frigo'},
-      {t:'A cada 30min', d:'⚠ Verificar temperatura no frigo. Abaixo 5°C mantido. Mais de 2h30 fora → DESCARTAR e avisar Stefano'},
-      {t:'23:00–23:30', d:'Sanificar zona quente; DESCARTAR gamberão e filé restantes; lavar panelas e utensílios'},
-    ]
-  },
-  stephany: {
-    color:'#9b72cf',
-    prep:[
-      {t:'15:30–15:50', d:'Verificar TODOS os produtos nos frigoríficos; remover vencidos ou sem etiqueta; registrar temp no caderno HACCP'},
-      {t:'15:50–16:25', d:'DOCES: abastecer bisnagas (Nutella, pistache, doce de leite, leite condensado); organizar contenitores de granulado, pistache, paçoca; verificar sorvete (−18°C)'},
-      {t:'16:25–16:55', d:'Fatiar brownies; preparar massa de churros; chocolate em banho-maria; triturar Sonho de Valsa e castanha'},
-      {t:'16:55–17:15', d:'Lavar TODOS os utensílios da prep; verificar detergente e enxaguante'},
-      {t:'17:15–17:30', d:'Etiquetar tudo com data e hora. INTERVALO.'},
-    ],
-    servico:[
-      {t:'18:30–23:00', d:'DOCES: fritar churros ao pedido (3 unid); brownie com sorvete e paçoca; pizzas doces; LAVAGEM CONTÍNUA'},
-      {t:'18:30–23:00', d:'ETIQUETAGEM: toda preparação aberta recebe etiqueta nova; monitorar etiquetas de gamberão e filé com Raimundo Jr'},
-      {t:'23:00–23:30', d:'Fechar doces; limpeza profunda da lavagem; registro final no caderno HACCP'},
-    ]
-  },
-  joaov: {
-    color:'#5b8def',
-    prep:[
-      {t:'15:30–15:40', d:'Retirar ingredientes do frigo respeitando FIFO; verificar datas de validade'},
-      {t:'15:40–16:10', d:'VEGETAIS: tomate cereja ao meio (GN 6.11); julienne cebola roxa (GN 6.12); fatiar cebola branca (GN 6.7); lavar e centrifugar rúcula + manjericão'},
-      {t:'16:10–16:35', d:'FRIOS: calabresa 3mm (GN 3.1); pepperoni; presunto de parma; organizar contenitores de palmito, milho, azeitonas, berinjela, tomate seco'},
-      {t:'16:35–17:00', d:'QUEIJOS: organizar contenitores de brie, gorgonzola, atum escorrido, peito de peru, alho-poró em rodelas'},
-      {t:'17:00–17:30', d:'Abastecer TODOS os GNs frios; cobrir e etiquetar reservas no frigo. INTERVALO.'},
-    ],
-    servico:[
-      {t:'18:30–23:00', d:'RESTOCK a cada 20 minutos: repor quando GN chegar a 1/3; banana e pêra somente na hora do pedido'},
-      {t:'23:00–23:30', d:'Limpar área fria; etiquetar e guardar sobras; varrer e lavar piso'},
-    ]
-  },
-  wanderson: {
-    color:'#81b29a',
-    prep:[
-      {t:'15:30–15:45', d:'Receber briefing de Stefano; verificar temperaturas e equipamentos da cozinha'},
-      {t:'15:45–17:30', d:'Apoiar na preparação conforme escala do dia — banco pizza, massas ou zona fria conforme necessidade'},
-    ],
-    servico:[
-      {t:'18:30–23:00', d:'Posição no forno conforme escala — enfornar pizzas, supervisionar saídas; coordenar com banco'},
-      {t:'22:00 ou 23:30', d:'Saída conforme horário definido. Passagem de serviço completa se último pizzaiolo.'},
-    ]
-  },
-  raimundo: {
-    color:'#706860',
-    prep: [{t:'—', d:'Raimundo Lima Filho in FÉRIAS (AF). Sem tarefas este mês.'}],
-    servico: []
-  }
+const TASKS={
+  stefano:{color:'#81b29a',prep:[
+    {t:'15:30–15:45',d:'Ligar forno (meta 380–420°C); verificar temperatura dos frigoríficos; comunicar 86-list para toda a equipe'},
+    {t:'15:45–16:15',d:'COM GILBERTO: montar banco pizza — todos os GNs nas posições fixas (GN 1.1 → GN 6.12)'},
+    {t:'16:15–16:45',d:'MASSAS: pesar panetti M (280g) e G (380g); organizar na câmara de fermentação em ordem cronológica'},
+    {t:'16:45–17:15',d:'MOLHO DE TOMATE: produzir lote completo (~15L). CRÍTICO — sem molho não se abre'},
+    {t:'17:15–17:30',d:'Verificação final do banco; bordas recheadas prontas; briefing antes do intervalo'},
+  ],servico:[
+    {t:'18:30–19:00',d:'Briefing pré-serviço — posições, 86-list, ritmo esperado'},
+    {t:'19:00–22:00',d:'FORNEIRO: enfornar pizzas na sequência; supervisionar qualidade de CADA pizza'},
+    {t:'22:00',d:'🚪 Passagem de serviço ao segundo pizzaiolo. SAÍDA.'},
+  ]},
+  gilberto:{color:'#e07a5f',prep:[
+    {t:'15:30–15:45',d:'Verificar estoque de todos os ingredientes do banco; anotar faltas; avisar Stefano'},
+    {t:'15:45–16:15',d:'COM STEFANO: montar banco — GN 1.1 muçarela · GN 2.1 molho · GN 3.1 calabresa · GN 3.2 bacon · GN 3.3 parmesão'},
+    {t:'16:15–16:45',d:'Apoiar pesagem dos panetti; organizar bandejas de fermentação com etiqueta de data/hora'},
+    {t:'16:45–17:15',d:'Catupiry em sac-à-poche (6 bisnagas); preparar bordas recheadas; confirmar muçarela suficiente'},
+    {t:'17:15–17:30',d:'Verificação final: cada GN no lugar, coberto, etiquetado. Nenhum GN abaixo da metade. INTERVALO.'},
+  ],servico:[
+    {t:'18:30–23:00',d:'POSIÇÃO FIXA NO BANCO: abrir massa, montar pizza conforme comanda, passar ao forneiro'},
+    {t:'23:00–23:30',d:'Fechar banco: cobrir e etiquetar TODOS os GNs; limpar bancada, pedra, pás e utensílios'},
+  ]},
+  raimundojr:{color:'#e05555',prep:[
+    {t:'15:30–15:45',d:'Ligar fogões e chapas; verificar estoque de frango, gamberão (2,5kg), filé mignon, carne seca'},
+    {t:'15:45–16:20',d:'Cozinhar e desfiar frango; fritar e escorrer bacon; dessalgar e desfiar carne seca'},
+    {t:'16:20–16:55',d:'⚠ GAMBERÃO (2,5kg): temperar → cozinhar 70°C → contenitores → REFRIGERAR (≤5°C). ETIQUETAR COM HORA.'},
+    {t:'16:55–17:20',d:'⚠ FILÉ MIGNON: fatiar → temperar → cozinhar 70°C → contenitores → REFRIGERAR (≤5°C). ETIQUETAR COM HORA.'},
+    {t:'17:20–17:30',d:'Mise en place entradas: burrata em água fria; baguetes fatiadas; mostarda e mel; pesto. INTERVALO.'},
+  ],servico:[
+    {t:'18:30–23:00',d:'ESTAÇÃO ENTRADAS: bruschette, Salada da Casa, Burrata; servir gamberão e filé do frigo'},
+    {t:'A cada 30min',d:'⚠ Verificar temperatura no frigo. Mais de 2h30 fora → DESCARTAR e avisar Stefano'},
+    {t:'23:00–23:30',d:'Sanificar zona quente; DESCARTAR gamberão e filé restantes; lavar panelas e utensílios'},
+  ]},
+  stephany:{color:'#9b72cf',prep:[
+    {t:'15:30–15:50',d:'Verificar TODOS os produtos nos frigoríficos; remover vencidos ou sem etiqueta; registrar temp no caderno HACCP'},
+    {t:'15:50–16:25',d:'DOCES: abastecer bisnagas (Nutella, pistache, doce de leite, leite condensado); porcionar granulado, pistache 20g, paçoca; verificar sorvete (−18°C)'},
+    {t:'16:25–16:55',d:'Fatiar brownies; preparar massa de churros; chocolate em banho-maria; triturar Sonho de Valsa e castanha'},
+    {t:'16:55–17:15',d:'Lavar TODOS os utensílios da prep; verificar detergente e enxaguante'},
+    {t:'17:15–17:30',d:'Etiquetar tudo com data e hora. INTERVALO.'},
+  ],servico:[
+    {t:'18:30–23:00',d:'DOCES: fritar churros ao pedido (3 unid); brownie com sorvete e paçoca; pizzas doces; LAVAGEM CONTÍNUA'},
+    {t:'18:30–23:00',d:'ETIQUETAGEM: toda preparação aberta recebe etiqueta nova; monitorar etiquetas com Raimundo Jr'},
+    {t:'23:00–23:30',d:'Fechar doces; limpeza profunda da lavagem; registro final no caderno HACCP'},
+  ]},
+  joaov:{color:'#5b8def',prep:[
+    {t:'15:30–15:40',d:'Retirar ingredientes do frigo respeitando FIFO; verificar datas de validade'},
+    {t:'15:40–16:10',d:'VEGETAIS: tomate cereja ao meio; julienne cebola roxa; fatiar cebola branca; lavar e centrifugar rúcula + manjericão'},
+    {t:'16:10–16:35',d:'FRIOS: calabresa 3mm; pepperoni; presunto de parma; presunto cotto; palmito 50g; milho; azeitonas; berinjela; tomate seco'},
+    {t:'16:35–17:00',d:'QUEIJOS: brie 40g; gorgonzola 50g; atum escorrido 70g; peito de peru 60g; alho-poró em rodelas'},
+    {t:'17:00–17:30',d:'Abastecer TODOS os GNs frios; cobrir e etiquetar reservas no frigo. INTERVALO.'},
+  ],servico:[
+    {t:'18:30–23:00',d:'RESTOCK a cada 20 minutos: repor quando GN chegar a 1/3; banana e pêra somente na hora do pedido'},
+    {t:'23:00–23:30',d:'Limpar área fria; etiquetar e guardar sobras; varrer e lavar piso'},
+  ]},
+  wanderson:{color:'#81b29a',prep:[
+    {t:'15:30–15:45',d:'Receber briefing de Stefano; verificar temperaturas e equipamentos da cozinha'},
+    {t:'15:45–17:30',d:'Apoiar na preparação conforme escala do dia — banco pizza, massas ou zona fria conforme necessidade'},
+  ],servico:[
+    {t:'18:30–23:00',d:'Posição no forno conforme escala — enfornar pizzas, supervisionar saídas; coordenar com banco'},
+    {t:'22:00 ou 23:30',d:'Saída conforme horário definido. Passagem de serviço completa se último pizzaiolo.'},
+  ]},
+  raimundo:{color:'#706860',prep:[{t:'—',d:'Raimundo Lima Filho em FÉRIAS (AF). Sem tarefas este mês.'}],servico:[]},
 };
 
-const ORDER_CATS = [
-  {
-    id:'base', emoji:'🌾', name:'Ingredientes Base — Massas e Molhos', color:'#81b29a',
-    items:[
-      {n:'Farinha de trigo (tipo 00)',       u:'kg',     q:18,   f:'Moinho'},
-      {n:'Sal refinado',                     u:'kg',     q:0.8,  f:'Distribuidor'},
-      {n:'Fermento biológico seco',          u:'g',      q:180,  f:'Distribuidor'},
-      {n:'Fermento biológico fresco',        u:'g',      q:300,  f:'Distribuidor'},
-      {n:'Açúcar refinado',                  u:'kg',     q:0.5,  f:'Distribuidor'},
-      {n:'Azeite de oliva extra virgem',     u:'litros', q:1.8,  f:'Importadora'},
-      {n:'Óleo de girassol / vegetal',       u:'litros', q:1.0,  f:'Distribuidor'},
-      {n:'Semolina (para abrir massa)',       u:'kg',     q:1.5,  f:'Moinho'},
-    ]
-  },
-  {
-    id:'queijos', emoji:'🧀', name:'Queijos', color:'#f2cc8f',
-    items:[
-      {n:'Muçarela ralada / fatiada',        u:'kg',     q:18,   f:'Laticínios'},
-      {n:'Parmesão (bloco)',                 u:'kg',     q:2.8,  f:'Laticínios'},
-      {n:'Catupiry (original)',              u:'kg',     q:3.5,  f:'Laticínios'},
-      {n:'Burrata de búfala',               u:'kg',     q:1.2,  f:'Laticínios ⚠ 2×/sem'},
-      {n:'Queijo Gorgonzola',               u:'kg',     q:0.7,  f:'Laticínios'},
-      {n:'Queijo Brie',                     u:'kg',     q:0.5,  f:'Laticínios'},
-      {n:'Cream cheese',                    u:'kg',     q:0.7,  f:'Laticínios'},
-      {n:'Cheddar (borda recheada)',         u:'kg',     q:0.8,  f:'Laticínios'},
-    ]
-  },
-  {
-    id:'proteinas', emoji:'🥩', name:'Proteínas e Frios', color:'#e05555',
-    items:[
-      {n:'Frango peito (cru p/ desfiar)',    u:'kg',     q:3.5,  f:'Frigorífico'},
-      {n:'Bacon',                           u:'kg',     q:1.5,  f:'Frigorífico'},
-      {n:'Linguiça Calabresa',              u:'kg',     q:2.0,  f:'Frigorífico'},
-      {n:'Pepperoni',                       u:'kg',     q:1.2,  f:'Frigorífico'},
-      {n:'Presunto de Parma',               u:'kg',     q:0.8,  f:'Frios premium'},
-      {n:'Presunto cotto',                  u:'kg',     q:1.0,  f:'Frios premium'},
-      {n:'Carne seca (peça)',               u:'kg',     q:1.8,  f:'Frigorífico'},
-      {n:'Filé mignon (peça)',              u:'kg',     q:1.5,  f:'Frigorífico ⚠'},
-      {n:'Camarão limpo (busta 2,5kg)',     u:'kg',     q:2.5,  f:'Peixaria ⚠'},
-      {n:'Peito de peru defumado',          u:'kg',     q:0.6,  f:'Frios premium'},
-      {n:'Atum em conserva',               u:'kg',     q:0.7,  f:'Distribuidor'},
-    ]
-  },
-  {
-    id:'vegetais', emoji:'🥬', name:'Vegetais e Hortifruti', color:'#81b29a',
-    items:[
-      {n:'Tomate cereja',                   u:'kg',     q:3.0,  f:'Hortifruti ⚠ 2×/sem'},
-      {n:'Rúcula (maço)',                   u:'maço',   q:3,    f:'Hortifruti'},
-      {n:'Manjericão fresco (maço)',         u:'maço',   q:2,    f:'Hortifruti'},
-      {n:'Hortelã fresca (maço)',            u:'maço',   q:1,    f:'Hortifruti'},
-      {n:'Cebola branca',                   u:'kg',     q:1.5,  f:'Hortifruti'},
-      {n:'Cebola roxa',                     u:'kg',     q:1.0,  f:'Hortifruti'},
-      {n:'Pimentão (vermelho/verde)',        u:'kg',     q:1.0,  f:'Hortifruti'},
-      {n:'Milho verde (conserva)',           u:'kg',     q:1.5,  f:'Distribuidor'},
-      {n:'Palmito (conserva)',              u:'kg',     q:1.5,  f:'Distribuidor'},
-      {n:'Azeitona preta',                  u:'kg',     q:0.8,  f:'Distribuidor'},
-      {n:'Azeitona verde',                  u:'kg',     q:0.8,  f:'Distribuidor'},
-      {n:'Berinjela em conserva',           u:'kg',     q:0.6,  f:'Distribuidor'},
-      {n:'Tomate seco (conserva)',          u:'kg',     q:0.4,  f:'Distribuidor'},
-      {n:'Alho-poró',                       u:'kg',     q:0.5,  f:'Hortifruti'},
-      {n:'Shiitake fresco',                 u:'kg',     q:0.6,  f:'Hortifruti ⚠ 2×/sem'},
-      {n:'Shimeji fresco',                  u:'kg',     q:0.5,  f:'Hortifruti ⚠ 2×/sem'},
-      {n:'Pêra',                            u:'kg',     q:0.4,  f:'Hortifruti'},
-      {n:'Banana',                          u:'kg',     q:1.0,  f:'Hortifruti'},
-      {n:'Abobrinha',                       u:'kg',     q:0.5,  f:'Hortifruti'},
-      {n:'Ovos',                            u:'unid',   q:12,   f:'Distribuidor'},
-      {n:'Castanha-do-pará',                u:'kg',     q:0.3,  f:'Distribuidor'},
-      {n:'Nozes',                           u:'kg',     q:0.5,  f:'Distribuidor'},
-      {n:'Pistache in natura',              u:'kg',     q:0.3,  f:'Especializado'},
-      {n:'Alho',                            u:'kg',     q:0.4,  f:'Hortifruti'},
-    ]
-  },
-  {
-    id:'molhos', emoji:'🌿', name:'Molhos, Temperos e Conservas', color:'#5b8def',
-    items:[
-      {n:'Tomate pelado / passata',         u:'kg',     q:8.0,  f:'Distribuidor'},
-      {n:'Azeite de pequi artesanal',       u:'litros', q:0.3,  f:'Especializado'},
-      {n:'Geleia de damasco',              u:'kg',     q:0.4,  f:'Distribuidor'},
-      {n:'Mostarda',                        u:'kg',     q:0.3,  f:'Distribuidor'},
-      {n:'Mel',                             u:'kg',     q:0.3,  f:'Distribuidor'},
-      {n:'Vinho branco seco',               u:'litros', q:0.5,  f:'Distribuidor'},
-      {n:'Orégano seco',                    u:'kg',     q:0.3,  f:'Distribuidor'},
-      {n:'Pimenta-do-reino',               u:'kg',     q:0.1,  f:'Distribuidor'},
-      {n:'Rapadura ralada',                 u:'kg',     q:0.3,  f:'Distribuidor'},
-      {n:'Alcachofra (conserva)',           u:'kg',     q:0.4,  f:'Distribuidor'},
-    ]
-  },
-  {
-    id:'doces', emoji:'🍰', name:'Doces e Confeitaria', color:'#9b72cf',
-    items:[
-      {n:'Nutella',                         u:'kg',     q:1.5,  f:'Distribuidor'},
-      {n:'Creme de pistache',               u:'kg',     q:0.8,  f:'Especializado'},
-      {n:'Doce de leite',                   u:'kg',     q:1.2,  f:'Laticínios'},
-      {n:'Leite condensado',               u:'kg',     q:1.0,  f:'Distribuidor'},
-      {n:'Chocolate ao leite (cobertura)', u:'kg',     q:0.8,  f:'Distribuidor'},
-      {n:'Chocolate granulado',            u:'kg',     q:0.4,  f:'Distribuidor'},
-      {n:'Sorvete de baunilha',            u:'litros', q:2.0,  f:'Distribuidor'},
-      {n:'Paçoca',                         u:'kg',     q:0.4,  f:'Distribuidor'},
-      {n:'Sonho de Valsa (biscoito)',       u:'kg',     q:0.4,  f:'Distribuidor'},
-      {n:'Canela em pó',                   u:'kg',     q:0.1,  f:'Distribuidor'},
-      {n:'Manteiga',                       u:'kg',     q:0.5,  f:'Laticínios'},
-      {n:'Farinha de trigo (doces)',        u:'kg',     q:1.0,  f:'Distribuidor'},
-      {n:'Cacau em pó',                    u:'kg',     q:0.3,  f:'Distribuidor'},
-    ]
-  },
-  {
-    id:'limpeza', emoji:'🧹', name:'Limpeza e Higiene', color:'#a8a090',
-    items:[
-      {n:'Detergente neutro',              u:'litro',  q:2,    f:'Distribuidor'},
-      {n:'Desengordurante',               u:'litro',  q:1,    f:'Distribuidor'},
-      {n:'Álcool 70%',                     u:'litro',  q:2,    f:'Distribuidor'},
-      {n:'Sabonete líquido (dispenser)',   u:'litro',  q:1,    f:'Distribuidor'},
-      {n:'Esponja / bucha',               u:'unid',   q:6,    f:'Distribuidor'},
-      {n:'Pano de limpeza / pano chão',   u:'unid',   q:4,    f:'Distribuidor'},
-      {n:'Saco de lixo (fardo)',           u:'fardo',  q:1,    f:'Distribuidor'},
-    ]
-  },
-  {
-    id:'embalagem', emoji:'📦', name:'Embalagens e Descartáveis', color:'#e07a5f',
-    items:[
-      {n:'Filme PVC (rolo)',               u:'rolo',   q:2,    f:'Distribuidor'},
-      {n:'Luvas descartáveis (caixa)',     u:'caixa',  q:3,    f:'Distribuidor'},
-      {n:'Papel toalha (fardo)',           u:'fardo',  q:1,    f:'Distribuidor'},
-      {n:'Etiquetas para alimentos (rolo)',u:'rolo',   q:1,    f:'Distribuidor'},
-      {n:'Caixas pizza G',                u:'unid',   q:90,   f:'Embalagens'},
-      {n:'Caixas pizza M',                u:'unid',   q:40,   f:'Embalagens'},
-      {n:'Saquinhos / sacolas',           u:'unid',   q:50,   f:'Embalagens'},
-    ]
-  },
+const ORDER_CATS=[
+  {id:'base',emoji:'🌾',name:'Ingredientes Base — Massas e Molhos',color:'#81b29a',items:[
+    {n:'Farinha de trigo (tipo 00)',u:'kg',q:18,f:'Moinho'},
+    {n:'Sal refinado',u:'kg',q:0.8,f:'Distribuidor'},
+    {n:'Fermento biológico seco',u:'g',q:180,f:'Distribuidor'},
+    {n:'Fermento biológico fresco',u:'g',q:300,f:'Distribuidor'},
+    {n:'Açúcar refinado',u:'kg',q:0.5,f:'Distribuidor'},
+    {n:'Azeite de oliva extra virgem',u:'litros',q:1.8,f:'Importadora'},
+    {n:'Óleo de girassol / vegetal',u:'litros',q:1.0,f:'Distribuidor'},
+    {n:'Semolina (para abrir massa)',u:'kg',q:1.5,f:'Moinho'},
+  ]},
+  {id:'queijos',emoji:'🧀',name:'Queijos',color:'#f2cc8f',items:[
+    {n:'Muçarela ralada / fatiada',u:'kg',q:18,f:'Laticínios'},
+    {n:'Parmesão (bloco)',u:'kg',q:2.8,f:'Laticínios'},
+    {n:'Catupiry (original)',u:'kg',q:3.5,f:'Laticínios'},
+    {n:'Burrata de búfala',u:'kg',q:1.2,f:'Laticínios ⚠ 2x/sem'},
+    {n:'Queijo Gorgonzola',u:'kg',q:0.7,f:'Laticínios'},
+    {n:'Queijo Brie',u:'kg',q:0.5,f:'Laticínios'},
+    {n:'Cream cheese',u:'kg',q:0.7,f:'Laticínios'},
+    {n:'Cheddar (borda recheada)',u:'kg',q:0.8,f:'Laticínios'},
+  ]},
+  {id:'proteinas',emoji:'🥩',name:'Proteínas e Frios',color:'#e05555',items:[
+    {n:'Frango peito (cru p/ desfiar)',u:'kg',q:3.5,f:'Frigorífico'},
+    {n:'Bacon',u:'kg',q:1.5,f:'Frigorífico'},
+    {n:'Linguiça Calabresa',u:'kg',q:2.0,f:'Frigorífico'},
+    {n:'Pepperoni',u:'kg',q:1.2,f:'Frigorífico'},
+    {n:'Presunto de Parma',u:'kg',q:0.8,f:'Frios premium'},
+    {n:'Presunto cotto',u:'kg',q:1.0,f:'Frios premium'},
+    {n:'Carne seca (peça)',u:'kg',q:1.8,f:'Frigorífico'},
+    {n:'Filé mignon (peça)',u:'kg',q:1.5,f:'Frigorífico ⚠'},
+    {n:'Camarão limpo (busta 2,5kg)',u:'kg',q:2.5,f:'Peixaria ⚠'},
+    {n:'Peito de peru defumado',u:'kg',q:0.6,f:'Frios premium'},
+    {n:'Atum em conserva',u:'kg',q:0.7,f:'Distribuidor'},
+  ]},
+  {id:'vegetais',emoji:'🥬',name:'Vegetais e Hortifruti',color:'#81b29a',items:[
+    {n:'Tomate cereja',u:'kg',q:3.0,f:'Hortifruti ⚠ 2x/sem'},
+    {n:'Rúcula (maço)',u:'maço',q:3,f:'Hortifruti'},
+    {n:'Manjericão fresco (maço)',u:'maço',q:2,f:'Hortifruti'},
+    {n:'Hortelã fresca (maço)',u:'maço',q:1,f:'Hortifruti'},
+    {n:'Cebola branca',u:'kg',q:1.5,f:'Hortifruti'},
+    {n:'Cebola roxa',u:'kg',q:1.0,f:'Hortifruti'},
+    {n:'Milho verde (conserva)',u:'kg',q:1.5,f:'Distribuidor'},
+    {n:'Palmito (conserva)',u:'kg',q:1.5,f:'Distribuidor'},
+    {n:'Azeitona preta',u:'kg',q:0.8,f:'Distribuidor'},
+    {n:'Berinjela em conserva',u:'kg',q:0.6,f:'Distribuidor'},
+    {n:'Tomate seco (conserva)',u:'kg',q:0.4,f:'Distribuidor'},
+    {n:'Alho-poró',u:'kg',q:0.5,f:'Hortifruti'},
+    {n:'Shiitake fresco',u:'kg',q:0.6,f:'Hortifruti ⚠ 2x/sem'},
+    {n:'Shimeji fresco',u:'kg',q:0.5,f:'Hortifruti ⚠ 2x/sem'},
+    {n:'Pêra',u:'kg',q:0.4,f:'Hortifruti'},
+    {n:'Banana',u:'kg',q:1.0,f:'Hortifruti'},
+    {n:'Ovos',u:'unid',q:12,f:'Distribuidor'},
+    {n:'Pistache in natura',u:'kg',q:0.3,f:'Especializado'},
+    {n:'Alho',u:'kg',q:0.4,f:'Hortifruti'},
+  ]},
+  {id:'molhos',emoji:'🌿',name:'Molhos, Temperos e Conservas',color:'#5b8def',items:[
+    {n:'Tomate pelado / passata',u:'kg',q:8.0,f:'Distribuidor'},
+    {n:'Azeite de pequi artesanal',u:'litros',q:0.3,f:'Especializado'},
+    {n:'Geleia de damasco',u:'kg',q:0.4,f:'Distribuidor'},
+    {n:'Mostarda',u:'kg',q:0.3,f:'Distribuidor'},
+    {n:'Mel',u:'kg',q:0.3,f:'Distribuidor'},
+    {n:'Vinho branco seco',u:'litros',q:0.5,f:'Distribuidor'},
+    {n:'Orégano seco',u:'kg',q:0.3,f:'Distribuidor'},
+    {n:'Pimenta-do-reino',u:'kg',q:0.1,f:'Distribuidor'},
+    {n:'Alcachofra (conserva)',u:'kg',q:0.4,f:'Distribuidor'},
+  ]},
+  {id:'doces',emoji:'🍰',name:'Doces e Confeitaria',color:'#9b72cf',items:[
+    {n:'Nutella',u:'kg',q:1.5,f:'Distribuidor'},
+    {n:'Creme de pistache',u:'kg',q:0.8,f:'Especializado'},
+    {n:'Doce de leite',u:'kg',q:1.2,f:'Laticínios'},
+    {n:'Leite condensado',u:'kg',q:1.0,f:'Distribuidor'},
+    {n:'Chocolate ao leite (cobertura)',u:'kg',q:0.8,f:'Distribuidor'},
+    {n:'Chocolate granulado',u:'kg',q:0.4,f:'Distribuidor'},
+    {n:'Sorvete de baunilha',u:'litros',q:2.0,f:'Distribuidor'},
+    {n:'Paçoca',u:'kg',q:0.4,f:'Distribuidor'},
+    {n:'Sonho de Valsa (biscoito)',u:'kg',q:0.4,f:'Distribuidor'},
+    {n:'Canela em pó',u:'kg',q:0.1,f:'Distribuidor'},
+    {n:'Manteiga',u:'kg',q:0.5,f:'Laticínios'},
+    {n:'Farinha de trigo (doces)',u:'kg',q:1.0,f:'Distribuidor'},
+    {n:'Cacau em pó',u:'kg',q:0.3,f:'Distribuidor'},
+  ]},
+  {id:'limpeza',emoji:'🧹',name:'Limpeza e Higiene',color:'#a8a090',items:[
+    {n:'Detergente neutro',u:'litro',q:2,f:'Distribuidor'},
+    {n:'Desengordurante',u:'litro',q:1,f:'Distribuidor'},
+    {n:'Álcool 70%',u:'litro',q:2,f:'Distribuidor'},
+    {n:'Sabonete líquido (dispenser)',u:'litro',q:1,f:'Distribuidor'},
+    {n:'Esponja / bucha',u:'unid',q:6,f:'Distribuidor'},
+    {n:'Saco de lixo (fardo)',u:'fardo',q:1,f:'Distribuidor'},
+  ]},
+  {id:'embalagem',emoji:'📦',name:'Embalagens e Descartáveis',color:'#e07a5f',items:[
+    {n:'Filme PVC (rolo)',u:'rolo',q:2,f:'Distribuidor'},
+    {n:'Luvas descartáveis (caixa)',u:'caixa',q:3,f:'Distribuidor'},
+    {n:'Papel toalha (fardo)',u:'fardo',q:1,f:'Distribuidor'},
+    {n:'Etiquetas para alimentos (rolo)',u:'rolo',q:1,f:'Distribuidor'},
+    {n:'Caixas pizza G',u:'unid',q:90,f:'Embalagens'},
+    {n:'Caixas pizza M',u:'unid',q:40,f:'Embalagens'},
+    {n:'Saquinhos / sacolas',u:'unid',q:50,f:'Embalagens'},
+  ]},
 ];
 
-// ─── STATE ───────────────────────────────────────
+const CHECKLIST_ITEMS=[
+  {id:'forno',label:'Stefano',text:'Ligar e calibrar forno (380–420°C)'},
+  {id:'frigo',label:'Stephany',text:'Verificar temperatura dos 3 frigoríficos'},
+  {id:'banco',label:'Gilberto',text:'Montar banco pizza — todos os GNs na posição'},
+  {id:'massas',label:'Stefano',text:'Pesar e fermentar panetti M e G'},
+  {id:'molho',label:'Stefano',text:'Produzir lote de molho de tomate (~15L)'},
+  {id:'frango',label:'Raimundo Jr',text:'Cozinhar e desfiar frango'},
+  {id:'gamberao',label:'Raimundo Jr',text:'⚠ Cozinhar gamberão (2,5kg) — etiquetar hora e refrigerar'},
+  {id:'file',label:'Raimundo Jr',text:'⚠ Cozinhar filé mignon — etiquetar hora e refrigerar'},
+  {id:'etiqueta',label:'Stephany',text:'Etiquetar todos os produtos nos frigoríficos'},
+  {id:'doces',label:'Stephany',text:'Abastecer bisnagas e estação de doces'},
+  {id:'vegs',label:'João Victor',text:'Cortar e porcionar vegetais — abastecer GNs'},
+  {id:'frios',label:'João Victor',text:'Porcionar frios e queijos'},
+  {id:'briefing',label:'Stefano',text:'Briefing pré-serviço às 18:30'},
+  {id:'close',label:'Todos',text:'Limpeza final + etiquetagem + HACCP'},
+];
+
+const FEB_DAYS=Array.from({length:28},(_,i)=>{
+  const d=new Date(2026,1,i+1);
+  return {day:i+1,wd:['DOM','SEG','TER','QUA','QUI','SEX','SAB'][d.getDay()]};
+});
+
+const DEFAULT_MENU=[
+  {name:'Pizza Margherita',desc:'Clássico italiano com molho de tomate artesanal',cat:'Pizza Clássica',photo:'',emoji:'🍕',standard:'Molho 80g · Muçarela 150g · Manjericão fresco 5 folhas · Fio de azeite extra virgem.\nTemperatura do forno: 380-420°C. Apresentar imediatamente após sair do forno.'},
+  {name:'Pizza Calabresa',desc:'Calabresa fatiada com cebola caramelizada e orégano',cat:'Pizza Clássica',photo:'',emoji:'🍕',standard:'Molho 80g · Muçarela 130g · Calabresa 80g fatiada 3mm · Cebola caramelizada 40g · Orégano finalização.\nForno: 380-420°C.'},
+  {name:'Burrata com Tomate',desc:'Burrata de búfala com tomate cereja e pesto',cat:'Entrada',photo:'',emoji:'🫙',standard:'Burrata 200g centrada · Tomate cereja 80g ao redor · Pesto 20g · Azeite 10ml · Flor de sal · Rúcula fresca.\nServir fria. Prato refrigerado.'},
+  {name:'Churros com Nutella',desc:'Churros fritos frescos com chocolate quente',cat:'Sobremesa',photo:'',emoji:'🍩',standard:'3 unidades churros 12cm · Açúcar + canela por fora após fritar · Nutella 40g aquecida em tigela lateral · Servir imediatamente.'},
+  {name:'Gamberão Grelhado',desc:'Camarão ao alho com manteiga de ervas',cat:'Prato Principal',photo:'',emoji:'🦐',standard:'Camarão 180g (do frigo) · Grelhar com alho e manteiga de ervas 15g · Limão siciliano 1/4 · Baguete acompanhamento.\nTemp interna: 70°C.'},
+];
+
 function load(k,def){try{const v=localStorage.getItem(k);return v?JSON.parse(v):def}catch{return def}}
 function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}}
+function todayStr(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function initStaff(){const s={};STAFF.forEach(p=>{s[p.id]=p.defaultAb?'AB':(p.id==='raimundo'?'F':'P')});return s;}
 
-let turnoDate    = load('olivaDate', todayStr());
-let staffStatus  = load('olivaStaff', initStaff());
-let checklist    = load('olivaCheck', {});
-let orderStock   = load('olivaStock', {});
-let schedule     = load('olivaSched', DEFAULT_SCHEDULE);
-let extraItems   = load('olivaExtras', {Limpeza:[],Embalagem:[],Outros:[]});
-let diasEntrega  = load('olivaDias', 3.5);
-let selectedPerson = 'stefano';
-
-function todayStr(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
-
-function initStaff(){
+function generateDefaultSchedule(){
   const s={};
-  STAFF.forEach(p=>{s[p.id] = p.defaultAb?'AB':(p.id==='raimundo'?'F':'P')});
+  STAFF.forEach(p=>{
+    if(p.sched==='af'){s[p.id]=Array(28).fill('AF');}
+    else if(p.sched==='6x2'){s[p.id]=Array.from({length:28},(_,i)=>((i+p.off)%8<6)?'P':'F');}
+    else if(p.sched==='5x1'){s[p.id]=Array.from({length:28},(_,i)=>((i+p.off)%6<5)?'P':'F');}
+    else{s[p.id]=Array(28).fill('P');}
+    if(p.id==='stefano'){s[p.id]=s[p.id].map(v=>v==='P'?'AB':v);}
+  });
   return s;
 }
 
-// ─── NAVIGATION ──────────────────────────────────
-function showPage(id, btn){
+let turnoDate=load('olivaDate',todayStr());
+let staffStatus=load('olivaStaff',initStaff());
+let checklist=load('olivaCheck',{});
+let orderStock=load('olivaStock',{});
+let schedule=load('olivaSched',generateDefaultSchedule());
+let extraItems=load('olivaExtras',{Limpeza:[],Embalagem:[],Outros:[]});
+let diasEntrega=load('olivaDias',3.5);
+let menuItems=load('olivaMenu',DEFAULT_MENU);
+let selectedPerson='stefano';
+
+function showPage(id,btn){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
-  if(btn) btn.classList.add('active');
-  if(id='pedido') renderOrder();
-  if(id=='escala') renderSchedule();
-  if(id=='tarefas') renderTasks();
+  if(btn)btn.classList.add('active');
+  if(id==='pedido')renderOrder();
+  if(id==='escala')renderSchedule();
+  if(id==='tarefas')renderTasks();
+  if(id==='menu')renderMenu();
 }
 
-// ─── DATE ─────────────────────────────────────────
 function onDateChange(v){
-  turnoDate=v; save('olivaDate',v);
+  turnoDate=v;save('olivaDate',v);
   document.getElementById('dateBadge').textContent='📅 '+v.slice(8)+'/'+v.slice(5,7);
 }
 (function initDate(){
-  const d=document.getElementById('dateInput');
-  d.value=turnoDate;
+  document.getElementById('dateInput').value=turnoDate;
   document.getElementById('dateBadge').textContent='📅 '+turnoDate.slice(8)+'/'+turnoDate.slice(5,7);
 })();
 
-// ─── TURNO ────────────────────────────────────────
 function renderStaff(){
-  const el=document.getElementById('staffList');
-  el.innerHTML='';
+  const el=document.getElementById('staffList');el.innerHTML='';
   STAFF.forEach(p=>{
     const st=staffStatus[p.id]||'P';
-    const div=document.createElement('div');
-    div.className='staff-row';
-    div.innerHTML=`
-      <div class="staff-avatar" style="background:${p.color}22;color:${p.color}">${p.initial}</div>
-      <div class="staff-info">
-        <div class="staff-name">${p.name}</div>
-        <div class="staff-role">${p.role}</div>
-      </div>
-      <div class="status-toggle">
-        <button class="status-btn ${st==='P'?'on':''}" onclick="setStatus('${p.id}','P')">P</button>
-        ${p.isPizza?`<button class="status-btn ${st==='AB'?'ab':''}" onclick="setStatus('${p.id}','AB')">AB</button>`:''}
-        <button class="status-btn ${st==='F'?'off':''}" onclick="setStatus('${p.id}','F')">F</button>
-      </div>`;
+    const div=document.createElement('div');div.className='staff-row';
+    div.innerHTML='<div class="staff-avatar" style="background:'+p.color+'22;color:'+p.color+'">'+p.initial+'</div>'+
+      '<div class="staff-info"><div class="staff-name">'+p.name+'</div><div class="staff-role">'+p.role+'</div></div>'+
+      '<div class="status-toggle">'+
+      '<button class="status-btn '+(st==='P'?'on':'')+'" onclick="setStatus(\''+p.id+'\',\'P\')">P</button>'+
+      (p.isPizza?'<button class="status-btn '+(st==='AB'?'ab':'')+'" onclick="setStatus(\''+p.id+'\',\'AB\')">AB</button>':'')+
+      '<button class="status-btn '+(st==='F'?'off':'')+'" onclick="setStatus(\''+p.id+'\',\'F\')">F</button>'+
+      '</div>';
     el.appendChild(div);
   });
   updateStats();
 }
 
-function setStatus(id,st){
-  staffStatus[id]=st;
-  save('olivaStaff',staffStatus);
-  renderStaff();
-  showToast(st==='AB'?'Abertura definida ✓':st==='P'?'Presente ✓':'Folga definida');
-}
+function setStatus(id,st){staffStatus[id]=st;save('olivaStaff',staffStatus);renderStaff();showToast(st==='AB'?'Abertura ✓':st==='P'?'Presente ✓':'Folga ✓');}
 
 function updateStats(){
   const vals=Object.values(staffStatus);
@@ -716,54 +570,236 @@ function updateStats(){
 }
 
 function renderChecklist(){
-  const el=document.getElementById('checklistEl');
-  el.innerHTML='';
+  const el=document.getElementById('checklistEl');el.innerHTML='';
   CHECKLIST_ITEMS.forEach(item=>{
     const done=!!checklist[item.id];
-    const div=document.createElement('div');
-    div.className='check-item'+(done?' done':'');
+    const div=document.createElement('div');div.className='check-item'+(done?' done':'');
     div.onclick=()=>toggleCheck(item.id);
-    div.innerHTML=`
-      <div class="check-box">
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-      </div>
-      <div style="flex:1">
-        <div class="check-label">${item.label}</div>
-        <div class="check-text">${item.text}</div>
-      </div>`;
+    div.innerHTML='<div class="check-box"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>'+
+      '<div style="flex:1"><div class="check-label">'+item.label+'</div><div class="check-text">'+item.text+'</div></div>';
     el.appendChild(div);
   });
 }
+function toggleCheck(id){checklist[id]=!checklist[id];save('olivaCheck',checklist);renderChecklist();}
+function resetChecklist(){if(confirm('Reiniciar todas as tarefas?')){checklist={};save('olivaCheck',checklist);renderChecklist();showToast('Checklist reiniciada ✓');}}
 
-function toggleCheck(id){
-  checklist[id]=!checklist[id];
-  save('olivaCheck',checklist);
-  renderChecklist();
+function renderOrder(){
+  const dias=parseFloat(document.getElementById('diasEntrega').value)||3.5;
+  const cont=document.getElementById('orderCats');
+  if(cont.innerHTML!=='')return;
+  cont.innerHTML='';
+  ORDER_CATS.forEach(cat=>{
+    const sec=document.createElement('div');
+    const hdr=document.createElement('div');
+    hdr.className='cat-header';hdr.style.background=cat.color+'22';hdr.style.color=cat.color;
+    hdr.innerHTML=cat.emoji+' '+cat.name+'<span class="cat-arrow">▾</span>';
+    const items=document.createElement('div');items.className='cat-items';items.id='cat-'+cat.id;
+    hdr.onclick=()=>{hdr.classList.toggle('open');items.classList.toggle('open');};
+    sec.appendChild(hdr);
+    cat.items.forEach((item,idx)=>{
+      const key=cat.id+'_'+idx;const stock=orderStock[key]||0;
+      const period=roundUp(item.q*dias,2);const pedir=Math.max(0,roundUp(period-stock,2));
+      const div=document.createElement('div');div.className='order-item';
+      div.innerHTML='<div class="order-item-top"><div class="order-name">'+item.n+'</div><div class="order-unit">'+item.u+'</div></div>'+
+        '<div class="order-inputs">'+
+        '<div class="input-group"><div class="input-label" style="color:'+cat.color+'">Qtd/Turno</div>'+
+        '<input class="input-field" type="number" step="0.1" value="'+item.q+'" oninput="updateQty(\''+cat.id+'\','+idx+',this.value)" style="color:var(--gold)"></div>'+
+        '<div class="input-group"><div class="input-label" style="color:var(--blue)">Estoque atual</div>'+
+        '<input class="input-field" type="number" step="0.1" value="'+stock+'" oninput="updateStock(\''+key+'\',this.value,\''+cat.id+'\','+idx+')" placeholder="0" style="color:var(--terra)"></div>'+
+        '<div class="input-group"><div class="input-label" style="color:var(--olive)">Pedir agora</div>'+
+        '<div class="order-result '+(pedir>0?'urgent':'zero')+'" id="res-'+key+'">'+(pedir>0?pedir:'✓ OK')+'</div></div>'+
+        '</div>'+
+        '<div style="font-size:10px;color:var(--text3);margin-top:6px">📦 '+item.f+' | Período: <b style="color:var(--blue)">'+period+' '+item.u+'</b></div>';
+      items.appendChild(div);
+    });
+    sec.appendChild(items);cont.appendChild(sec);
+  });
+  renderExtras();document.getElementById('diasEntrega').value=diasEntrega;
 }
 
-function resetChecklist(){
-  if(confirm('Reiniciar todas as tarefas?')){
-    checklist={};
-    save('olivaCheck',checklist);
-    renderChecklist();
-    showToast('Checklist reiniciada ✓');
+function recalcAll(){
+  const dias=parseFloat(document.getElementById('diasEntrega').value)||3.5;save('olivaDias',dias);
+  ORDER_CATS.forEach(cat=>{cat.items.forEach((item,idx)=>{
+    const key=cat.id+'_'+idx;const stock=parseFloat(orderStock[key])||0;
+    const qty=parseFloat(item._custom||item.q)||item.q;
+    const period=roundUp(qty*dias,2);const pedir=Math.max(0,roundUp(period-stock,2));
+    const el=document.getElementById('res-'+key);
+    if(el){el.textContent=pedir>0?String(pedir):'✓ OK';el.className='order-result '+(pedir>0?'urgent':'zero');}
+  });});
+}
+function updateQty(catId,idx,val){ORDER_CATS.find(c=>c.id===catId).items[idx]._custom=parseFloat(val);recalcSingle(catId,idx);}
+function updateStock(key,val,catId,idx){orderStock[key]=parseFloat(val)||0;save('olivaStock',orderStock);recalcSingle(catId,idx);}
+function recalcSingle(catId,idx){
+  const dias=parseFloat(document.getElementById('diasEntrega').value)||3.5;
+  const cat=ORDER_CATS.find(c=>c.id===catId);const item=cat.items[idx];const key=catId+'_'+idx;
+  const stock=parseFloat(orderStock[key])||0;const qty=parseFloat(item._custom||item.q)||item.q;
+  const period=roundUp(qty*dias,2);const pedir=Math.max(0,roundUp(period-stock,2));
+  const el=document.getElementById('res-'+key);
+  if(el){el.textContent=pedir>0?String(pedir):'✓ OK';el.className='order-result '+(pedir>0?'urgent':'zero');}
+}
+function roundUp(v,dec){const f=Math.pow(10,dec);return Math.ceil(v*f)/f;}
+function resetOrder(){if(confirm('Resetar todos os estoques para 0?')){orderStock={};save('olivaStock',orderStock);document.getElementById('orderCats').innerHTML='';renderOrder();showToast('Estoques resetados ✓');}}
+
+function renderExtras(){
+  ['Limpeza','Embalagem','Outros'].forEach(cat=>{
+    const list=document.getElementById('extraList'+cat);list.innerHTML='';
+    (extraItems[cat]||[]).forEach((item,i)=>addExtraRow(cat,item,i));
+  });
+}
+function addExtra(cat){if(!extraItems[cat])extraItems[cat]=[];extraItems[cat].push({name:'',qty:''});save('olivaExtras',extraItems);addExtraRow(cat,{name:'',qty:''},extraItems[cat].length-1);}
+function addExtraRow(cat,item,idx){
+  const list=document.getElementById('extraList'+cat);
+  const div=document.createElement('div');div.className='extra-item';
+  div.innerHTML='<input class="extra-input" placeholder="Nome do produto..." value="'+(item.name||'')+'" oninput="updateExtra(\''+cat+'\','+idx+',\'name\',this.value)">'+
+    '<input type="number" class="extra-qty" placeholder="Qtd" value="'+(item.qty||'')+'" oninput="updateExtra(\''+cat+'\','+idx+',\'qty\',this.value)">'+
+    '<div class="extra-remove" onclick="removeExtra(\''+cat+'\','+idx+')">×</div>';
+  list.appendChild(div);
+}
+function updateExtra(cat,idx,field,val){if(!extraItems[cat])extraItems[cat]=[];if(!extraItems[cat][idx])extraItems[cat][idx]={};extraItems[cat][idx][field]=val;save('olivaExtras',extraItems);}
+function removeExtra(cat,idx){extraItems[cat].splice(idx,1);save('olivaExtras',extraItems);const list=document.getElementById('extraList'+cat);list.innerHTML='';(extraItems[cat]||[]).forEach((item,i)=>addExtraRow(cat,item,i));}
+
+function exportWhatsApp(){
+  const dias=parseFloat(document.getElementById('diasEntrega').value)||3.5;
+  let msg='🍕 *PEDIDO PIZZARIA OLIVA*\n📅 '+new Date().toLocaleDateString('pt-BR')+' | Entrega em '+dias+' dias\n\n';
+  ORDER_CATS.forEach(cat=>{
+    const urgentItems=cat.items.map((item,idx)=>{
+      const key=cat.id+'_'+idx;const stock=parseFloat(orderStock[key])||0;
+      const qty=parseFloat(item._custom||item.q)||item.q;
+      const pedir=Math.max(0,roundUp(qty*dias,2)-stock);
+      return pedir>0?'• '+item.n+': *'+pedir+' '+item.u+'*':null;
+    }).filter(Boolean);
+    if(urgentItems.length>0)msg+=cat.emoji+' *'+cat.name.split('—')[0].trim()+'*\n'+urgentItems.join('\n')+'\n\n';
+  });
+  ['Limpeza','Embalagem','Outros'].forEach(cat=>{
+    const extras=(extraItems[cat]||[]).filter(i=>i.name);
+    if(extras.length>0){msg+='📋 *'+cat+'*\n';extras.forEach(i=>{msg+='• '+i.name+(i.qty?' — '+i.qty:'')+'\n';});msg+='\n';}
+  });
+  msg+='_Gerado pelo sistema Pizzaria Oliva_ 🍕';
+  window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');
+}
+
+function renderSchedule(){
+  const grid=document.getElementById('scheduleGrid');grid.innerHTML='';
+  grid.style.cssText='display:grid;grid-template-columns:80px repeat(28,1fr);gap:2px;font-size:10px';
+  const blank=document.createElement('div');blank.className='sch-head';blank.textContent='';grid.appendChild(blank);
+  FEB_DAYS.forEach(d=>{
+    const h=document.createElement('div');h.className='sch-head';
+    h.innerHTML='<div style="font-size:8px;color:var(--text3)">'+d.wd.slice(0,1)+'</div><div>'+d.day+'</div>';
+    if(d.wd==='SAB'||d.wd==='DOM')h.style.background='rgba(255,255,255,0.03)';
+    grid.appendChild(h);
+  });
+  STAFF.forEach(p=>{
+    const nameEl=document.createElement('div');nameEl.className='sch-name';nameEl.style.color=p.color;nameEl.textContent=p.name.split(' ')[0];grid.appendChild(nameEl);
+    const sched=schedule[p.id]||Array(28).fill('P');
+    sched.forEach((val,i)=>{
+      const cell=document.createElement('div');
+      cell.className='sch-cell '+(val==='P'?'sch-p':val==='F'?'sch-f':val==='AF'?'sch-af':'sch-ab');
+      cell.textContent=val;cell.onclick=()=>cycleStatus(p.id,i,cell);grid.appendChild(cell);
+    });
+  });
+}
+function cycleStatus(personId,dayIdx,cell){
+  const cur=schedule[personId][dayIdx];const next={P:'F',F:'AB',AB:'AF',AF:'P'}[cur]||'P';
+  schedule[personId][dayIdx]=next;save('olivaSched',schedule);
+  cell.className='sch-cell '+(next==='P'?'sch-p':next==='F'?'sch-f':next==='AF'?'sch-af':'sch-ab');cell.textContent=next;
+}
+function generateAutoSchedule(){
+  if(!confirm('Gerar escala automática? A escala atual será substituída.'))return;
+  schedule=generateDefaultSchedule();save('olivaSched',schedule);
+  document.getElementById('scheduleGrid').innerHTML='';renderSchedule();showToast('Escala gerada automaticamente ✓');
+}
+
+function renderTasks(){
+  const toggle=document.getElementById('personToggle');
+  if(!toggle.innerHTML){
+    STAFF.forEach(p=>{
+      const btn=document.createElement('div');btn.className='toggle-pill'+(p.id===selectedPerson?' active':'');btn.textContent=p.name.split(' ')[0];
+      if(p.id===selectedPerson){btn.style.borderColor=p.color;btn.style.color=p.color;}
+      btn.onclick=()=>{
+        selectedPerson=p.id;
+        document.querySelectorAll('#personToggle .toggle-pill').forEach(b=>{b.classList.remove('active');b.style.borderColor='';b.style.color='';});
+        btn.classList.add('active');btn.style.borderColor=p.color;btn.style.color=p.color;drawTasks();
+      };
+      toggle.appendChild(btn);
+    });
   }
+  drawTasks();
+}
+function drawTasks(){
+  const p=STAFF.find(x=>x.id===selectedPerson);const tasks=TASKS[selectedPerson];if(!tasks)return;
+  const cont=document.getElementById('taskCards');const color=tasks.color;
+  let html='<div class="card" style="border-color:'+color+'44">'+
+    '<div style="font-family:\'Oswald\',sans-serif;font-size:16px;font-weight:600;color:var(--cream);margin-bottom:12px;display:flex;align-items:center;gap:8px">'+
+    '<div style="width:8px;height:8px;border-radius:50%;background:'+color+';flex-shrink:0"></div>'+
+    '<span style="color:'+color+'">'+p.name+'</span>'+
+    '<span style="font-size:12px;color:var(--text3);font-weight:400">'+p.role+'</span></div>'+
+    '<div class="section-title" style="margin-top:0">▶ Preparação (15:30 → 17:30)</div>';
+  tasks.prep.forEach(t=>{
+    html+='<div style="display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)">'+
+      '<div style="font-family:\'Oswald\',sans-serif;font-size:12px;color:'+color+';min-width:80px;padding-top:2px">'+t.t+'</div>'+
+      '<div style="font-size:13px;color:'+(t.d.startsWith('⚠')?'#ff8a80':'var(--text)')+';line-height:1.5">'+t.d+'</div></div>';
+  });
+  if(tasks.servico.length>0){
+    html+='<div class="section-title">▶ Serviço (18:30 → fim)</div>';
+    tasks.servico.forEach(t=>{
+      html+='<div style="display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)">'+
+        '<div style="font-family:\'Oswald\',sans-serif;font-size:12px;color:'+color+';min-width:80px;padding-top:2px">'+t.t+'</div>'+
+        '<div style="font-size:13px;color:'+(t.d.startsWith('⚠')||t.d.includes('DESCARTAR')?'#ff8a80':t.d.includes('🚪')?'var(--olive)':'var(--text)')+';line-height:1.5">'+t.d+'</div></div>';
+    });
+  }
+  html+='</div>';
+  cont.innerHTML=html;
 }
 
-// ─── TOAST ────────────────────────────────────────
+function renderMenu(){
+  const grid=document.getElementById('menuGrid');grid.innerHTML='';
+  menuItems.forEach((item,idx)=>{
+    const card=document.createElement('div');card.className='menu-card';card.onclick=()=>openMenuModal(idx);
+    let photoHtml='';
+    if(item.photo){photoHtml='<img class="menu-img" src="'+item.photo+'" alt="'+item.name+'" onerror="this.style.display=\'none\';this.nextSibling.style.display=\'flex\'">'+'<div class="menu-emoji" style="display:none">'+( item.emoji||'🍕')+'</div>';}
+    else{photoHtml='<div class="menu-emoji">'+(item.emoji||'🍕')+'</div>';}
+    card.innerHTML=photoHtml+'<div class="menu-info"><div class="menu-name">'+item.name+'</div><div class="menu-cat">'+item.cat+'</div></div>';
+    grid.appendChild(card);
+  });
+}
+
+let currentMenuIdx=-1;
+function openMenuModal(idx){
+  currentMenuIdx=idx;const item=menuItems[idx];
+  const modal=document.getElementById('menuModal');
+  const photoEl=document.getElementById('modalPhoto');
+  photoEl.innerHTML=item.photo?'<img src="'+item.photo+'" alt="'+item.name+'" style="width:100%;height:100%;object-fit:cover">':(item.emoji||'🍕');
+  document.getElementById('modalTitle').textContent=item.name;
+  document.getElementById('modalDesc').textContent=item.desc;
+  document.getElementById('modalStandard').textContent=item.standard;
+  document.getElementById('modalDeleteBtn').onclick=()=>deleteMenuItem(idx);
+  modal.classList.add('open');
+}
+function closeMenuModal(){document.getElementById('menuModal').classList.remove('open');}
+function deleteMenuItem(idx){
+  if(!confirm('Remover este item do cardápio?'))return;
+  menuItems.splice(idx,1);save('olivaMenu',menuItems);closeMenuModal();renderMenu();showToast('Item removido ✓');
+}
+function addMenuItem(){
+  const name=document.getElementById('menuFormName').value.trim();
+  if(!name){showToast('Digite o nome do prato');return;}
+  menuItems.push({
+    name,desc:document.getElementById('menuFormDesc').value.trim(),
+    cat:document.getElementById('menuFormCat').value.trim()||'Cardápio',
+    photo:document.getElementById('menuFormPhoto').value.trim(),
+    emoji:document.getElementById('menuFormEmoji').value.trim()||'🍕',
+    standard:document.getElementById('menuFormStandard').value.trim()||'Padrão a definir.',
+  });
+  save('olivaMenu',menuItems);
+  ['menuFormName','menuFormDesc','menuFormCat','menuFormPhoto','menuFormEmoji','menuFormStandard'].forEach(id=>{document.getElementById(id).value='';});
+  renderMenu();showToast('Item adicionado ao cardápio ✓');
+}
+
 let toastTimer;
-function showToast(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg;
-  t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>t.classList.remove('show'),1800);
-}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),1800);}
 
-// ─── INIT ─────────────────────────────────────────
 renderStaff();
 renderChecklist();
 </script>
-
 </body>
 </html>
